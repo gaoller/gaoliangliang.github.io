@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="黑马程序员,知识点,笔记,基础,api," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="常用API总结. String类">
+<meta name="keywords" content="黑马程序员,知识点,笔记,基础,api">
+<meta property="og:type" content="article">
+<meta property="og:title" content="黑马程序员-常用API应用(持续跟新)">
+<meta property="og:url" content="http://gaoll.top/2013/12/22/常用API应用/index.html">
+<meta property="og:site_name" content="Gaoll‘s Blog">
+<meta property="og:description" content="常用API总结. String类">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://img.blog.csdn.net/20131228125139453?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20131228125200203?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20131228125328218?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20131228125349078?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20131228125430343?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20131228125452625?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20131228125531968?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20131228125619687?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20131228125726390?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20131228125806500?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20131228125845515?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20131228125925968?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20131228125948296?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20131228130014437?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20131228130125875?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20131228130139703?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20131228130225828?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20140102225610453?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20140102225633218?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20140102225724750?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20140102225801312?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20140102225849875?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20140102225905296?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20140106222755015?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20140106222814375?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20140106222829687?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-08-24T07:54:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="黑马程序员-常用API应用(持续跟新)">
+<meta name="twitter:description" content="常用API总结. String类">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20131228125139453?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://gaoll.top/2013/12/22/常用API应用/"/>
+
+
+
+
+
+  <title>黑马程序员-常用API应用(持续跟新) | Gaoll‘s Blog</title>
+  
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/prism-solarizedlight.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gaoll‘s Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life Likes Ninjaku Training</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://gaoll.top/2013/12/22/常用API应用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="高亮亮">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gaoll‘s Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">黑马程序员-常用API应用(持续跟新)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-12-22T01:15:00+08:00">
+                2013-12-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">java笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>常用API总结.</p>
+<h2 id="String类"><a href="#String类" class="headerlink" title="String类"></a>String类</h2><p><img src="http://img.blog.csdn.net/20131228125139453?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://img.blog.csdn.net/20131228125200203?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<a id="more"></a>
+<h2 id="StringBuffer类"><a href="#StringBuffer类" class="headerlink" title="StringBuffer类"></a><strong>StringBuffer类</strong></h2><p><img src="http://img.blog.csdn.net/20131228125328218?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://img.blog.csdn.net/20131228125349078?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<h2 id="Integer类"><a href="#Integer类" class="headerlink" title="Integer类"></a><strong>Integer类</strong></h2><p><strong><img src="http://img.blog.csdn.net/20131228125430343?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="">
+</strong></p>
+<p><strong><img src="http://img.blog.csdn.net/20131228125452625?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="">
+</strong></p>
+<hr>
+<h2 id="System类"><a href="#System类" class="headerlink" title="System类"></a><strong>System类</strong></h2><p><strong><img src="http://img.blog.csdn.net/20131228125531968?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="">
+</strong></p>
+<hr>
+<h2 id="Arrays类"><a href="#Arrays类" class="headerlink" title="Arrays类"></a><strong>Arrays类</strong></h2><p><strong><img src="http://img.blog.csdn.net/20131228125619687?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="">
+</strong></p>
+<hr>
+<h2 id="Date类"><a href="#Date类" class="headerlink" title="Date类"></a><strong>Date类</strong></h2><p><img src="http://img.blog.csdn.net/20131228125726390?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<h2 id="DateFormat类"><a href="#DateFormat类" class="headerlink" title="DateFormat类"></a><strong>DateFormat类</strong></h2><p><strong><img src="http://img.blog.csdn.net/20131228125806500?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></strong></p>
+<hr>
+<h2 id="Calendar类"><a href="#Calendar类" class="headerlink" title="Calendar类"></a>Calendar类</h2><p><img src="http://img.blog.csdn.net/20131228125845515?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<h2 id="Collection类"><a href="#Collection类" class="headerlink" title="Collection类"></a><strong>Collection类</strong></h2><p><strong><img src="http://img.blog.csdn.net/20131228125925968?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="">
+</strong></p>
+<p><strong><img src="http://img.blog.csdn.net/20131228125948296?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="">
+</strong></p>
+<hr>
+<h2 id="Collections类"><a href="#Collections类" class="headerlink" title="Collections类"></a>Collections类</h2><p><img src="http://img.blog.csdn.net/20131228130014437?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<h2 id="Iterator类"><a href="#Iterator类" class="headerlink" title="Iterator类"></a><strong>Iterator类</strong></h2><p><strong><img src="http://img.blog.csdn.net/20131228130125875?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="">
+</strong></p>
+<p><strong><img src="http://img.blog.csdn.net/20131228130139703?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="">
+</strong></p>
+<hr>
+<h2 id="List类"><a href="#List类" class="headerlink" title="List类"></a><strong>List类</strong></h2><p><strong><img src="http://img.blog.csdn.net/20131228130225828?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="">
+</strong></p>
+<hr>
+<h2 id="HashMap类"><a href="#HashMap类" class="headerlink" title="HashMap类"></a><strong>HashMap类</strong></h2><p><strong><img src="http://img.blog.csdn.net/20140102225610453?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="">
+</strong></p>
+<p><strong><img src="http://img.blog.csdn.net/20140102225633218?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="">
+</strong></p>
+<hr>
+<h2 id="Map-Entry类-内部类"><a href="#Map-Entry类-内部类" class="headerlink" title="Map.Entry类(内部类)"></a><strong>Map.Entry类(内部类)</strong></h2><p><strong><img src="http://img.blog.csdn.net/20140102225724750?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="">
+</strong></p>
+<hr>
+<h2 id="Stack类"><a href="#Stack类" class="headerlink" title="Stack类"></a><strong>Stack类</strong></h2><p><strong><img src="http://img.blog.csdn.net/20140102225801312?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="">
+</strong></p>
+<hr>
+<h2 id="File类"><a href="#File类" class="headerlink" title="File类"></a><strong>File类</strong></h2><p><strong><img src="http://img.blog.csdn.net/20140102225849875?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="">
+</strong></p>
+<p><strong><img src="http://img.blog.csdn.net/20140102225905296?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="">
+</strong></p>
+<hr>
+<h2 id="Class类"><a href="#Class类" class="headerlink" title="Class类"></a><strong>Class类</strong></h2><p><strong><img src="http://img.blog.csdn.net/20140106222755015?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="">
+</strong></p>
+<p><strong><img src="http://img.blog.csdn.net/20140106222814375?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="">
+</strong><br><strong><img src="http://img.blog.csdn.net/20140106222829687?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="">
+</strong></p>
+<p><strong>To be continue……</strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/黑马程序员/" rel="tag"># 黑马程序员</a>
+          
+            <a href="/tags/知识点/" rel="tag"># 知识点</a>
+          
+            <a href="/tags/笔记/" rel="tag"># 笔记</a>
+          
+            <a href="/tags/基础/" rel="tag"># 基础</a>
+          
+            <a href="/tags/api/" rel="tag"># api</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/12/19/Java基础语法收尾/" rel="next" title="黑马程序员-Java基础语法收尾">
+                <i class="fa fa-chevron-left"></i> 黑马程序员-Java基础语法收尾
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2013/12/26/集合框架1/" rel="prev" title="黑马程序员-集合框架1">
+                黑马程序员-集合框架1 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="高亮亮" />
+          <p class="site-author-name" itemprop="name">高亮亮</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#String类"><span class="nav-number">1.</span> <span class="nav-text">String类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#StringBuffer类"><span class="nav-number">2.</span> <span class="nav-text">StringBuffer类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Integer类"><span class="nav-number">3.</span> <span class="nav-text">Integer类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#System类"><span class="nav-number">4.</span> <span class="nav-text">System类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Arrays类"><span class="nav-number">5.</span> <span class="nav-text">Arrays类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Date类"><span class="nav-number">6.</span> <span class="nav-text">Date类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DateFormat类"><span class="nav-number">7.</span> <span class="nav-text">DateFormat类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Calendar类"><span class="nav-number">8.</span> <span class="nav-text">Calendar类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Collection类"><span class="nav-number">9.</span> <span class="nav-text">Collection类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Collections类"><span class="nav-number">10.</span> <span class="nav-text">Collections类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Iterator类"><span class="nav-number">11.</span> <span class="nav-text">Iterator类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List类"><span class="nav-number">12.</span> <span class="nav-text">List类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap类"><span class="nav-number">13.</span> <span class="nav-text">HashMap类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map-Entry类-内部类"><span class="nav-number">14.</span> <span class="nav-text">Map.Entry类(内部类)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Stack类"><span class="nav-number">15.</span> <span class="nav-text">Stack类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#File类"><span class="nav-number">16.</span> <span class="nav-text">File类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Class类"><span class="nav-number">17.</span> <span class="nav-text">Class类</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2013 &mdash; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">高亮亮</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

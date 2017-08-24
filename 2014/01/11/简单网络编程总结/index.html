@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="黑马程序员,知识点,笔记,JAVA,思路," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="题外话:其实原本感觉网络编程和IO流结合,有些小迷糊.但是再在硬着头皮装B给别人答疑时,自己把自己给捋顺了…所以,装B也是一种高效学习法… 1.网络编程概述1.1.概念：通过编程语言实现计算机键的数据通信。">
+<meta name="keywords" content="黑马程序员,知识点,笔记,JAVA,思路">
+<meta property="og:type" content="article">
+<meta property="og:title" content="黑马程序员-简单网络编程总结">
+<meta property="og:url" content="http://gaoll.top/2014/01/11/简单网络编程总结/index.html">
+<meta property="og:site_name" content="Gaoll‘s Blog">
+<meta property="og:description" content="题外话:其实原本感觉网络编程和IO流结合,有些小迷糊.但是再在硬着头皮装B给别人答疑时,自己把自己给捋顺了…所以,装B也是一种高效学习法… 1.网络编程概述1.1.概念：通过编程语言实现计算机键的数据通信。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-08-24T07:55:29.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="黑马程序员-简单网络编程总结">
+<meta name="twitter:description" content="题外话:其实原本感觉网络编程和IO流结合,有些小迷糊.但是再在硬着头皮装B给别人答疑时,自己把自己给捋顺了…所以,装B也是一种高效学习法… 1.网络编程概述1.1.概念：通过编程语言实现计算机键的数据通信。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://gaoll.top/2014/01/11/简单网络编程总结/"/>
+
+
+
+
+
+  <title>黑马程序员-简单网络编程总结 | Gaoll‘s Blog</title>
+  
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/prism-solarizedlight.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gaoll‘s Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life Likes Ninjaku Training</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://gaoll.top/2014/01/11/简单网络编程总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="高亮亮">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gaoll‘s Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">黑马程序员-简单网络编程总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-01-11T14:19:00+08:00">
+                2014-01-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">java笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>题外话:</strong>其实原本感觉网络编程和IO流结合,有些小迷糊.但是再在硬着头皮装B给别人答疑时,自己把自己给捋顺了…所以,装B也是一种高效学习法…</p>
+<h2 id="1-网络编程概述"><a href="#1-网络编程概述" class="headerlink" title="1.网络编程概述"></a>1.网络编程概述</h2><h3 id="1-1-概念："><a href="#1-1-概念：" class="headerlink" title="1.1.概念："></a>1.1.概念：</h3><p>通过编程语言实现计算机键的数据通信。</p>
+<a id="more"></a>
+<h3 id="1-2-网络编程的三要素："><a href="#1-2-网络编程的三要素：" class="headerlink" title="1.2.网络编程的三要素："></a>1.2.网络编程的三要素：</h3><p><strong>A:Ip地址</strong>:</p>
+<p>是计算机的唯一标识点分十进制。IP地址的分类。IP地址的组成。ipconfig  ping<br><strong>B:端口</strong><br><strong>物理端口</strong>：网线插口,亲…</p>
+<p><strong>逻辑端口</strong>：用于标识进程的逻辑地址,不同进程的标识;有效端口：0~65535,其中0~1024系统使用或保留端口.<br>范围：0-65535(0-1024之间一般系统被占用.)<br><strong>C:协议:</strong>是定义的通信规则</p>
+<p><strong>UDP</strong>(面向无连接):将数据源和目的封装成数据包中，不需要建立连接；每个数据报的大小在限制在64k；因无连接，是不可靠协议；不需要建立连接，速度快.</p>
+<p><strong>TCP</strong>(面向连接): 建立连接，形成传输数据的通道；在连接中进行大数据量传输；通过三次握手完成连接，是可靠协议；必须建立连接，效率会稍低</p>
+<p><strong>注:关于InetAddress类的使用:(最需要记的就下面这个代码:)</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">import</span> java<span class="token punctuation">.</span>net<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name">IPDemo</span><span class="token punctuation">{</span>
+       publicstatic <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> UnknownHostException<span class="token punctuation">{</span>
+              <span class="token comment" spellcheck="true">//通过名称(ip字符串or主机名)来获取一个ip对象。</span>
+              InetAddressip <span class="token operator">=</span> InetAddress<span class="token punctuation">.</span><span class="token function">getByName</span><span class="token punctuation">(</span><span class="token string">"www.baidu.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//java.net.UnknownHostException</span>
+              System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"addr:"</span><span class="token operator">+</span>ip<span class="token punctuation">.</span><span class="token function">getHostAddress</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"name:"</span><span class="token operator">+</span>ip<span class="token punctuation">.</span><span class="token function">getHostName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+       <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="2-UDP协议传输"><a href="#2-UDP协议传输" class="headerlink" title="2.UDP协议传输"></a>2.UDP协议传输</h2><h3 id="2-1-DatagramSocket和DatagramPacket"><a href="#2-1-DatagramSocket和DatagramPacket" class="headerlink" title="2.1.DatagramSocket和DatagramPacket:"></a>2.1.DatagramSocket和DatagramPacket:</h3><p>只要是网络传输,必须有socket .数据一定要封装到数据包中,数据包中包括目的地址,端口,数据等信息.</p>
+<p><strong>DatagramSocket:</strong><br>直接操作udp不可能，对于java语言应该将udp封装成对象，易于我们的使用，这个对象就是DatagramSocket. 封装了udp传输协议的socket对象。<br>DatagramSocket具备发送和接受功能，在进行udp传输时，需要明确一个是发送端，一个是接收端。</p>
+<p><strong>DatagramPacket:</strong><br>因为数据包中包含的信息较多，为了操作这些信息方便，也一样会将其封装成对象。这个数据包对象就是：DatagramPacket.通过这个对象中的方法，就可以获取到数据包中的各种信息。</p>
+<h3 id="2-2-代码体现-学习过程"><a href="#2-2-代码体现-学习过程" class="headerlink" title="2.2.代码体现,学习过程:"></a>2.2.代码体现,学习过程:</h3><p><strong>发送端:</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">import</span> java<span class="token punctuation">.</span>net<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">/*
+操作步骤:
+1. 创建udp socket ,建立端点.(指定监视的端点)
+2.    定义数据包(字节数组),并通过receive方法接收数据包.
+3.通过数据包的方法,获取其中的数据.
+4.将信息反馈给控制台.
+5.读到结束符,886则读取结束.关闭资源.
+*/</span>
+
+<span class="token comment" spellcheck="true">//创建接收端类</span>
+<span class="token keyword">class</span> <span class="token class-name">ReceiveDemo</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException<span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//创建发送端Socket服务对象,这里指定了端口,要监视特定端口传递来的数据</span>
+        DatagramSocket ds <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DatagramSocket</span><span class="token punctuation">(</span><span class="token number">19999</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//定义用于接收数据包的字节数组</span>
+        <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> rec <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">byte</span><span class="token punctuation">[</span><span class="token number">1024</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        DatagramPacket dp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DatagramPacket</span><span class="token punctuation">(</span>rec<span class="token punctuation">,</span>rec<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//创建数据包.</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            ds<span class="token punctuation">.</span><span class="token function">receive</span><span class="token punctuation">(</span>dp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            InetAddress address <span class="token operator">=</span> dp<span class="token punctuation">.</span><span class="token function">getAddress</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            String ip <span class="token operator">=</span> address<span class="token punctuation">.</span><span class="token function">getHostAddress</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> rec2 <span class="token operator">=</span> dp<span class="token punctuation">.</span><span class="token function">getData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> length <span class="token operator">=</span> dp<span class="token punctuation">.</span><span class="token function">getLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            String s <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span>rec2<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//这里之所以要强调数据的长度,是因为传递是一个完整的1024字节的包.没有信息的用空格补齐了.</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"886"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>address <span class="token operator">+</span><span class="token string">"---"</span><span class="token operator">+</span> ip <span class="token operator">+</span><span class="token string">"---"</span><span class="token operator">+</span> s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        ds<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><strong>接收端:</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">import</span> java<span class="token punctuation">.</span>net<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">/*
+步骤:
+1.创建udp服务,通过DatagramSocket对象.
+2.确定数据源,并进行封装,封装成数据包.
+3.通过socket服务,将已有的数据包发送出去,通过send方法.
+4.关闭已经打开的资源.
+*/</span>
+<span class="token comment" spellcheck="true">//创建接收端类:</span>
+<span class="token keyword">class</span> <span class="token class-name">SendDemo</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span>  <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">try</span>
+        <span class="token punctuation">{</span>
+            DatagramSocket ds <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DatagramSocket</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            BufferedReader br <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedReader</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">InputStreamReader</span><span class="token punctuation">(</span>System<span class="token punctuation">.</span>in<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            String line <span class="token operator">=</span> null<span class="token punctuation">;</span>
+            <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token punctuation">(</span>line<span class="token operator">=</span>br<span class="token punctuation">.</span><span class="token function">readLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">!=</span>null<span class="token operator">&amp;&amp;</span><span class="token operator">!</span>line<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"over"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr <span class="token operator">=</span> line<span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    
+                DatagramPacket dp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DatagramPacket</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span>arr<span class="token punctuation">.</span>length<span class="token punctuation">,</span>InetAddress<span class="token punctuation">.</span><span class="token function">getByName</span><span class="token punctuation">(</span><span class="token string">"192.168.3.255"</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">19999</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                ds<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>dp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            ds<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="3-TCP传输"><a href="#3-TCP传输" class="headerlink" title="3.TCP传输"></a>3.TCP传输</h2><h3 id="3-1-概述"><a href="#3-1-概述" class="headerlink" title="3.1.概述:"></a>3.1.概述:</h3><p>两个端点的建立连接后会有一个传输数据的通道，这通道称为流，而且是建立在网络基础上的流，称之为socket流。该流中既有读取，也有写入。<br><strong>tcp的两个端点</strong>：一个是客户端，一个是服务端。<br><strong>客户端</strong>：对应的对象，Socket<br><strong>服务端</strong>：对应的对象，ServerSocket</p>
+<h3 id="3-2-代码体现-学习过程"><a href="#3-2-代码体现-学习过程" class="headerlink" title="3.2.代码体现,学习过程"></a>3.2.代码体现,学习过程</h3><p><strong>服务器端:</strong></p>
+<pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/*
+需求:
+练习使用TCP传输方法传输数据
+TCP服务器步骤:
+    1.创建服务器端的Socket对象.
+    2.设置一个监听,用来监听连接.(保证客户端可以进行连接)
+    3.Socket流中获取输入流,输出流,进行数据传输.
+    4.释放资源.
+TCP客户端步骤:
+    1.创建客户端的Socket对象.
+    2.建立与服务器连接,
+    3.从Socket流中获取输入输出流,进行数据传输.
+    4.释放资源.
+*/</span>
+
+
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>net<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
+
+
+<span class="token comment" spellcheck="true">//建立TCP服务器端</span>
+<span class="token keyword">class</span> <span class="token class-name">TCPServer</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token keyword">throws</span> Exception<span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//建立服务器端的socket服务.</span>
+        ServerSocket ss <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ServerSocket</span><span class="token punctuation">(</span><span class="token number">19999</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//此时为阻塞状态,等待获取客户端的连接.</span>
+        Socket s <span class="token operator">=</span> ss<span class="token punctuation">.</span><span class="token function">accept</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//只有上一步得到了该客户端的连接对象才能进下一步.</span>
+        InetAddress address <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">getInetAddress</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        String ip <span class="token operator">=</span> address<span class="token punctuation">.</span><span class="token function">getHostAddress</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>address<span class="token operator">+</span><span class="token string">"---"</span><span class="token operator">+</span>ip<span class="token operator">+</span><span class="token string">"连接中---"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//通过从Socket流中获取输入输出流,可以进行数据传输.</span>
+        <span class="token comment" spellcheck="true">//读取流中的客户端的socket对象的输入输出流.</span>
+        BufferedInputStream br <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedInputStream</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">getInputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        BufferedOutputStream bw <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedOutputStream</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileOutputStream</span><span class="token punctuation">(</span><span class="token string">"abcCopy.jpg"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        BufferedWriter bw2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedWriter</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">OutputStreamWriter</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">getOutputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+        <span class="token comment" spellcheck="true">//拿到输入输出流进行数据操作.</span>
+        <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">byte</span><span class="token punctuation">[</span><span class="token number">1024</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> len <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token punctuation">(</span>len<span class="token operator">=</span>br<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">!=</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            bw<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span>len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            bw<span class="token punctuation">.</span><span class="token function">flush</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        bw<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+        <span class="token comment" spellcheck="true">//发送反馈信息</span>
+        bw2<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"数据成功接收"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        bw2<span class="token punctuation">.</span><span class="token function">newLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        bw2<span class="token punctuation">.</span><span class="token function">flush</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//br.close();</span>
+        <span class="token comment" spellcheck="true">//s.close();</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><strong>客户端:</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/*
+需求:
+练习TCP客户端的搭建使用
+*/</span>
+
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>net<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//搭建TCP数据传输的客户端</span>
+<span class="token keyword">class</span> <span class="token class-name">TCPClient</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token keyword">throws</span> Exception<span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//建立客户端的Socket对象.</span>
+        Socket s <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Socket</span><span class="token punctuation">(</span><span class="token string">"127.0.0.1"</span><span class="token punctuation">,</span><span class="token number">19999</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//为Socket套接字中投入一个输入流(要不然不是一个源都没有,他怎么形成流?可以是键盘输入,可以是读取问文件等等)</span>
+         BufferedInputStream br <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedInputStream</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileInputStream</span><span class="token punctuation">(</span><span class="token string">"abc.gif"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//获得该Socket套接字的输入输出流(两边的互通交流in对应out,out对应in)</span>
+        BufferedOutputStream bw <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedOutputStream</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">getOutputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        BufferedReader brServer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedReader</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">InputStreamReader</span><span class="token punctuation">(</span>    s<span class="token punctuation">.</span><span class="token function">getInputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">////获得流对象,进行数据操作.</span>
+        <span class="token comment" spellcheck="true">//int ch = 0;</span>
+        <span class="token comment" spellcheck="true">//while((ch=bis.read())!=-1){</span>
+            <span class="token comment" spellcheck="true">//bos.write(ch);</span>
+        <span class="token comment" spellcheck="true">//}</span>
+        <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">byte</span><span class="token punctuation">[</span><span class="token number">1024</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> len <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token punctuation">(</span>len<span class="token operator">=</span>br<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">!=</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            bw<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span>len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            bw<span class="token punctuation">.</span><span class="token function">flush</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        br<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        s<span class="token punctuation">.</span><span class="token function">shutdownOutput</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//获得服务器的反馈信息.</span>
+        String server <span class="token operator">=</span> brServer<span class="token punctuation">.</span><span class="token function">readLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//阻塞</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"server:"</span> <span class="token operator">+</span> server<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        s<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="4-关于套接字"><a href="#4-关于套接字" class="headerlink" title="4.关于套接字"></a>4.关于套接字</h2><p>一直以为套接字,套接流就是一种管道流.</p>
+<p>后来才发现两个是两码事.但我还是觉得,套接字的表现形式很像管道流:</p>
+<p>Socket服务器的连接动作,就像是封装了管道流的in,out对接的两个动作.</p>
+<p>Socket中的getINput(Output)就像是管道流中的Input(Output).</p>
+<p>彼端的in,对应此端的out;此端的in,对应笔端的out…</p>
+<p>相当的神似…可能就是一种互通思想的多态表现形式吧…..</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/黑马程序员/" rel="tag"># 黑马程序员</a>
+          
+            <a href="/tags/知识点/" rel="tag"># 知识点</a>
+          
+            <a href="/tags/笔记/" rel="tag"># 笔记</a>
+          
+            <a href="/tags/JAVA/" rel="tag"># JAVA</a>
+          
+            <a href="/tags/思路/" rel="tag"># 思路</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/01/10/重要代码记录Part2(持续跟新)/" rel="next" title="黑马程序员-重要代码记录Part2(持续跟新)">
+                <i class="fa fa-chevron-left"></i> 黑马程序员-重要代码记录Part2(持续跟新)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/01/11/泛型(浅识)/" rel="prev" title="黑马程序员-泛型(浅识)">
+                黑马程序员-泛型(浅识) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="高亮亮" />
+          <p class="site-author-name" itemprop="name">高亮亮</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-网络编程概述"><span class="nav-number">1.</span> <span class="nav-text">1.网络编程概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-概念："><span class="nav-number">1.1.</span> <span class="nav-text">1.1.概念：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-网络编程的三要素："><span class="nav-number">1.2.</span> <span class="nav-text">1.2.网络编程的三要素：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-UDP协议传输"><span class="nav-number">2.</span> <span class="nav-text">2.UDP协议传输</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-DatagramSocket和DatagramPacket"><span class="nav-number">2.1.</span> <span class="nav-text">2.1.DatagramSocket和DatagramPacket:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-代码体现-学习过程"><span class="nav-number">2.2.</span> <span class="nav-text">2.2.代码体现,学习过程:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-TCP传输"><span class="nav-number">3.</span> <span class="nav-text">3.TCP传输</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-概述"><span class="nav-number">3.1.</span> <span class="nav-text">3.1.概述:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-代码体现-学习过程"><span class="nav-number">3.2.</span> <span class="nav-text">3.2.代码体现,学习过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-关于套接字"><span class="nav-number">4.</span> <span class="nav-text">4.关于套接字</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2013 &mdash; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">高亮亮</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

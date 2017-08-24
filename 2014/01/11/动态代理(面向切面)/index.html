@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="黑马程序员,基础视频,知识点,JAVA,教程," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="1.概述1.1.面向切面(AOP)思想系统中存在交叉业务，一个交叉业务就是要切入到系统中的某一个方面,比如多个类的共方法 例如:需要达到这样的效果:运行某个方法,在可以得到方法应有返回值的同时,可以知道该方法运行的时间. 交叉业务的编程问题即为面向方面的编程（Aspect oriented program ,简称AOP），AOP的目标就是要使交叉业务模块化. 可以采用将切面代码移动到原始方法的周围">
+<meta name="keywords" content="黑马程序员,基础视频,知识点,JAVA,教程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="黑马程序员-动态代理(面向切面)">
+<meta property="og:url" content="http://gaoll.top/2014/01/11/动态代理(面向切面)/index.html">
+<meta property="og:site_name" content="Gaoll‘s Blog">
+<meta property="og:description" content="1.概述1.1.面向切面(AOP)思想系统中存在交叉业务，一个交叉业务就是要切入到系统中的某一个方面,比如多个类的共方法 例如:需要达到这样的效果:运行某个方法,在可以得到方法应有返回值的同时,可以知道该方法运行的时间. 交叉业务的编程问题即为面向方面的编程（Aspect oriented program ,简称AOP），AOP的目标就是要使交叉业务模块化. 可以采用将切面代码移动到原始方法的周围">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://img.blog.csdn.net/20140111175452156?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-08-24T07:53:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="黑马程序员-动态代理(面向切面)">
+<meta name="twitter:description" content="1.概述1.1.面向切面(AOP)思想系统中存在交叉业务，一个交叉业务就是要切入到系统中的某一个方面,比如多个类的共方法 例如:需要达到这样的效果:运行某个方法,在可以得到方法应有返回值的同时,可以知道该方法运行的时间. 交叉业务的编程问题即为面向方面的编程（Aspect oriented program ,简称AOP），AOP的目标就是要使交叉业务模块化. 可以采用将切面代码移动到原始方法的周围">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20140111175452156?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://gaoll.top/2014/01/11/动态代理(面向切面)/"/>
+
+
+
+
+
+  <title>黑马程序员-动态代理(面向切面) | Gaoll‘s Blog</title>
+  
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/prism-solarizedlight.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gaoll‘s Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life Likes Ninjaku Training</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://gaoll.top/2014/01/11/动态代理(面向切面)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="高亮亮">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gaoll‘s Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">黑马程序员-动态代理(面向切面)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-01-11T18:39:00+08:00">
+                2014-01-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">java笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h2><h3 id="1-1-面向切面-AOP-思想"><a href="#1-1-面向切面-AOP-思想" class="headerlink" title="1.1.面向切面(AOP)思想"></a>1.1.面向切面(AOP)思想</h3><p>系统中存在交叉业务，一个交叉业务就是要切入到系统中的某一个方面,比如多个类的共方法<br> 例如:需要达到这样的效果:运行某个方法,在可以得到方法应有返回值的同时,可以知道该方法运行的时间. 交叉业务的编程问题即为面向方面的编程（Aspect oriented program ,简称AOP），AOP的目标就是要使交叉业务模块化.<br> 可以采用将切面代码移动到原始方法的周围，这与直接在方法中编写切面代码的运行效果是一样的<br> 使用代理技术正好可以解决这种问题，代理是实现AOP功能的核心和关键技术.</p>
+<a id="more"></a>
+<h3 id="1-2-代理的概念"><a href="#1-2-代理的概念" class="headerlink" title="1.2.代理的概念"></a><strong>1.2.代理的概念</strong></h3><p>要为已存在的多个具有相同接口的目标类的各个方法增加一些系统功能，例如，异常处理、日志、计算方法的运行时间、事务管理、等等，你准备如何做？<br> 编写一个与目标类具有相同接口的代理类，代理类的每个方法调用目标类的相同方法，并在调用方法时加上系统功能的代码。<br> 如果采用工厂模式和配置文件的方式进行管理，则不需要修改客户端程序，在配置文件中配置是使用目标类、还是代理类，这样以后很容易切换,<br> 譬如，想要日志功能时就配置代理类，否则配置目标类，这样，增加系统功能很容易，以后运行一段时间后，又想去掉系统功能也很容易。</p>
+<p><img src="http://img.blog.csdn.net/20140111175452156?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<h2 id="2-java动态代理"><a href="#2-java动态代理" class="headerlink" title="2.java动态代理"></a>2.java动态代理</h2><h3 id="2-1-概述"><a href="#2-1-概述" class="headerlink" title="2.1.概述"></a><strong>2.1.概述</strong></h3><p>要为系统中的各种接口的类增加代理功能，那将需要太多的代理类，全部采用静态代理方式，不现实.<br>JVM可以在运行期动态生成出类的字节码，这种动态生成的类往往被用作代理类，即动态代理类。<br>JVM生成的动态类必须实现一个或多个接口，所以，JVM生成的动态类只能用作具有相同接口的目标类的代理。<br>CGLIB库可以动态生成一个类的子类，一个类的子类也可以用作该类的代理，所以，如果要为一个没有实现接口的类生成动态代理类，那么可以使用CGLIB库。<br>代理类的各个方法中通常除了要调用目标的相应方法和对外返回目标返回的结果外，还可以在代理方法中的如下四个位置加上系统功能代码：<br>所以:功能代码可以是:在调用目标方法之前,在调用目标方法之后,在调用目标方法前后,在处理目标方法异常的catch块中.</p>
+<hr>
+<h3 id="2-2-Proxy类"><a href="#2-2-Proxy类" class="headerlink" title="2.2.Proxy类"></a>2.2.Proxy类</h3><p><strong>静态方法:</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">static</span> InvocationHandler <span class="token function">getInvocationHandler</span><span class="token punctuation">(</span>Object proxy<span class="token punctuation">)</span> 
+    <span class="token comment" spellcheck="true">//返回指定代理实例的调用处理程序。</span>
+    <span class="token comment" spellcheck="true">//(其实就是对被代理类所做的切面化操作.) </span>
+<span class="token keyword">static</span> Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span> <span class="token function">getProxyClass</span><span class="token punctuation">(</span>ClassLoader loader<span class="token punctuation">,</span> Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> interfaces<span class="token punctuation">)</span> 
+    <span class="token comment" spellcheck="true">//返回代理类的 java.lang.Class 对象，并向其提供类加载器和参数列表接口数组。 </span>
+    <span class="token comment" spellcheck="true">//(通过这个Class对象的方法,可以获得一个代理类的实例)</span>
+<span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">isProxyClass</span><span class="token punctuation">(</span>Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span> cl<span class="token punctuation">)</span> 
+    <span class="token comment" spellcheck="true">//当且仅当指定的类通过 getProxyClass 方法或 newProxyInstance 方法动态生成为代理类时，返回 true。 </span>
+<span class="token keyword">static</span> Object <span class="token function">newProxyInstance</span><span class="token punctuation">(</span>ClassLoader loader<span class="token punctuation">,</span> Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span> interfaces<span class="token punctuation">,</span> InvocationHandler h<span class="token punctuation">)</span> 
+    <span class="token comment" spellcheck="true">//返回一个指定接口的代理类实例，该接口可以将方法调用指派到指定的调用处理程序</span>
+</code></pre>
+<h3 id="2-3-字节尝试写一个代理类的代码"><a href="#2-3-字节尝试写一个代理类的代码" class="headerlink" title="2.3.字节尝试写一个代理类的代码:"></a><strong>2.3.字节尝试写一个代理类的代码:</strong></h3><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/*
+ * 需求:
+ * 写一个ArrayList类的代理，实现和ArrayList中完全相同的功能，并可以计算每个方法运行的时间。
+ * 思路:
+ * 代理运用的是一种面向切面编程的思想.代理类在目标类的方法前,后,中的异常处理中嵌入其他功能方法等.
+ * 这里想要创建一个ArrayList代理,可以直接使用java提供的动态代理来实现.
+ * 步骤:
+ * 1.建立Advice接口,定义代理添加的功能接口.
+ * 2.建立接口实现类,实现计算每个方法运行时间的方法.
+ * 3.通过Proxy类的静态方法建立获得ArrayList的一个基本动态类(具有和ArrayList相同的方法)
+ * */</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Test3</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">interface</span> <span class="token class-name">Advice</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">before</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">after</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">MyAdvice</span> <span class="token keyword">implements</span> <span class="token class-name">Advice</span><span class="token punctuation">{</span>
+    <span class="token keyword">long</span> start <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">before</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        start <span class="token operator">=</span> System<span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">after</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">long</span> end <span class="token operator">=</span> System<span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"该方法运行时间为:"</span><span class="token operator">+</span><span class="token punctuation">(</span>end<span class="token operator">-</span>start<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"方法返回:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+
+
+<span class="token comment" spellcheck="true">//按照Proxy提供的静态方法直接构建一个代理类</span>
+<span class="token keyword">class</span> <span class="token class-name">ArrayListProxy</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">final</span> ArrayList<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span> target <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">final</span> MyAdvice temp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MyAdvice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Collection collProxy <span class="token operator">=</span> <span class="token punctuation">(</span>Collection<span class="token punctuation">)</span> Proxy<span class="token punctuation">.</span><span class="token function">newProxyInstance</span><span class="token punctuation">(</span>ArrayListProxy<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getClassLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> ArrayList<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getInterfaces</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">InvocationHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token comment" spellcheck="true">//        List &lt;?> listProxy = (List&lt;?>) Proxy.newProxyInstance(ArrayListProxy.class.getClassLoader(), new Class[]{List.class}, new InvocationHandler() {</span>
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">public</span> Object <span class="token function">invoke</span><span class="token punctuation">(</span>Object proxy<span class="token punctuation">,</span> Method method<span class="token punctuation">,</span> Object<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+                    <span class="token keyword">throws</span> Throwable <span class="token punctuation">{</span>
+                        temp<span class="token punctuation">.</span><span class="token function">before</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        Object obj <span class="token operator">=</span> method<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        temp<span class="token punctuation">.</span><span class="token function">after</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> obj<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">(</span><span class="token punctuation">(</span>ArrayList<span class="token punctuation">)</span> collProxy<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>collProxy<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        collProxy<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>null<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        collProxy<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"abc"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">//按照逐步的方法尝试获得一个代理类</span>
+<span class="token keyword">class</span> <span class="token class-name">ArrayListProxy_1</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception<span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//获得代理类Class文件</span>
+        Class <span class="token class-name">clazz</span> <span class="token operator">=</span> Proxy<span class="token punctuation">.</span><span class="token function">getProxyClass</span><span class="token punctuation">(</span>ArrayListProxy_1<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getClassLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Collection<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//        Class clazz = Proxy.getProxyClass(ArrayListProxy.class.getClassLoader(), ArrayList.class);</span>
+                <span class="token comment" spellcheck="true">//Exception in thread "main" java.lang.IllegalArgumentException: java.util.ArrayList is not an interface</span>
+<span class="token comment" spellcheck="true">//        System.out.println(clazz);</span>
+
+        <span class="token comment" spellcheck="true">//通过Class文件获得实例对象</span>
+<span class="token comment" spellcheck="true">//        Collection alProxy = (Collection) clazz.newInstance();</span>
+<span class="token comment" spellcheck="true">//        System.out.println(alProxy);</span>
+                <span class="token comment" spellcheck="true">//Exception in thread "main" java.lang.InstantiationException: com.sun.proxy.$Proxy0</span>
+                <span class="token comment" spellcheck="true">//无法被实例化,没有对应构造方法.</span>
+        <span class="token comment" spellcheck="true">//找构造</span>
+        Constructor<span class="token punctuation">[</span><span class="token punctuation">]</span> cons <span class="token operator">=</span> clazz<span class="token punctuation">.</span><span class="token function">getConstructors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span> Constructor temp <span class="token operator">:</span> cons<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+            <span class="token comment" spellcheck="true">//public com.sun.proxy.$Proxy0(java.lang.reflect.InvocationHandler)</span>
+
+        <span class="token comment" spellcheck="true">//用对应的构造,建立实例对象</span>
+
+        <span class="token comment" spellcheck="true">//这里</span>
+        Collection alProxy <span class="token operator">=</span><span class="token punctuation">(</span>Collection<span class="token punctuation">)</span>cons<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">newInstance</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">InvocationHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token comment" spellcheck="true">//        Collection&lt;?> alProxy =(Collection&lt;?>)cons[0].newInstance(new InvocationHandler(){</span>
+<span class="token comment" spellcheck="true">//        ArrayList&lt;?> alProxy =(ArrayList)cons[0].newInstance(new InvocationHandler(){</span>
+            ArrayList<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span> target <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">public</span> Object <span class="token function">invoke</span><span class="token punctuation">(</span>Object alProxy<span class="token punctuation">,</span> Method method<span class="token punctuation">,</span> Object<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+                    <span class="token keyword">throws</span> Throwable <span class="token punctuation">{</span>
+                        MyAdvice temp <span class="token operator">=</span>  <span class="token keyword">new</span> <span class="token class-name">MyAdvice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        temp<span class="token punctuation">.</span><span class="token function">before</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>temp<span class="token punctuation">.</span>start<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        Object tempObj <span class="token operator">=</span> method<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span>args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        temp<span class="token punctuation">.</span><span class="token function">after</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> tempObj<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        alProxy<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"abc"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>alProxy<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//        alProxy.get(0);        //   用不了子类的功能,只能用那个接口Collection中的方法.    </span>
+    <span class="token punctuation">}</span>    
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a><strong>3.总结</strong></h2><p><strong>在自己一步一步用不同方法写一个代理类出来的过程中,发现很多看上去明白了,但实际上只是连想都没开始想的问题.</strong></p>
+<h3 id="1-参数列表中的接口Class参数"><a href="#1-参数列表中的接口Class参数" class="headerlink" title="1.参数列表中的接口Class参数"></a><strong>1.参数列表中的接口Class参数</strong></h3><p>首先就是构造一个代理类实例对象需要的那个Interface接口参数.老师,用的为Collection.class,结果就让我固定了思维,在需要做一个ArrayList代理是,毫不犹豫的将ArrayList实现的这个父类接口放了进去.</p>
+<p>所以,就出现了我代码里测试的那样,这样得到的代理,在调用ArrayList的特有方法的时候,jvm编译时都无法通过,说不识别的方法名.还在考虑难道一个具体实现了某个接口的子类,拥有了父类没有的特有功能,那在代理中就无法使用,那样这代理还有什么意义?</p>
+<p>最终在Class类中,找到了答案.Class类中提供了方法:</p>
+<p>getInterfaces<br>public Class&lt;?&gt;[] getInterfaces()确定此对象所表示的类或接口实现的接口。 </p>
+<p>通过Arraylist.class.getInterfaces(),得到的Class&lt;?&gt;[]作为参数构造出来的代理就解决了我刚开始遇到的问题.</p>
+<h3 id="2-在代理类中-对目标功能的封装"><a href="#2-在代理类中-对目标功能的封装" class="headerlink" title="2.在代理类中,对目标功能的封装"></a><strong>2.在代理类中,对目标功能的封装</strong></h3><p>在写代理类时,初期就是直接在InvocationHandler的方法中直接将操作代码写进去.后来,才发现可以将功能抽取,到时候在类中接收一个抽取出的接口的实例对象,调用需要增加的功能即可.大大增加可扩展性.</p>
+<h3 id="3-装饰设计模式and代理模式"><a href="#3-装饰设计模式and代理模式" class="headerlink" title="3.装饰设计模式and代理模式"></a>3.装饰设计模式and代理模式</h3><p>还有一点,就是冥冥中觉得,装饰设计模式跟代理(面向切面)的思想应该有很大的隐情,有一腿.前者,只不过是把需要功能进行增强的类的实例当作了一个构造的实例参数传入了包装类中.代理则干脆直接伪装成一个目标类,用户以为自己操作的是目标类,实际上是一个披了目标外表的代理类…</p>
+<p>他们两者到底有什么关系?等想的有些头绪再跟新吧…</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/黑马程序员/" rel="tag"># 黑马程序员</a>
+          
+            <a href="/tags/基础视频/" rel="tag"># 基础视频</a>
+          
+            <a href="/tags/知识点/" rel="tag"># 知识点</a>
+          
+            <a href="/tags/JAVA/" rel="tag"># JAVA</a>
+          
+            <a href="/tags/教程/" rel="tag"># 教程</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/01/11/反射 & JavaBean/" rel="next" title="黑马程序员-反射 & JavaBean">
+                <i class="fa fa-chevron-left"></i> 黑马程序员-反射 & JavaBean
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/01/12/交通灯管理系统/" rel="prev" title="黑马程序员-交通灯管理系统">
+                黑马程序员-交通灯管理系统 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="高亮亮" />
+          <p class="site-author-name" itemprop="name">高亮亮</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-概述"><span class="nav-number">1.</span> <span class="nav-text">1.概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-面向切面-AOP-思想"><span class="nav-number">1.1.</span> <span class="nav-text">1.1.面向切面(AOP)思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-代理的概念"><span class="nav-number">1.2.</span> <span class="nav-text">1.2.代理的概念</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-java动态代理"><span class="nav-number">2.</span> <span class="nav-text">2.java动态代理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-概述"><span class="nav-number">2.1.</span> <span class="nav-text">2.1.概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Proxy类"><span class="nav-number">2.2.</span> <span class="nav-text">2.2.Proxy类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-字节尝试写一个代理类的代码"><span class="nav-number">2.3.</span> <span class="nav-text">2.3.字节尝试写一个代理类的代码:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-总结"><span class="nav-number">3.</span> <span class="nav-text">3.总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-参数列表中的接口Class参数"><span class="nav-number">3.1.</span> <span class="nav-text">1.参数列表中的接口Class参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-在代理类中-对目标功能的封装"><span class="nav-number">3.2.</span> <span class="nav-text">2.在代理类中,对目标功能的封装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-装饰设计模式and代理模式"><span class="nav-number">3.3.</span> <span class="nav-text">3.装饰设计模式and代理模式</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2013 &mdash; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">高亮亮</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

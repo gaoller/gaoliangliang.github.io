@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="知识点,笔记,JAVA,纠错,思路," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="Java基础练习-思维-纠错-记录汇总(持续跟新) (即使是最幼稚的知识点或思维也要仔细对待) (以后跟新到代码记录贴中) Note1.关于循环的条件判断思路场景： 在进行练习判断一个数是否为素数的过程中，遇到这样的情况：定义int型n，打算用for循环遍历n次，判断n在模2到n-1过程中是否都得0。若为素数，则只有模1和模其本身会得0。所以在写for循环时，当满足取模后等于0，还得继循环历直到循">
+<meta name="keywords" content="知识点,笔记,JAVA,纠错,思路">
+<meta property="og:type" content="article">
+<meta property="og:title" content="黑马程序员-Java基础-知识点-记录汇总(end)">
+<meta property="og:url" content="http://gaoll.top/2013/12/06/Java基础-知识点-记录汇总(end)/index.html">
+<meta property="og:site_name" content="Gaoll‘s Blog">
+<meta property="og:description" content="Java基础练习-思维-纠错-记录汇总(持续跟新) (即使是最幼稚的知识点或思维也要仔细对待) (以后跟新到代码记录贴中) Note1.关于循环的条件判断思路场景： 在进行练习判断一个数是否为素数的过程中，遇到这样的情况：定义int型n，打算用for循环遍历n次，判断n在模2到n-1过程中是否都得0。若为素数，则只有模1和模其本身会得0。所以在写for循环时，当满足取模后等于0，还得继循环历直到循">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://img.blog.csdn.net/20131211002619734?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20140111200311406?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20140111200334125?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-08-24T08:24:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="黑马程序员-Java基础-知识点-记录汇总(end)">
+<meta name="twitter:description" content="Java基础练习-思维-纠错-记录汇总(持续跟新) (即使是最幼稚的知识点或思维也要仔细对待) (以后跟新到代码记录贴中) Note1.关于循环的条件判断思路场景： 在进行练习判断一个数是否为素数的过程中，遇到这样的情况：定义int型n，打算用for循环遍历n次，判断n在模2到n-1过程中是否都得0。若为素数，则只有模1和模其本身会得0。所以在写for循环时，当满足取模后等于0，还得继循环历直到循">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20131211002619734?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://gaoll.top/2013/12/06/Java基础-知识点-记录汇总(end)/"/>
+
+
+
+
+
+  <title>黑马程序员-Java基础-知识点-记录汇总(end) | Gaoll‘s Blog</title>
+  
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/prism-solarizedlight.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gaoll‘s Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life Likes Ninjaku Training</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://gaoll.top/2013/12/06/Java基础-知识点-记录汇总(end)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="高亮亮">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gaoll‘s Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">黑马程序员-Java基础-知识点-记录汇总(end)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-12-06T00:54:00+08:00">
+                2013-12-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">java笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Java基础练习-思维-纠错-记录汇总(持续跟新)</p>
+<p>(即使是最幼稚的知识点或思维也要仔细对待)</p>
+<p>(以后跟新到代码记录贴中)</p>
+<h2 id="Note1-关于循环的条件判断思路"><a href="#Note1-关于循环的条件判断思路" class="headerlink" title="Note1.关于循环的条件判断思路"></a>Note1.关于循环的条件判断思路</h2><p><strong>场景：</strong></p>
+<p>在进行练习判断一个数是否为素数的过程中，遇到这样的情况：定义int型n，打算用for循环遍历n次，判断n在模2到n-1过程中是否都得0。若为素数，则只有模1和模其本身会得0。所以在写for循环时，当满足取模后等于0，还得继循环历直到循环结束后判断是否结果都为0，是才为素数。这样让我纠结很长时间。</p>
+<a id="more"></a>
+<p><strong>分析：</strong></p>
+<p>在需要循环是，会遇到虽然需要循环的次数是确定的，但判断条件较难描述，需要完全循环n次后判断符合判断条件的循环是否为m。那么就可以借助这个m来进行辅助判断。</p>
+<p>在上面的素数判断过程中，相当于m=n-2，条件为n%i==0(i是为确定循环次数定义的增量)。或者相当于m=2，条件为n%i!=0。</p>
+<p>所以就可以用两个嵌套循环或者外层用选择内层循环来达到需要的目的。</p>
+<p><strong>代码：</strong></p>
+<p><strong>思路初步代码</strong>：</p>
+<pre><code>    /*
+题目：判断101-200之间有多少个素数，并输出所有素数。
+*/
+class Prime{
+    //对这个数某1，和某自己同时为0，否则不是
+    public static void main(String[] args)
+    {
+    int sum=0;
+    for (int n=101;n&lt;=200;n++)//判断素数
+        {
+        int m=0;
+        for (int i=1;i&lt;=n;i++)
+            {
+            if (n%i==0)
+                {
+                    m++;
+                }
+            }    
+        switch (m)
+            {
+            case 2:
+                sum++;
+                if(sum%10==0)//若打印10个后换行继续打印
+                {
+                System.out.println(n+&quot; &quot;);
+                }else
+                System.out.print(n+&quot; &quot;);
+            }
+        }
+    System.out.println(&quot;共有&quot;+sum+&quot;个素数&quot;);
+    }
+}
+</code></pre><p><strong>整理优化代码</strong>：</p>
+<pre><code>    //判断素数
+    private static boolean isPrime(int n)
+    {
+        boolean flag = true;
+        if(n==1)
+          flag = false;
+        else
+        {
+            for(int i=2;i&lt;=Math.sqrt(n);i++)
+            {
+                if((n%i)==0 || n==1)//模1，模自身为0。
+                {
+                    flag = false;
+                    break;
+                }
+                 else
+                   flag = true;//当前循环为真。但由于并且没有break，所以会继续直到循环结束，如果依然这样，就是代表所有的每次循环都为真。
+            }
+        }
+        return flag;//遍历结束了，依然为真。
+    }//这里的判断，是考虑特殊情况1。
+</code></pre><p>—————————————————————————————————————————————————————————————————————————————</p>
+<h2 id="Note2-判断是否素的数循环次数问题"><a href="#Note2-判断是否素的数循环次数问题" class="headerlink" title="Note2.判断是否素的数循环次数问题"></a>Note2.判断是否素的数循环次数问题</h2><p><strong>问题描述：</strong></p>
+<p>判断是否素数在定义循环时，循环体的循环次数定义资料判断表达式为为i=2;i&lt;=Math.sqre(n);i++.为什么？</p>
+<p><strong>分析：</strong></p>
+<p>循环中是来判断这个数能不能被拆分成两个整数数相乘。但是从1开始取模，当取值取到这个数的开方，和面如果出先取模等于0的情况就会跟前之前未出现取模等于0矛盾，所以是垃圾运算。</p>
+<p><strong>举例：</strong></p>
+<p>21=3/<em>7—&gt;在之前判断出3之后，就不用判断之后的7/</em>3了。极端情况就是假设这个数是x/<em>(x+1)。当判断出x/</em>(X+1)的时候，后面就开始重复之前的判断了。</p>
+<p><strong>代码：</strong></p>
+<pre><code>    for(int i=2;i&lt;=Math.sqrt(n);i++)
+</code></pre><p>————————————————————————————————————————————————————————————————————————————</p>
+<h2 id="Note3-转义字符的使用"><a href="#Note3-转义字符的使用" class="headerlink" title="Note3.转义字符的使用"></a>Note3.转义字符的使用</h2><p><strong>Java</strong>中的打印输出语句中，对某些字符赋予了特殊含义。所以可以通过\   反斜杠来转变其后面字母或者符号在输出语句中的含义。</p>
+<p><strong>\n：换行</strong></p>
+<p><strong>\t：制表符（Tab键）</strong></p>
+<p><strong>\b：退格（Backspace）</strong></p>
+<p><strong>\r: 回车（回到本行行首并替换第一个字符）</strong></p>
+<p>或者用反斜杠来让一个原本被Java赋予了特殊含义的字符成为普通字符打印出来。</p>
+<p><strong>\” \’ ( { [</strong>等。</p>
+<p>————————————————————————————————————————————————————————————————————————————  </p>
+<h2 id="Note4-标号辅助嵌套循环指定循环控制"><a href="#Note4-标号辅助嵌套循环指定循环控制" class="headerlink" title="Note4.标号辅助嵌套循环指定循环控制"></a>Note4.标号辅助嵌套循环指定循环控制</h2><p>循环嵌套中，可以事先给每层循环命名。这样，用标号可以辅助循环嵌套中的执行流程控制。</p>
+<p><strong>格式： </strong>      </p>
+<p>a1：for() 或者 a2：while()</p>
+<p>并在需要使用break或者continue时后面加上需要返回或跳出那层循环名。例如：</p>
+<p>break a1;</p>
+<p>continue a2;</p>
+<p>注意：break和continue只能出现在switch和循环中。他们的区别是break跳出循环，continue只是提前结束本次循环进入下次循环。</p>
+<p>————————————————————————————————————————————————————————————————————————————  </p>
+<h2 id="Note5-关于基本数据类型和引用数据类型参数传递问题"><a href="#Note5-关于基本数据类型和引用数据类型参数传递问题" class="headerlink" title="Note5.关于基本数据类型和引用数据类型参数传递问题"></a>Note5.关于基本数据类型和引用数据类型参数传递问题</h2><p><strong>基本类型</strong>：形式参数的改变对实际参数没有影响。</p>
+<p><strong>引用类型</strong>：形式参数的改变直接影响实际参数。</p>
+<p>基本数据类型，在一个方法当中定义后，只要不在本方法中对这个定义了某种基本数据类型的变量改变他的实际参数(也就是赋值，无论是隐式的还是直接赋值语句赋值)即使在其他调用了他的方法函数中对他的实际变量进行了更改，那么他只要形式参数不改变，那么他的的实际参数也就是他值也就就不会变。</p>
+<p>而引用数据类型，在一个方法中定义，虽然不在本方法中对这个对这个引用数据类型的变量，虽然在本类中他的实际参数不改变，但在某个调用了它的方法中对他的实际参数进行了更改，那么在这个定义此变量的函数中，他的实际参数也会随之改变,因为他们同样指向一个地址值，操作同一个地址的数据。</p>
+<p>————————————————————————————————————————————————————————————————————————————  </p>
+<h2 id="Note6-关于成员变量和局部变量"><a href="#Note6-关于成员变量和局部变量" class="headerlink" title="Note6.关于成员变量和局部变量"></a>Note6.关于成员变量和局部变量</h2><p><strong>定义位置</strong>：局部变量定义在方法中或者方法声明中。成员变量定义在类中，方法外。<br><strong>存储位置</strong>：局部变量是存储在栈内存中的。成员变量是存储在对内存中建立对象是所开辟的空间中的。<br><strong>初始化值</strong>：局部变量是必须在定义后给其赋初始化值的才能使用。成员变量则在定义后由系统默认初始化，然后再由程序显示初始化。<br><strong>声明周期</strong>：局部变量是与方法的调用与结束同步存在的。而成员变量则是同对象的建立消失同步存在的。</p>
+<p><img src="http://img.blog.csdn.net/20131211002619734?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p>————————————————————————————————————————————————————————————————————————————  </p>
+<h2 id="Note7-遇到循环不好建立标准循环格式或者函数来表达时的做法"><a href="#Note7-遇到循环不好建立标准循环格式或者函数来表达时的做法" class="headerlink" title="Note7.遇到循环不好建立标准循环格式或者函数来表达时的做法"></a>Note7.遇到循环不好建立标准循环格式或者函数来表达时的做法</h2><p>再碰到不好建立循环的时候，可以列出一定数量的实例，将规律实例化，书面化。然后再在列出的实例中总结规律，找出标准格式。</p>
+<p><strong>案例</strong>：</p>
+<pre><code>    /*
+需求：小于8的整数。先倒序，然后每位数字加上5,在用和除10的余数代替该数字。最后将第一位最后一位互换。
+请任意指定一个小雨8的整数，并将加密后结果打印。
+思路：
+用数组存储每位上的数字，并倒序。
+每位数字进行加，取模操作，并更新数组中元素。
+对数组中首，尾元素互换。
+遍历数组元素输出。
+*/
+import java.util.*;
+class ShuziJiami
+{
+    public static void jiaMi(int num)
+    {//用数组存储每位上的数字，并倒序。
+        int[] arr=new int[8];//定义一个数组。
+
+                                                //赋值
+                                                //arr[0] = number/10/10/10/10/10%10;
+                                                //System.out.println(arr[0]);
+                                                //arr[1] = number/10/10/10/10%10;
+                                                //arr[2] = number/10/10/10%10;
+                                                //arr[3] = number/10/10%10;
+                                                //arr[4] = number/10%10;
+                                                //arr[5] = number%10;
+
+                                                //改进版
+                                                //定义一个索引从0开始
+                                                /*
+                                                int index = 0;
+                                                arr[index++] = number/10/10/10/10/10%10;
+                                                //System.out.println(arr[0]);
+                                                arr[index++] = number/10/10/10/10%10;
+                                                arr[index++] = number/10/10/10%10;
+                                                arr[index++] = number/10/10%10;
+                                                arr[index++] = number/10%10;
+                                                arr[index++] = number%10;
+                                                */
+                                                    /*
+                                                //改进版
+                                                int index = 0;
+                                                while(number&gt;0) 
+                                                {
+                                                    arr[index++] = number%10; //获取个位,获取十位...
+                                                    number/=10; //number值变化为除以10,
+                                                    */
+                                                    /*
+                                                        第一次：
+                                                            number=123456,index=0
+
+                                                            arr[0]=6;    index=1，number=12345
+                                                        第二次：
+                                                            index=1，number=12345
+
+                                                            arr[1] = 5;    index=2，number=1234
+                                                        ...
+
+                                                        arr[0] = 6
+                                                        arr[1] = 5;
+                                                        arr[2] = 4
+                                                        ...
+
+                                                        index = 6
+                                                        number = 0
+                                                    */
+                                                }
+
+                                                //数组遍历
+                                                /*
+                                                for(int x=0; x&lt;index; x++)
+                                                {
+                                                    System.out.println(arr[x]);
+                                                }
+                                                */
+
+        int index=0;
+        System.out.print(&quot;您输入的原始密码为：&quot;+num);
+        while (num&gt;0)
+        {
+            arr[index++]=num%10;                        
+            //arr[index]=num%10;                        
+            //index+=1;
+            num/=10;
+        }//每位数字进行加，取模操作，并更新数组中元素。
+        for (int i=0;i&lt;index;i++)
+        {
+            arr[i]+=5;
+            arr[i]%=10;
+        }//对数组中首，尾元素互换。
+        arr[0]=arr[0]^arr[index-1];
+        arr[index-1]=arr[0]^arr[index-1];
+        arr[0]=arr[0]^arr[index-1];        
+        System.out.print(&quot;\n加密后密码为：&quot;);
+        for (int i=0;i&lt;index;i++)//遍历数组元素并输出。
+        {
+            System.out.print(arr[i]);
+        }
+    }
+    public static void main(String[] args)
+    {
+        Scanner in=new Scanner(System.in);
+        while (true)
+        {
+            System.out.println(&quot;请输入原始小于八位密码：&quot;);
+            int num=in.nextInt();
+            jiaMi(num);
+            System.out.println(&quot;\n&quot;+&quot;是否继续？1：继续，2：退出&quot;);
+            int x=in.nextInt();
+            if (x==1)
+                continue;
+            break;            
+        }
+    }
+}
+</code></pre><p>这条note果然重要，今天又遇到个问题，结果用直接寻找规律建立方法来做，很容易想错。后来干脆列出来一系列实例，立马解决。下面放代码：</p>
+<pre><code>    /*
+题目：古典问题：有一对兔子，从出生后第3个月起每个月都生一对兔子，小兔子长到第三个月后每个月又生一对兔子，假如兔子都不死，问每个月的兔子对数为多少？
+分析：用直接寻找规律来建立函数或者循环等来解决这个问题相当容易把自己想死机。所以通过实例法。
+思路：
+1.列出前些天每天兔子的个数：
+第1天：1,
+第2天：1,
+第3天：2,
+第4天：3,
+第5天：5,
+第6天：8,
+第7天：13,
+第8天：21....
+2.这样，相当容易就能发现数列的规律，那就是第n天的兔子对数，为前两天之和。所以，想知道第n天的兔子的对数，只要从1,2,3。。。开始累加就可以了。
+3.代码实现
+*/
+import java.util.*;
+class Rabbit
+{
+    static int getRabbit(int n)
+    {
+        if (n==1||n==2)
+            return 1;
+        return getRabbit(n-2)+getRabbit(n-1);
+    }
+
+    public static void main(String[] args)
+    {
+        Scanner in=new Scanner(System.in);
+        while (true)
+        {
+            System.out.println(&quot;请输入想查询兔子对数的月份：&quot;);
+            int n=in.nextInt();
+            System.out.println(n+&quot;兔子为&quot;+getRabbit(n)+&quot;对&quot;);
+            System.out.println(&quot;是否继续查询，任意数字继续，1：退出。&quot;);
+            int x=in.nextInt();
+            if (x==1)
+                break;
+            continue;
+        }
+    }
+}
+</code></pre><p>————————————————————————————————————————————————————————————————————————————</p>
+<h2 id="Note8-匿名对象作为参数进行传递-amp-局部变量隐藏全局变量"><a href="#Note8-匿名对象作为参数进行传递-amp-局部变量隐藏全局变量" class="headerlink" title="Note8.匿名对象作为参数进行传递&amp;局部变量隐藏全局变量"></a>Note8.匿名对象作为参数进行传递&amp;局部变量隐藏全局变量</h2><p><strong>局部变量隐藏全局变量</strong>：</p>
+<p>就是指在一个类中的一个方法中，如果方法中和类的成员变量都定义了一个同名的变量s。那么如果在这个方法中调用这个变量，如果不加this则默认操作的是这个局部变量s，想要访问成员变量的s，就必须在s前面加this.。</p>
+<p><strong>匿名对象作为参数进行传递</strong>：</p>
+<p>这是想表达，匿名对象他随机建立的那个临时对象的地址值作为一个参数进行传递。</p>
+<p><strong>案例</strong>：</p>
+<pre><code>    /*
+匿名对象：没有名字的对象。
+应用场景：    1.当只对方法只进行依次调用。
+                    2.匿名对象可以作为实际参数进行传递。 
+*/
+import java.util.*;
+class Phone
+{
+    Phone()
+    {}
+
+    Phone(Phone s)
+    {
+        s =new Phone();
+    }
+
+    void show(Phone s)//就是把地址值(他也是一种变量)作为参数
+    {
+        System.out.println(s);
+    }
+}
+
+class PhoneTest
+{
+    public static void main(String[] args)
+    {
+        Scanner in=new Scanner(System.in);
+        while (true)
+        {
+            Phone w=new Phone();
+            Phone w2=new Phone(w);
+            w2.show(w2);
+            w.show(w);
+            new Phone().show(new Phone());//老师，这里两个new Phone()的匿名对象是同一个地址么？？？（不是）
+            System.out.println(&quot;是否继续？人以数字继续，1：退出&quot;);
+            int i=in.nextInt();
+            if (i==1)
+                break;
+            continue;
+        }
+    }
+}
+</code></pre><p>————————————————————————————————————————————————————————————————————————————  </p>
+<h2 id="Note9-关于成员变量和局部变量"><a href="#Note9-关于成员变量和局部变量" class="headerlink" title="Note9.关于成员变量和局部变量"></a>Note9.关于成员变量和局部变量</h2><p>局部变量和成员变量的区别</p>
+<p>1.<strong>定义位置</strong>：局部变量定义在方法中或者方法声明中。成员变量定义在类中，方法外。</p>
+<p>2.<strong>存储位置</strong>：局部变量是存储在栈内存中的。成员变量是存储在对内存中建立对象是所开辟的空间中的。</p>
+<p>3.<strong>初始</strong>化<strong>值</strong>：局部变量是必须在定义后给其赋初始化值的才能使用。成员变量则在定义后由系统默认初始化，然后再由程序显示初始化。</p>
+<p>4.<strong>声明周期</strong>：局部变量是与方法的调用与结束同步存在的。而成员变量则是同对象的建立消失同步存在的。</p>
+<p>————————————————————————————————————————————————————————————————————————————  </p>
+<h2 id="Note10-关于JAVA初期学习方法及遇到问题的处理"><a href="#Note10-关于JAVA初期学习方法及遇到问题的处理" class="headerlink" title="Note10.关于JAVA初期学习方法及遇到问题的处理"></a>Note10.关于JAVA初期学习方法及遇到问题的处理</h2><p>首先不得不承认,我可能有洁癖,或者说是是所谓的强迫症.比如,受不了玩单机RPG漏掉哪怕1个NPC不跟他对话而丢掉可能出现的隐藏剧情,受不了身边东西杂乱无章,受不了早上起床某个流程没做.所以,这个习惯在学习中,经常然我无所适从.</p>
+<p>尤其在学习Java的过程中,Java本身就是一门在思维模式的要求上远远超过语言格式的语言(我是这么认为的),所以在学习过程中,尤其是面对零基础的入门者,初期必然遇到一大堆当时基本不太能完全理解透彻的问题.有时候,有原则的暂时忽略(有原则的,暂时性的)这些问题,虽然知道这样,自己的心里会有种心中打了疙瘩的感觉,但是,你没有选择.既然你推倒不了Java,就先让Java推倒你吧,你要记得,总有一天,我们会把Java反推倒,进行逆袭100遍啊100遍……</p>
+<p>所以,真心给跟我一样,完美癖的童鞋们,我们战略妥协吧,记得日后100遍啊100遍就行^v^.</p>
+<p>而且,说实话,有些问题,在没有完全学好Java的基础知识理解起来的确比较费劲.日后会逐渐了解的…</p>
+<p>此致</p>
+<p>敬礼(Java,请记住我日后的100遍啊100遍<del>~</del><del>~</del><del>~</del>~)</p>
+<p>————————————————————————————————————————————————————————————————————————————  </p>
+<h2 id="Note11-关于多态的理解-用法等总结"><a href="#Note11-关于多态的理解-用法等总结" class="headerlink" title="Note11.关于多态的理解,用法等总结"></a>Note11.关于多态的理解,用法等总结</h2><p><strong>之前的我自己的理解.</strong></p>
+<p>父类引用指向子类对象.这个是多态最常见的表现形式,可以这么想.父类,子类,都是一个模具.成员变量,就像是可在模具上的信息,成员方法就像是模具上各种大大小小的凹槽,用来填充料.<br>当生成一个父类引用,就是生成了一个父类的模具;此时如果指向一个子类对象,就是用子类的模具先做一个产品出来,然后再放到父类上塞进去.这个时候,因为子类是继承父类的,父类的凹槽子类中肯定全有,而子类中还可能会多出更多凹槽,所以在子类产品塞上父类的模具的时候,对于那些子,父类都有的凹槽,子类产品是能塞进去的.没有的就只能暂且留在模具外面.而成员变量,就是文字,这样,拿的谁的模具,文字就是谁的.这样就是完整的解释了:父类引用,指向子类对象了.<br>而在这个情况下,想调用子类特有的功能,就需要进行向下转型.想,我们本来就是用子类模具做出来的产品,虽然在塞到父类模具中是,那些子类特有凹槽做出来的部分暂且留在父类模具外面,但是如果这个时候我们再把它塞回子类模具,怎么样,是不是就又全能塞进去了.这就是向下转型,能够使用子类特有方法了.</p>
+<p><strong>大神思维帮助理解.</strong>(借鉴了黑马论坛某贴)</p>
+<p>多态的根本原因在于父类引用变量在编译时拥有一个类型，叫编译时类型，在执行时有另一个类型，叫运行时类型。而这两个类型可以相同，也可以不同(不相同:比如父类引用指向子类对象.)。一个引用变量的编译时类型是赋值表达式左边的类型，运行时类型是赋值表达式右边的类型。</p>
+<p>举个例子：Animal ref = new Dog(….)<br>ref的编译时类型是Animal。所以代码中不能调用Animal中没有的方法。假设Dog复写了Animal中的某个方法。ref的运行时类型是Dog，运行的就是Dog复写后的方法。<br>那为什么super关键字可以调用父类“未被复写的”方法呢？我觉得复写这个词很具有误导性。内存中复写前和复写后的方法都存在，不是你死我活的关系，应该叫“多态”方法更准确些。super调用了父类内存中的方法，表现给我们看的效果就是“复写前”。this调用了子类内存中的方法，表现给我们看的效果就是“复写后”。自始至终你的每一行代码都载入了内存，没有被JVM吃掉，只是JVM它选择性的挑了一个给你看。<br>一句话总结，复写没有改变任何东西，只是多了一个选择而已。只不过因为一般只能向上转换，也就是运行时类型是编译时类型的子类，看上去引用变量调用的只能是子类的“复写后”方法，“被复写”的方法“似乎”被消灭了。其实它还顽强滴活在父类的内存里，一个super就能调出来.</p>
+<p>关于子父类,复写方法,细究.</p>
+<p>案例:</p>
+<pre><code>    class Fu
+{
+    static int number=20;
+    int num=2000;
+    void method()
+    {
+        System.out.println(&quot;Fu\t&quot;+num);
+    }
+    void show()
+    {
+        System.out.println(&quot;Fu\t&quot;+number);
+    }
+}
+
+class Zi extends Fu
+{
+    static int number=10;
+    int num=1000;
+    void method()
+    {
+        System.out.println(&quot;Zi\t&quot;+num);
+    }
+    void show()
+    {
+        System.out.println(&quot;Zi\t&quot;+number);
+    }
+}
+
+class Test
+{
+    public static void main(String[] args)
+    {
+        Fu test=new Zi();
+        test.show();
+        test.method();
+        System.out.println(test.number);
+        System.out.println(test.num);
+    }
+}
+//----------------------------------------
+/*
+Zi      10
+Zi      1000
+20
+2000
+请按任意键继续. . .
+*/
+</code></pre><p>这个结果很好的可以给我拿来思考.很明显,这样建立的对象test我是拿父类的引用,建立的子类对象.他的成员变量,不管是不是静态,都是父类的值.(后面两行的结果:20,2000)</p>
+<p>而看到方法,输出的是子类复写了的内容,这里,我起初有点迷糊.因为子父类具有同名变量.刚开始以为前两行应该输出:Zi 20,Zi 2000.很明显,在复写过程中,方法中调用变量还是遵循了就近原则,所以子类复写父类方法,是单独将子类的方法在子类中调用操作,将操作完成后的子类方法给了对象.而不是我之前以为的Zi类复写方法中调用的是Fu类的num和number.</p>
+<p>总结就是:多态中涉及到的跨类调用,除非用super,否则都是本类中调用,是谁的方法,就在谁的类中找变量,当然,子类如果在本类中找不到某些变量,可以去父类中再找一下.<br>————————————————————————————————————————————————————————————————————————————  </p>
+<h2 id="Note12-关于继承与实现"><a href="#Note12-关于继承与实现" class="headerlink" title="Note12.关于继承与实现"></a>Note12.关于继承与实现</h2><p>(is a,like a很好么?为什么大家都拿这个用?)</p>
+<p>其实我也不知道谁发明的这个:<br>is a<br>like a<br>我觉得反而让新手理解更难…我就是其中一个…..<br>根本没必要拽英文啊.<br>继承,就是继承一个父类,把子类看作父类一样的事物,子类是父类范畴的一员,就说子类继承了这个父类.<br>实现,就是实现一个接口,把接口看作一个描述,一个类是符合了接口的描述的一种事物,就说这个类实现了这个接口.<br>打个比方,门口贴的招聘启示,要招一个20岁以下,男,170cm以上的保安.可以把这个招聘启事当作一个接口,来这里应聘的是不是都是实现了这个招聘启事的要求的人?就说来的都是实现了这个招聘启事接口的类.<br>那好,等你应聘进去了,成为了一个保安,是不是就是成为了保安这个群体的一员?这就理解为你这继承了保安这个类.</p>
+<p>我暂且这么理解,期待以后跟新思维.</p>
+<p>———————————————————————————————————————————————————————————————————————————— </p>
+<h2 id="Note13-关于重写hashCode方法"><a href="#Note13-关于重写hashCode方法" class="headerlink" title="Note13.关于重写hashCode方法."></a>Note13.关于重写hashCode方法.</h2><p>在HashSet,HashMap,Hashtable中,都是用到了hashCode()方法,根据自己的需求,将hashCode方法进行重写,来保证我们集合中元素的唯一性.</p>
+<p>这里,就出现了个问题.我重写了hashCode方法,然后将某些同类型对象存储进入集合中.随后,其中某个对象的成员属性进行了更改…<br>然后就诡异了…如果想删除该元素,就没把法了通过remove来删除了.</p>
+<pre><code>    {
+    public static void main(String[] args) 
+    {
+        Collection&lt;Student&gt; col = new HashSet&lt;&gt;();
+
+        Student s1 = new Student(&quot;gll1&quot;,123);
+        Student s2 = new Student(&quot;gll2&quot;,223);
+        Student s3 = new Student(&quot;gll3&quot;,323);
+
+
+        col.add(s1);
+        col.add(s2);
+        col.add(s3);
+
+        s1.age = 323;
+
+        for( Student temp : col){
+            System.out.println(temp);
+        }
+
+        System.out.println(col.remove(s1));
+
+        for( Student temp : col){
+            System.out.println(temp);
+        }
+    }
+}
+</code></pre><p>并且,再次添加该元素,结果无法保其唯一行了.这就是所谓的内存溢出…<br>所以,重写了hashCode方法后,集合中对象的成员属性最好别更改的!!!</p>
+<p>———————————————————————————————————————————————————————————————————————————— </p>
+<h2 id="Note14-网络编程里容易忽略还找不到的小问题"><a href="#Note14-网络编程里容易忽略还找不到的小问题" class="headerlink" title="Note14.网络编程里容易忽略还找不到的小问题"></a>Note14.网络编程里容易忽略还找不到的小问题</h2><p><img src="" alt=""></p>
+<p><img src="http://img.blog.csdn.net/20140111200311406?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="http://img.blog.csdn.net/20140111200334125?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><img src="" alt=""></p>
+<p>如上图的代码,网络编程中,最容易忽略的应该就是字符流是用到了readLine方法,而没有仔细考虑到读取后,会减少一个换行符的问题.</p>
+<p>如果在上面的代码里面,没有放newLine()那么就会造成两边都阻塞在readLine代码那里了…</p>
+<p>还有需要注意的就是,流的关闭问题.Socket的流只有一次获得,关闭的机会.所以,一个套接字,不能实现多次从中获得输入,输出流的操作.</p>
+<p>———————————————————————————————————————————————————————————————————————————— </p>
+<hr>
+<p>———————–<a href="http://edu.csdn.net/heima/" target="_blank" rel="external">android培训</a>、<a href="http://edu.csdn.net/heima" target="_blank" rel="external">java培训</a>、java学习型技术博客、期待与您交流！———————-</p>
+<p>详情请查看：<a href="http://edu.csdn.net/heima" target="_blank" rel="external">http://edu.csdn.net/</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/知识点/" rel="tag"># 知识点</a>
+          
+            <a href="/tags/笔记/" rel="tag"># 笔记</a>
+          
+            <a href="/tags/JAVA/" rel="tag"># JAVA</a>
+          
+            <a href="/tags/纠错/" rel="tag"># 纠错</a>
+          
+            <a href="/tags/思路/" rel="tag"># 思路</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/12/06/程序猿之葵花宝典-转载至陆其明的bolg/" rel="next" title="程序猿之葵花宝典-转载至陆其明的bolg">
+                <i class="fa fa-chevron-left"></i> 程序猿之葵花宝典-转载至陆其明的bolg
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2013/12/09/Java语言基础3/" rel="prev" title="黑马程序员-Java语言基础3">
+                黑马程序员-Java语言基础3 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="高亮亮" />
+          <p class="site-author-name" itemprop="name">高亮亮</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Note1-关于循环的条件判断思路"><span class="nav-number">1.</span> <span class="nav-text">Note1.关于循环的条件判断思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Note2-判断是否素的数循环次数问题"><span class="nav-number">2.</span> <span class="nav-text">Note2.判断是否素的数循环次数问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Note3-转义字符的使用"><span class="nav-number">3.</span> <span class="nav-text">Note3.转义字符的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Note4-标号辅助嵌套循环指定循环控制"><span class="nav-number">4.</span> <span class="nav-text">Note4.标号辅助嵌套循环指定循环控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Note5-关于基本数据类型和引用数据类型参数传递问题"><span class="nav-number">5.</span> <span class="nav-text">Note5.关于基本数据类型和引用数据类型参数传递问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Note6-关于成员变量和局部变量"><span class="nav-number">6.</span> <span class="nav-text">Note6.关于成员变量和局部变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Note7-遇到循环不好建立标准循环格式或者函数来表达时的做法"><span class="nav-number">7.</span> <span class="nav-text">Note7.遇到循环不好建立标准循环格式或者函数来表达时的做法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Note8-匿名对象作为参数进行传递-amp-局部变量隐藏全局变量"><span class="nav-number">8.</span> <span class="nav-text">Note8.匿名对象作为参数进行传递&局部变量隐藏全局变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Note9-关于成员变量和局部变量"><span class="nav-number">9.</span> <span class="nav-text">Note9.关于成员变量和局部变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Note10-关于JAVA初期学习方法及遇到问题的处理"><span class="nav-number">10.</span> <span class="nav-text">Note10.关于JAVA初期学习方法及遇到问题的处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Note11-关于多态的理解-用法等总结"><span class="nav-number">11.</span> <span class="nav-text">Note11.关于多态的理解,用法等总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Note12-关于继承与实现"><span class="nav-number">12.</span> <span class="nav-text">Note12.关于继承与实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Note13-关于重写hashCode方法"><span class="nav-number">13.</span> <span class="nav-text">Note13.关于重写hashCode方法.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Note14-网络编程里容易忽略还找不到的小问题"><span class="nav-number">14.</span> <span class="nav-text">Note14.网络编程里容易忽略还找不到的小问题</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2013 &mdash; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">高亮亮</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

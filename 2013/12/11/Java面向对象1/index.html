@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="黑马程序员,笔记,基础,教程,java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="1.    Java中的参数传递问题。(理解内存图)基本类型：形式参数的改变对实际参数没有影响。 引用类型：形式参数的改变直接影响实际参数。">
+<meta name="keywords" content="黑马程序员,笔记,基础,教程,java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="黑马程序员-Java面向对象1">
+<meta property="og:url" content="http://gaoll.top/2013/12/11/Java面向对象1/index.html">
+<meta property="og:site_name" content="Gaoll‘s Blog">
+<meta property="og:description" content="1.    Java中的参数传递问题。(理解内存图)基本类型：形式参数的改变对实际参数没有影响。 引用类型：形式参数的改变直接影响实际参数。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://img.blog.csdn.net/20131211011653703?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-08-24T08:25:43.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="黑马程序员-Java面向对象1">
+<meta name="twitter:description" content="1.    Java中的参数传递问题。(理解内存图)基本类型：形式参数的改变对实际参数没有影响。 引用类型：形式参数的改变直接影响实际参数。">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20131211011653703?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://gaoll.top/2013/12/11/Java面向对象1/"/>
+
+
+
+
+
+  <title>黑马程序员-Java面向对象1 | Gaoll‘s Blog</title>
+  
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/prism-solarizedlight.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gaoll‘s Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life Likes Ninjaku Training</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://gaoll.top/2013/12/11/Java面向对象1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="高亮亮">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gaoll‘s Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">黑马程序员-Java面向对象1</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-12-11T01:12:00+08:00">
+                2013-12-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">java笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-Java中的参数传递问题。-理解内存图"><a href="#1-Java中的参数传递问题。-理解内存图" class="headerlink" title="1.    Java中的参数传递问题。(理解内存图)"></a>1.    Java中的参数传递问题。(理解内存图)</h2><p><strong>基本类型</strong>：形式参数的改变对实际参数没有影响。</p>
+<p><strong>引用类型</strong>：形式参数的改变直接影响实际参数。</p>
+<p><img src="http://img.blog.csdn.net/20131211011653703?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<a id="more"></a>
+<h2 id="2-面向对象-理解"><a href="#2-面向对象-理解" class="headerlink" title="2.    面向对象(理解)"></a>2.    面向对象(理解)</h2><h3 id="2-1面向对象："><a href="#2-1面向对象：" class="headerlink" title="2.1面向对象："></a>2.1面向对象：</h3><p>是基于面向过程的一种思想。</p>
+<p><strong>面向过程</strong>：以函数为基础，关注实现过程。</p>
+<p><strong>面向对象</strong>：以对象为基础，关注实现结果。</p>
+<h3 id="2-2面向对象的思想特点："><a href="#2-2面向对象的思想特点：" class="headerlink" title="2.2面向对象的思想特点："></a>2.2面向对象的思想特点：</h3><p><strong>A:</strong>是一种更符合人们思考习惯的思想。</p>
+<p><strong>B:</strong>把复杂的事情简单化了。</p>
+<p><strong>C:</strong>把我们从执行者变成了指挥者。</p>
+<p><strong>举例：</strong>买电脑。洗衣，做饭。旅游。把大象装进冰箱。(代码体现了，去看看)</p>
+<h3 id="2-3事物是如何体现的"><a href="#2-3事物是如何体现的" class="headerlink" title="2.3事物是如何体现的?"></a>2.3事物是如何体现的?</h3><p><strong>A:属性 </strong> 有哪些特征</p>
+<p><strong>B:行为 </strong> 有哪些功能</p>
+<h3 id="2-4类与对象的关系：-掌握"><a href="#2-4类与对象的关系：-掌握" class="headerlink" title="2.4类与对象的关系：(掌握)"></a>2.4类与对象的关系：(掌握)</h3><p>把事物转换成类：</p>
+<p><strong>A</strong>:成员变量:定义在类中，方法外。</p>
+<p><strong>B</strong>:成员方法:和以前的区别是去掉static。</p>
+<p><strong>类</strong>：是相关的属性和行为的集合。是一个抽象的概念。</p>
+<p><strong>对象</strong>：是某种事物的具体存在，具体的表现形式。</p>
+<p><strong>举例</strong>：  类：学生     对象：张三</p>
+<h3 id="2-5案例："><a href="#2-5案例：" class="headerlink" title="2.5案例："></a>2.5案例：</h3><p> A:学生类     B:手机类     C:汽车类(内存图)</p>
+<h3 id="2-5如何使用呢"><a href="#2-5如何使用呢" class="headerlink" title="2.5如何使用呢?"></a>2.5如何使用呢?</h3><p><strong>A</strong>:创建对象  格式：</p>
+<p>类名 对象名 = new 类名();</p>
+<p><strong>B:</strong>使用成员变量和成员方法</p>
+<p>对象名.成员变量</p>
+<p>对象名.成员方法</p>
+<h2 id="3-成员变量和局部变量的区别（理解）"><a href="#3-成员变量和局部变量的区别（理解）" class="headerlink" title="3.   成员变量和局部变量的区别（理解）"></a>3.   成员变量和局部变量的区别（理解）</h2><h3 id="3-1定义位置的区别"><a href="#3-1定义位置的区别" class="headerlink" title="3.1定义位置的区别"></a>3.1定义位置的区别</h3><p><strong>成员变量</strong>：类中，方法外</p>
+<p><strong>局部变量</strong>：方法中，方法声明中</p>
+<h3 id="3-2初始化值的区别"><a href="#3-2初始化值的区别" class="headerlink" title="3.2初始化值的区别"></a>3.2初始化值的区别</h3><p><strong>成员变量</strong>：都有默认值</p>
+<p><strong>局部变量</strong>：没有初始化值，必须先赋值才能使用。</p>
+<h3 id="3-3存储位置的区别"><a href="#3-3存储位置的区别" class="headerlink" title="3.3存储位置的区别"></a>3.3存储位置的区别</h3><p><strong>成员变量</strong>：堆内存中</p>
+<p><strong>局部变量</strong>：栈内存中</p>
+<h3 id="3-4生命周期的区别"><a href="#3-4生命周期的区别" class="headerlink" title="3.4生命周期的区别"></a>3.4生命周期的区别</h3><p><strong>成员变量</strong>：随着对象的存在消失</p>
+<p><strong>局部变量</strong>：随着函数方法调用的开始与结束</p>
+<h2 id="4-封装（理解）"><a href="#4-封装（理解）" class="headerlink" title="4.   封装（理解）"></a>4.   封装（理解）</h2><h3 id="4-1隐藏实现细节，提供公共的访问方式。"><a href="#4-1隐藏实现细节，提供公共的访问方式。" class="headerlink" title="4.1隐藏实现细节，提供公共的访问方式。"></a>4.1隐藏实现细节，提供公共的访问方式。</h3><p>类，方法等其实都是封装的具体体现。</p>
+<h3 id="4-2private关键字"><a href="#4-2private关键字" class="headerlink" title="4.2private关键字"></a>4.2private关键字</h3><p><strong>4.2.1</strong>用于修饰成员变量，成员方法。</p>
+<p><strong>4.2.2</strong>被修饰的内容在其他类中无法访问的。</p>
+<h3 id="4-3常见应用"><a href="#4-3常见应用" class="headerlink" title="4.3常见应用"></a>4.3常见应用</h3><p>类中所有的成员变量私有，只给出对应的set，get方法。</p>
+<p><strong>代码体现</strong>：</p>
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">class</span> <span class="token class-name">Day07_Student</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> age<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">char</span> sex<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String name<span class="token punctuation">;</span>
+
+    <span class="token function">Day07_Student</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+    <span class="token function">Day07_Student</span><span class="token punctuation">(</span><span class="token keyword">int</span> age<span class="token punctuation">,</span><span class="token keyword">char</span> sex<span class="token punctuation">,</span>String name<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token operator">=</span>age<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>sex<span class="token operator">=</span>sex<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">=</span>name<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">void</span> <span class="token function">setAge</span><span class="token punctuation">(</span><span class="token keyword">int</span> age<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token operator">=</span>age<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">int</span> <span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> age<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">void</span> <span class="token function">setSex</span><span class="token punctuation">(</span><span class="token keyword">char</span> sex<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>sex<span class="token operator">=</span>sex<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">char</span> <span class="token function">getSex</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> sex<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">void</span> <span class="token function">setName</span><span class="token punctuation">(</span>String name<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">=</span>name<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    String <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> name<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">void</span> <span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"姓名为："</span><span class="token operator">+</span>name<span class="token operator">+</span><span class="token string">"\t年龄为："</span><span class="token operator">+</span>age<span class="token operator">+</span><span class="token string">"\t性别为："</span><span class="token operator">+</span>sex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Day07_StudentTest</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        Day07_Student s1<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Day07_Student</span><span class="token punctuation">(</span><span class="token number">25</span><span class="token punctuation">,</span><span class="token string">'男'</span><span class="token punctuation">,</span>"高富帅\"<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        s1<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"\n=========啦啦啦啦我是可爱的分隔符=====================\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Day07_Student s2<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Day07_Student</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        s2<span class="token punctuation">.</span><span class="token function">setAge</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        s2<span class="token punctuation">.</span><span class="token function">setSex</span><span class="token punctuation">(</span><span class="token string">'女'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        s2<span class="token punctuation">.</span><span class="token function">setName</span><span class="token punctuation">(</span><span class="token string">"白富美"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"姓名为："</span><span class="token operator">+</span>s2<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">"年龄为："</span><span class="token operator">+</span>s2<span class="token punctuation">.</span><span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">"性别为："</span><span class="token operator">+</span>s2<span class="token punctuation">.</span><span class="token function">getSex</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"\n=========啦啦啦啦我是可爱的分隔符=====================\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        s2<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="5-构造方法（掌握）"><a href="#5-构造方法（掌握）" class="headerlink" title="5.   构造方法（掌握）"></a>5.   构造方法（掌握）</h2><h3 id="5-1格式及特点"><a href="#5-1格式及特点" class="headerlink" title="5.1格式及特点"></a>5.1格式及特点</h3><p><strong>格式：</strong></p>
+<p>访问权限修饰符 类名（参数）{}</p>
+<p>反问权限修饰符：public ，private</p>
+<p><strong>特点：</strong></p>
+<p>方法名类名相同</p>
+<p>没有返回值类型</p>
+<p>没有具体的返回值</p>
+<h3 id="5-2注意事项"><a href="#5-2注意事项" class="headerlink" title="5.2注意事项"></a>5.2注意事项</h3><p><strong>5.2.1</strong>如果不给构造方法，jvm默认给一个无参构造方法。</p>
+<p><strong>5.2.2</strong>如果给出构造方法，那么jvm将不再提供无参构造方法。</p>
+<p>这个时候，如果要使用无参构造方法，必须自己提供。（推荐永远手动给出无参构造方法）</p>
+<h2 id="6-this关键字（掌握）"><a href="#6-this关键字（掌握）" class="headerlink" title="6.   this关键字（掌握）"></a>6.   this关键字（掌握）</h2><h3 id="6-1是一个关键字，代表当前类的引用。"><a href="#6-1是一个关键字，代表当前类的引用。" class="headerlink" title="6.1是一个关键字，代表当前类的引用。"></a>6.1是一个关键字，代表当前类的引用。</h3><p><strong>简单</strong>：在方法中，那个对象调用方法，this就代表谁。</p>
+<h3 id="6-2应用场景"><a href="#6-2应用场景" class="headerlink" title="6.2应用场景"></a>6.2应用场景</h3><p>解决局部变量隐藏成员变量</p>
+<h2 id="7-static关键字（理解）"><a href="#7-static关键字（理解）" class="headerlink" title="7.   static关键字（理解）"></a>7.   static关键字（理解）</h2><h3 id="7-1是一个关键字。"><a href="#7-1是一个关键字。" class="headerlink" title="7.1是一个关键字。"></a>7.1是一个关键字。</h3><p>可以修饰成员变量的成员方法。</p>
+<h3 id="7-2静态的特点："><a href="#7-2静态的特点：" class="headerlink" title="7.2静态的特点："></a>7.2静态的特点：</h3><p>随着类的加载而加载</p>
+<p>优先于对象存在</p>
+<p>被类的所有对象所共享</p>
+<p>可以通过类名直接调用</p>
+<h3 id="7-3静态的注意事项"><a href="#7-3静态的注意事项" class="headerlink" title="7.3静态的注意事项"></a>7.3静态的注意事项</h3><p>在静态方法中是没有this关键字的</p>
+<p>静态方法只能访问静态的成员变量和静态的成员方法</p>
+<h3 id="7-4静态的调用方法"><a href="#7-4静态的调用方法" class="headerlink" title="7.4静态的调用方法"></a>7.4静态的调用方法</h3><p>被对象调用       被类名直接调用</p>
+<h2 id="8-Math类的随机数（理解）"><a href="#8-Math类的随机数（理解）" class="headerlink" title="8.   Math类的随机数（理解）"></a>8.   Math类的随机数（理解）</h2><p>类名调用静态方法。</p>
+<p><strong>包</strong>：java.lang</p>
+<p><strong>类</strong>：Math</p>
+<p><strong>方法</strong>：public static double random()</p>
+<p>取1-100之间的一个随机整数</p>
+<p>int x=Math.random()/*100+1;</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/黑马程序员/" rel="tag"># 黑马程序员</a>
+          
+            <a href="/tags/笔记/" rel="tag"># 笔记</a>
+          
+            <a href="/tags/基础/" rel="tag"># 基础</a>
+          
+            <a href="/tags/教程/" rel="tag"># 教程</a>
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/12/09/Java语言基础3/" rel="next" title="黑马程序员-Java语言基础3">
+                <i class="fa fa-chevron-left"></i> 黑马程序员-Java语言基础3
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2013/12/13/Java面向对象2/" rel="prev" title="黑马程序员-Java面向对象2">
+                黑马程序员-Java面向对象2 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="高亮亮" />
+          <p class="site-author-name" itemprop="name">高亮亮</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Java中的参数传递问题。-理解内存图"><span class="nav-number">1.</span> <span class="nav-text">1.    Java中的参数传递问题。(理解内存图)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-面向对象-理解"><span class="nav-number">2.</span> <span class="nav-text">2.    面向对象(理解)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1面向对象："><span class="nav-number">2.1.</span> <span class="nav-text">2.1面向对象：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2面向对象的思想特点："><span class="nav-number">2.2.</span> <span class="nav-text">2.2面向对象的思想特点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3事物是如何体现的"><span class="nav-number">2.3.</span> <span class="nav-text">2.3事物是如何体现的?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4类与对象的关系：-掌握"><span class="nav-number">2.4.</span> <span class="nav-text">2.4类与对象的关系：(掌握)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5案例："><span class="nav-number">2.5.</span> <span class="nav-text">2.5案例：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5如何使用呢"><span class="nav-number">2.6.</span> <span class="nav-text">2.5如何使用呢?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-成员变量和局部变量的区别（理解）"><span class="nav-number">3.</span> <span class="nav-text">3.   成员变量和局部变量的区别（理解）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1定义位置的区别"><span class="nav-number">3.1.</span> <span class="nav-text">3.1定义位置的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2初始化值的区别"><span class="nav-number">3.2.</span> <span class="nav-text">3.2初始化值的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3存储位置的区别"><span class="nav-number">3.3.</span> <span class="nav-text">3.3存储位置的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4生命周期的区别"><span class="nav-number">3.4.</span> <span class="nav-text">3.4生命周期的区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-封装（理解）"><span class="nav-number">4.</span> <span class="nav-text">4.   封装（理解）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1隐藏实现细节，提供公共的访问方式。"><span class="nav-number">4.1.</span> <span class="nav-text">4.1隐藏实现细节，提供公共的访问方式。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2private关键字"><span class="nav-number">4.2.</span> <span class="nav-text">4.2private关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3常见应用"><span class="nav-number">4.3.</span> <span class="nav-text">4.3常见应用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-构造方法（掌握）"><span class="nav-number">5.</span> <span class="nav-text">5.   构造方法（掌握）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1格式及特点"><span class="nav-number">5.1.</span> <span class="nav-text">5.1格式及特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2注意事项"><span class="nav-number">5.2.</span> <span class="nav-text">5.2注意事项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-this关键字（掌握）"><span class="nav-number">6.</span> <span class="nav-text">6.   this关键字（掌握）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1是一个关键字，代表当前类的引用。"><span class="nav-number">6.1.</span> <span class="nav-text">6.1是一个关键字，代表当前类的引用。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2应用场景"><span class="nav-number">6.2.</span> <span class="nav-text">6.2应用场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-static关键字（理解）"><span class="nav-number">7.</span> <span class="nav-text">7.   static关键字（理解）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1是一个关键字。"><span class="nav-number">7.1.</span> <span class="nav-text">7.1是一个关键字。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2静态的特点："><span class="nav-number">7.2.</span> <span class="nav-text">7.2静态的特点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3静态的注意事项"><span class="nav-number">7.3.</span> <span class="nav-text">7.3静态的注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-4静态的调用方法"><span class="nav-number">7.4.</span> <span class="nav-text">7.4静态的调用方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-Math类的随机数（理解）"><span class="nav-number">8.</span> <span class="nav-text">8.   Math类的随机数（理解）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2013 &mdash; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">高亮亮</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

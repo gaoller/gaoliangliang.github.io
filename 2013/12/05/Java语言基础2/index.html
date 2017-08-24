@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="笔记,JAVA,基础,教程," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="1. 运算符(部分2)1.1. 关系运算符==,&amp;lt;=,&amp;gt;=,!=,&amp;lt;,&amp;gt; 特点:关系运算符返回布尔型结果. 注意:==与=的区别. 1.2. 逻辑运算符&amp;amp;,|,^,&amp;amp;&amp;amp;,!,||, &amp;amp;:有false则false. |:有true则true. ^:不同则true,相同则false. !:true变false,false便true. &amp;amp;,">
+<meta name="keywords" content="笔记,JAVA,基础,教程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="黑马程序员-Java语言基础2">
+<meta property="og:url" content="http://gaoll.top/2013/12/05/Java语言基础2/index.html">
+<meta property="og:site_name" content="Gaoll‘s Blog">
+<meta property="og:description" content="1. 运算符(部分2)1.1. 关系运算符==,&amp;lt;=,&amp;gt;=,!=,&amp;lt;,&amp;gt; 特点:关系运算符返回布尔型结果. 注意:==与=的区别. 1.2. 逻辑运算符&amp;amp;,|,^,&amp;amp;&amp;amp;,!,||, &amp;amp;:有false则false. |:有true则true. ^:不同则true,相同则false. !:true变false,false便true. &amp;amp;,">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://img.blog.csdn.net/20131205223049359?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20131205222952703?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-08-24T08:28:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="黑马程序员-Java语言基础2">
+<meta name="twitter:description" content="1. 运算符(部分2)1.1. 关系运算符==,&amp;lt;=,&amp;gt;=,!=,&amp;lt;,&amp;gt; 特点:关系运算符返回布尔型结果. 注意:==与=的区别. 1.2. 逻辑运算符&amp;amp;,|,^,&amp;amp;&amp;amp;,!,||, &amp;amp;:有false则false. |:有true则true. ^:不同则true,相同则false. !:true变false,false便true. &amp;amp;,">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20131205223049359?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://gaoll.top/2013/12/05/Java语言基础2/"/>
+
+
+
+
+
+  <title>黑马程序员-Java语言基础2 | Gaoll‘s Blog</title>
+  
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/prism-solarizedlight.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gaoll‘s Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life Likes Ninjaku Training</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://gaoll.top/2013/12/05/Java语言基础2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="高亮亮">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gaoll‘s Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">黑马程序员-Java语言基础2</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-12-05T21:32:00+08:00">
+                2013-12-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">java笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-运算符-部分2"><a href="#1-运算符-部分2" class="headerlink" title="1. 运算符(部分2)"></a>1. 运算符(部分2)</h2><h3 id="1-1-关系运算符"><a href="#1-1-关系运算符" class="headerlink" title="1.1. 关系运算符"></a>1.1. 关系运算符</h3><p>==,&lt;=,&gt;=,!=,&lt;,&gt;</p>
+<p><strong>特点</strong>:关系运算符返回布尔型结果.</p>
+<p><strong>注意</strong>:==与=的区别.</p>
+<h3 id="1-2-逻辑运算符"><a href="#1-2-逻辑运算符" class="headerlink" title="1.2. 逻辑运算符"></a>1.2. 逻辑运算符</h3><p>&amp;,|,^,&amp;&amp;,!,||,</p>
+<p><strong>&amp;:</strong>有false则false.</p>
+<p><strong>|:</strong>有true则true.</p>
+<p><strong>^:</strong>不同则true,相同则false.</p>
+<p><strong>!:</strong>true变false,false便true.</p>
+<p><strong>&amp;,|,^：</strong>运算两个值；!：只运算一个值。</p>
+<p><strong>&amp;&amp;和&amp;的区别是</strong>：如果左边有false了，右边将不再执行。</p>
+<p><strong>||和|的区别是</strong>：如果左边有true了，右边将不再执行。</p>
+<p>(开发中我们常用&amp;&amp;,||,!，因为提高了效率。)</p>
+<h3 id="1-3-位运算符-了解"><a href="#1-3-位运算符-了解" class="headerlink" title="1.3. 位运算符(了解)"></a>1.3. 位运算符(了解)</h3><p><strong>&gt;&gt;:</strong>右移。右移变小，高位补零，低位舍弃。</p>
+<p><strong>&lt;&lt;:</strong>左移。低位补零。高位舍弃，低位补零。（关于数据准确，&lt;&lt;1时基数大于半值？）</p>
+<p><strong>&gt;&gt;&gt;:</strong>无符号右移。</p>
+<p><strong>^:</strong>亦或。</p>
+<p><img src="http://img.blog.csdn.net/20131205223049359?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<h3 id="1-4-三元运算符-条件运算符"><a href="#1-4-三元运算符-条件运算符" class="headerlink" title="1.4. 三元运算符(条件运算符)"></a>1.4. 三元运算符(条件运算符)</h3><p><strong>格式</strong>：条件表达式?表达式1:表达式2</p>
+<p><strong>执行流程：</strong></p>
+<p>根据条件表达式返回的boolean值来决定。</p>
+<p>返回true则表达式1作为结果。</p>
+<p>返回false则表达式2作为结果。</p>
+<h3 id="1-5-运算符优先级——-重点"><a href="#1-5-运算符优先级——-重点" class="headerlink" title="1.5.运算符优先级——(重点)"></a>1.5.运算符优先级——(重点)</h3><p>运算符的优先级决定了表达式的执行顺序，表达式的运算通常是按照运算符的优先级由高到低依次执行的。</p>
+<p><img src="http://img.blog.csdn.net/20131205222952703?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<h2 id="2-if语句"><a href="#2-if语句" class="headerlink" title="2.if语句"></a>2.if语句</h2><h3 id="2-1-用于做判断时使用"><a href="#2-1-用于做判断时使用" class="headerlink" title="2.1. 用于做判断时使用"></a>2.1. 用于做判断时使用</h3><p>常见对某个范围进行判断，或者对几个变量进行判断，或者boolean表达式的判断。</p>
+<h3 id="2-2-格式："><a href="#2-2-格式：" class="headerlink" title="2.2.格式："></a>2.2.格式：</h3><p>### </p>
+<pre><code>    if(条件表达式1)
+{
+         语句体1;
+}else if(条件表达式2)
+{
+        语句体2;
+}else
+{
+        语句体else;
+}
+</code></pre><p><strong>执行流程：</strong></p>
+<p>是否条件表达式1成立，是，执行语句体1并结束if语句。否，则判断条件表达式2,是否成立，是，执行语句体2并结束if语句。否，则执行语句体else并结束if语句。</p>
+<p><strong>注意：</strong></p>
+<p>所有的if()都是一个整体，都是if判断语句的部分，执行了一个if中语句体就不会再执行其他的了。</p>
+<p>大括号里的语句体如果是一条语句，可以省了大括号，建议不省略。</p>
+<p>在使用时，会根据条件适当省略else if或者省略else或者都省略,推荐不。</p>
+<p>大括号和分号一般不同时出现。</p>
+<h3 id="2-3-案例"><a href="#2-3-案例" class="headerlink" title="2.3.案例"></a>2.3.案例</h3><p><strong>A:</strong>根据键盘录入的成绩，判断等级。</p>
+<p><strong>B:</strong>根据键盘录入的月份，输出该月份对应的季节。</p>
+<h2 id="3-switch语句"><a href="#3-switch语句" class="headerlink" title="3.switch语句"></a>3.switch语句</h2><h3 id="3-1-用于做选择时使用。一般用于几个常量的判断。"><a href="#3-1-用于做选择时使用。一般用于几个常量的判断。" class="headerlink" title="3.1.用于做选择时使用。一般用于几个常量的判断。"></a>3.1.用于做选择时使用。一般用于几个常量的判断。</h3><p>switch会把几个常量先直接加载到内存，在判断时，效率高(相比较if)。</p>
+<p>所以，针对几个常量的判断，一般用switch语句。</p>
+<h3 id="3-2-switch语句的格式。"><a href="#3-2-switch语句的格式。" class="headerlink" title="3.2.switch语句的格式。"></a>3.2.switch语句的格式。</h3><p><strong>3.2.1.针对格式的理解</strong></p>
+<p>switch：表示这里使用的时switch语句，后面跟的是选项的表达式。 </p>
+<pre><code>    switch(表达式)
+{
+         case值1:
+                   语句体1;
+                   break;
+         case值2:
+                   语句体2;
+                   break;      
+         case值3:
+                   语句体3;
+                   break;
+…
+         default: 
+                   语句体default;
+                   break;
+}
+</code></pre><p>表达式：byte,short,int,char</p>
+<p>JDK5以后可以是枚举。JDK7以后可以是字符串。</p>
+<p>case：</p>
+<p>表示这里就是选项的值，他后面的值将来和表达式的值进行匹配。</p>
+<p>case后面的值(可以叫标签，是不可以重复的)。</p>
+<p>break：</p>
+<p>表示执行到这条语句体时，就会跳出swithc语句。</p>
+<p>default：</p>
+<p>当所有的case和表达式都不匹配时，就会读取default的内容。</p>
+<p>相当于if语句的else，某些情况可以省，建议不省略。</p>
+<p><strong>3.2.2.执行流程</strong></p>
+<p>进入switch语句后，会读取表达式的值，再去对应匹配case值。</p>
+<p>找到了(若没找到则匹配default)，则执行对应的语句体，然后忽略case行，按照上下顺序执行直到break或者结束。</p>
+<p><strong>3.2.3.注意事项</strong></p>
+<p><strong>A:</strong>default</p>
+<p>可以省略，但不建议，因为有它能帮助明确思路。而且default的位置是没有要求的，跟所有case都没有优先级。</p>
+<p><strong>B:</strong>break</p>
+<p>在最后一行时理论是可以省略的，但不建议，可以帮助明确思路。case里面的break省略需要判断具体情况，可能会影响选择结果。</p>
+<p><strong>C:</strong>关于结束switch语句</p>
+<p>只有当执行到break语句体或者执行到switch语句最后一行时结束。 </p>
+<h3 id="3-3-案例"><a href="#3-3-案例" class="headerlink" title="3.3.案例"></a>3.3.案例</h3><p><strong>A:</strong>根据键盘录入的日期(1-7)，输出对应的星期日期。</p>
+<p><strong>B:</strong>根据键盘录入的月份，输出该月的季节。</p>
+<h2 id="4-Scanner的使用"><a href="#4-Scanner的使用" class="headerlink" title="4.Scanner的使用"></a>4.Scanner的使用</h2><h3 id="4-1-Scanner时JDK5以后设计出用来接受键盘录入数据使用的。"><a href="#4-1-Scanner时JDK5以后设计出用来接受键盘录入数据使用的。" class="headerlink" title="4.1.Scanner时JDK5以后设计出用来接受键盘录入数据使用的。"></a>4.1.Scanner时JDK5以后设计出用来接受键盘录入数据使用的。</h3><h3 id="4-2-目前我们要通过键盘录入int类型，只能使用这种方法。"><a href="#4-2-目前我们要通过键盘录入int类型，只能使用这种方法。" class="headerlink" title="4.2.目前我们要通过键盘录入int类型，只能使用这种方法。"></a>4.2.目前我们要通过键盘录入int类型，只能使用这种方法。</h3><p><strong>A:</strong>导包    </p>
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token operator">*</span><span class="token punctuation">;</span>
+</code></pre>
+<p><strong>B:</strong>创建对象，封装键盘录入        </p>
+<pre class=" language-java"><code class="language-java">    Scanner in<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Scanner</span><span class="token punctuation">(</span>System<span class="token punctuation">.</span>in<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p><strong>C:</strong>调用方法，获取键盘录入的数据      </p>
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">int</span> XXX<span class="token operator">=</span>in<span class="token punctuation">.</span><span class="token function">nextInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h2 id="5-for语句"><a href="#5-for语句" class="headerlink" title="5.for语句"></a>5.for语句</h2><h3 id="5-1-需要循环时，当明确需要循环的次数时，可以使用for语句。"><a href="#5-1-需要循环时，当明确需要循环的次数时，可以使用for语句。" class="headerlink" title="5.1.需要循环时，当明确需要循环的次数时，可以使用for语句。"></a>5.1.需要循环时，当明确需要循环的次数时，可以使用for语句。</h3><h3 id="5-2-for语句结构："><a href="#5-2-for语句结构：" class="headerlink" title="5.2.for语句结构："></a>5.2.for语句结构：</h3><pre class=" language-java"><code class="language-java">    <span class="token keyword">for</span><span class="token punctuation">(</span>初始化条件<span class="token punctuation">;</span>判断条件<span class="token punctuation">;</span>控制条件<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    循环语句体<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>5.3.注意事项</p>
+<p><strong>A</strong>:for循环用于能有明确循环次数的循环。</p>
+<p><strong>B</strong>:语句中如果用来确定循环次数的增量定义在语句内，该变量在循环结束后失效。</p>
+<p><strong>C:</strong>先执行初始化条件，执行判断条件，根据返回值选择是否执行循环语句体，并判断是否结束循环。</p>
+<h2 id="6-while循环语句"><a href="#6-while循环语句" class="headerlink" title="6.while循环语句"></a>6.while循环语句</h2><h3 id="6-1-需要循环时，二循环的次数不确定，可以使用while循环。"><a href="#6-1-需要循环时，二循环的次数不确定，可以使用while循环。" class="headerlink" title="6.1.需要循环时，二循环的次数不确定，可以使用while循环。"></a>6.1.需要循环时，二循环的次数不确定，可以使用while循环。</h3><h3 id="6-2-while语句格式："><a href="#6-2-while语句格式：" class="headerlink" title="6.2.while语句格式："></a>6.2.while语句格式：</h3><p><strong>while在前：</strong></p>
+<pre class=" language-java"><code class="language-java">    初始化条件；
+</code></pre>
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">while</span><span class="token punctuation">(</span>判断条件<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    循环语句体<span class="token punctuation">;</span>
+    控制条件<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>while在后：</p>
+<pre class=" language-java"><code class="language-java">    初始化条件；
+</code></pre>
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">do</span>
+<span class="token punctuation">{</span>
+    循环语句体<span class="token punctuation">;</span>
+    控制条件<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token keyword">while</span> <span class="token punctuation">(</span>判断条件<span class="token punctuation">)</span>
+</code></pre>
+<h2 id="6-3-注意事项"><a href="#6-3-注意事项" class="headerlink" title="6.3.注意事项"></a>6.3.注意事项</h2><p><strong>A</strong>:while循环中需要定义能够是循环结束的条件判断语句，即要定义break；否则容易造成死循环。</p>
+<p><strong>B</strong>:while在前与while在后的区别在于在前先判断，在决定是否执行循环语句体。而在后则先执行一遍循环语句体，在进行判断。就是在后循环语句体至少执行一次。</p>
+<p><strong>C</strong>:最简单的定义无限循环的方式就是while(true){}。</p>
+<p><strong>D:</strong>while在前时，先执行初始化条件，执行判断条件，根据返回值选择是否执行循环语句体，并判断是否结束循环。while在后时，先执行初始化条件，然后执行循环体和判断条件，然后根据返回只选择是否结束循环。</p>
+<h2 id="7-循环嵌套"><a href="#7-循环嵌套" class="headerlink" title="7.循环嵌套"></a>7.循环嵌套</h2><p><strong>案例：</strong>正三角，倒三角，九九乘法表。</p>
+<h3 id="7-1-循环嵌套中，可以事先给每层循环命名。"><a href="#7-1-循环嵌套中，可以事先给每层循环命名。" class="headerlink" title="7.1.循环嵌套中，可以事先给每层循环命名。"></a>7.1.循环嵌套中，可以事先给每层循环命名。</h3><p>格式：        a1：for() 或者 a2：while()</p>
+<p>并在需要使用break或者continue时后面加上需要返回或跳出那层循环名。例如：</p>
+<p>break a1;</p>
+<p>continue a2;</p>
+<h3 id="7-2-注意"><a href="#7-2-注意" class="headerlink" title="7.2.注意"></a>7.2.注意</h3><p>break和continue只能出现在switch和循环中。他们的区别是break跳出循环，continue只是提前结束本次循环进入下次循环。</p>
+<h2 id="8-各种应用场景"><a href="#8-各种应用场景" class="headerlink" title="8.各种应用场景"></a>8.各种应用场景</h2><p> 变量：发现有一个数据是变化的时候，就要使用变量。</p>
+<p>if语句：一个范围的判断，boolean类型的表达式的判断，几个数据的判断。</p>
+<p> switch语句：几个数据的判断。一般这种情况优先选switch。</p>
+<p>for语句：循环次数或者范围确定。(水仙花)</p>
+<p>while语句：循环次数或者范围不确定。(珠峰)</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/笔记/" rel="tag"># 笔记</a>
+          
+            <a href="/tags/JAVA/" rel="tag"># JAVA</a>
+          
+            <a href="/tags/基础/" rel="tag"># 基础</a>
+          
+            <a href="/tags/教程/" rel="tag"># 教程</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/12/04/JAVA基础语法1/" rel="next" title="黑马程序员-JAVA基础语法1">
+                <i class="fa fa-chevron-left"></i> 黑马程序员-JAVA基础语法1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2013/12/06/程序猿之葵花宝典-转载至陆其明的bolg/" rel="prev" title="程序猿之葵花宝典-转载至陆其明的bolg">
+                程序猿之葵花宝典-转载至陆其明的bolg <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="高亮亮" />
+          <p class="site-author-name" itemprop="name">高亮亮</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-运算符-部分2"><span class="nav-number">1.</span> <span class="nav-text">1. 运算符(部分2)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-关系运算符"><span class="nav-number">1.1.</span> <span class="nav-text">1.1. 关系运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-逻辑运算符"><span class="nav-number">1.2.</span> <span class="nav-text">1.2. 逻辑运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-位运算符-了解"><span class="nav-number">1.3.</span> <span class="nav-text">1.3. 位运算符(了解)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-三元运算符-条件运算符"><span class="nav-number">1.4.</span> <span class="nav-text">1.4. 三元运算符(条件运算符)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-运算符优先级——-重点"><span class="nav-number">1.5.</span> <span class="nav-text">1.5.运算符优先级——(重点)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-if语句"><span class="nav-number">2.</span> <span class="nav-text">2.if语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-用于做判断时使用"><span class="nav-number">2.1.</span> <span class="nav-text">2.1. 用于做判断时使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-格式："><span class="nav-number">2.2.</span> <span class="nav-text">2.2.格式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-案例"><span class="nav-number">2.3.</span> <span class="nav-text">2.3.案例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-switch语句"><span class="nav-number">3.</span> <span class="nav-text">3.switch语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-用于做选择时使用。一般用于几个常量的判断。"><span class="nav-number">3.1.</span> <span class="nav-text">3.1.用于做选择时使用。一般用于几个常量的判断。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-switch语句的格式。"><span class="nav-number">3.2.</span> <span class="nav-text">3.2.switch语句的格式。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-案例"><span class="nav-number">3.3.</span> <span class="nav-text">3.3.案例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Scanner的使用"><span class="nav-number">4.</span> <span class="nav-text">4.Scanner的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-Scanner时JDK5以后设计出用来接受键盘录入数据使用的。"><span class="nav-number">4.1.</span> <span class="nav-text">4.1.Scanner时JDK5以后设计出用来接受键盘录入数据使用的。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-目前我们要通过键盘录入int类型，只能使用这种方法。"><span class="nav-number">4.2.</span> <span class="nav-text">4.2.目前我们要通过键盘录入int类型，只能使用这种方法。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-for语句"><span class="nav-number">5.</span> <span class="nav-text">5.for语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-需要循环时，当明确需要循环的次数时，可以使用for语句。"><span class="nav-number">5.1.</span> <span class="nav-text">5.1.需要循环时，当明确需要循环的次数时，可以使用for语句。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-for语句结构："><span class="nav-number">5.2.</span> <span class="nav-text">5.2.for语句结构：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-while循环语句"><span class="nav-number">6.</span> <span class="nav-text">6.while循环语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-需要循环时，二循环的次数不确定，可以使用while循环。"><span class="nav-number">6.1.</span> <span class="nav-text">6.1.需要循环时，二循环的次数不确定，可以使用while循环。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-while语句格式："><span class="nav-number">6.2.</span> <span class="nav-text">6.2.while语句格式：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-3-注意事项"><span class="nav-number">7.</span> <span class="nav-text">6.3.注意事项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-循环嵌套"><span class="nav-number">8.</span> <span class="nav-text">7.循环嵌套</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-循环嵌套中，可以事先给每层循环命名。"><span class="nav-number">8.1.</span> <span class="nav-text">7.1.循环嵌套中，可以事先给每层循环命名。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-注意"><span class="nav-number">8.2.</span> <span class="nav-text">7.2.注意</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-各种应用场景"><span class="nav-number">9.</span> <span class="nav-text">8.各种应用场景</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2013 &mdash; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">高亮亮</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

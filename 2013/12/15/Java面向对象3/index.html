@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="黑马程序员,知识点,笔记,JAVA,思路," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="1.多态(掌握)1.1对象在不同时刻表现出来的不同状态。 1.2多态的前提A:要有继承或者实现关系。B:要有方法的重写。(否则没有多态的必要)C:要有父类引用或者父接口引用指向子类对象。注意：多态有三种体现形式类多态;抽象类多态;接口多态 1.3多态中的成员特点：A:成员变量 编译看左边，运行看左边。(变量不存在重写) B:成员方法 编译看左边，运行看右边。 举例：孔子装爹。(穿老子衣服,说自己的">
+<meta name="keywords" content="黑马程序员,知识点,笔记,JAVA,思路">
+<meta property="og:type" content="article">
+<meta property="og:title" content="黑马程序员-Java面向对象3">
+<meta property="og:url" content="http://gaoll.top/2013/12/15/Java面向对象3/index.html">
+<meta property="og:site_name" content="Gaoll‘s Blog">
+<meta property="og:description" content="1.多态(掌握)1.1对象在不同时刻表现出来的不同状态。 1.2多态的前提A:要有继承或者实现关系。B:要有方法的重写。(否则没有多态的必要)C:要有父类引用或者父接口引用指向子类对象。注意：多态有三种体现形式类多态;抽象类多态;接口多态 1.3多态中的成员特点：A:成员变量 编译看左边，运行看左边。(变量不存在重写) B:成员方法 编译看左边，运行看右边。 举例：孔子装爹。(穿老子衣服,说自己的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://img.blog.csdn.net/20131215002611609?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-08-24T08:26:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="黑马程序员-Java面向对象3">
+<meta name="twitter:description" content="1.多态(掌握)1.1对象在不同时刻表现出来的不同状态。 1.2多态的前提A:要有继承或者实现关系。B:要有方法的重写。(否则没有多态的必要)C:要有父类引用或者父接口引用指向子类对象。注意：多态有三种体现形式类多态;抽象类多态;接口多态 1.3多态中的成员特点：A:成员变量 编译看左边，运行看左边。(变量不存在重写) B:成员方法 编译看左边，运行看右边。 举例：孔子装爹。(穿老子衣服,说自己的">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20131215002611609?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://gaoll.top/2013/12/15/Java面向对象3/"/>
+
+
+
+
+
+  <title>黑马程序员-Java面向对象3 | Gaoll‘s Blog</title>
+  
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/prism-solarizedlight.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gaoll‘s Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life Likes Ninjaku Training</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://gaoll.top/2013/12/15/Java面向对象3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="高亮亮">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gaoll‘s Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">黑马程序员-Java面向对象3</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-12-15T00:23:00+08:00">
+                2013-12-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">java笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-多态-掌握"><a href="#1-多态-掌握" class="headerlink" title="1.多态(掌握)"></a>1.多态(掌握)</h2><h3 id="1-1对象在不同时刻表现出来的不同状态。"><a href="#1-1对象在不同时刻表现出来的不同状态。" class="headerlink" title="1.1对象在不同时刻表现出来的不同状态。"></a>1.1对象在不同时刻表现出来的不同状态。</h3><pre><code>
+</code></pre><h3 id="1-2多态的前提"><a href="#1-2多态的前提" class="headerlink" title="1.2多态的前提"></a>1.2多态的前提</h3><p><strong>A:</strong>要有继承或者实现关系。<br><strong>B:</strong>要有方法的重写。(否则没有多态的必要)<br><strong>C:</strong>要有父类引用或者父接口引用指向子类对象。<br><strong>注意</strong>：多态有三种体现形式<br>类多态;抽象类多态;接口多态</p>
+<h3 id="1-3多态中的成员特点："><a href="#1-3多态中的成员特点：" class="headerlink" title="1.3多态中的成员特点："></a>1.3多态中的成员特点：</h3><p><strong>A:</strong>成员变量</p>
+<p>编译看左边，运行看左边。(<strong>变量不存在重写</strong>)</p>
+<p><strong>B:</strong>成员方法</p>
+<p>编译看左边，运行看右边。</p>
+<p><strong>举例</strong>：孔子装爹。(穿老子衣服,说自己的话)</p>
+<p><strong>我的理解:(用模具来理解)</strong></p>
+<p>父类引用指向子类对象.这个是多态最常见的表现形式,可以这么想.父类,子类,都是一个模具.成员变量,就像是可在模具上的信息,成员方法就像是模具上各种大大小小的凹槽,用来填充料.当生成一个父类引用,就是生成了一个父类的模具;此时如果指向一个子类对象,就是用子类的模具先做一个产品出来,然后再放到父类上塞进去.这个时候,因为子类是继承父类的,父类的凹槽子类中肯定全有,而子类中还可能会多出更多凹槽,所以在子类产品塞上父类的模具的时候,对于那些子,父类都有的凹槽,子类产品是能塞进去的.没有的就只能暂且留在模具外面.而成员变量,就是文字,这样,拿的谁的模具,文字就是谁的.这样就是完整的解释了:父类引用,指向子类对象了.而在这个情况下,想调用子类特有的功能,就需要进行向下转型.想,我们本来就是用子类模具做出来的产品,虽然在塞到父类模具中是,那些子类特有凹槽做出来的部分暂且留在父类模具外面,但是如果这个时候我们再把它塞回子类模具,怎么样,是不是就又全能塞进去了.这就是向下转型,能够使用子类特有方法了.</p>
+<p><img src="http://img.blog.csdn.net/20131215002611609?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<h3 id="1-4多态的弊端："><a href="#1-4多态的弊端：" class="headerlink" title="1.4多态的弊端："></a>1.4多态的弊端：</h3><p>父类(接口)引用不能使用子类特有功能。为了解决这个弊端，我们需要向下转型。Fu f = new Zi(); //向上转型Zi z = (Zi)f; //向下转型Zi z = new Zi();</p>
+<h3 id="1-5多态的好处："><a href="#1-5多态的好处：" class="headerlink" title="1.5多态的好处："></a>1.5多态的好处：</h3><p>可以提高代码的扩展性和可维护性。</p>
+<h2 id="2-抽象类-理解"><a href="#2-抽象类-理解" class="headerlink" title="2.抽象类(理解)"></a>2.抽象类(理解)</h2><h3 id="2-1定义"><a href="#2-1定义" class="headerlink" title="2.1定义:"></a>2.1定义:</h3><p>如果多个类中存在相同的方法声明，而方法体不一样，我们就可以只提取方法声明。<br>如果一个方法只有方法声明，没有方法体，那么这个方法必须用抽象修饰。<br>而一个类中如果有抽象方法，这个类必须定义为抽象类。</p>
+<h3 id="2-2抽象类的特点"><a href="#2-2抽象类的特点" class="headerlink" title="2.2抽象类的特点"></a>2.2抽象类的特点</h3><p>A:抽象类和抽象方法必须使用abstract修饰<br>B:抽象类不能被实例化<br>C:抽象类有抽象方法，用于子类实例化使用<br>D:如果一个类是抽象类，那么，继承它的子类<br>要么是抽象类。<br>要么重写所有抽象方法。</p>
+<h3 id="2-3抽象类的成员特点"><a href="#2-3抽象类的成员特点" class="headerlink" title="2.3抽象类的成员特点"></a>2.3抽象类的成员特点</h3><p><strong>A:</strong>成员变量  可以变量，也可以是常量<strong>B:</strong>构造方法  有构造方法<strong>C:</strong>成员方法  可以是抽象方法，也可以是非抽象方法</p>
+<h3 id="2-4抽象类的几个小问题"><a href="#2-4抽象类的几个小问题" class="headerlink" title="2.4抽象类的几个小问题"></a>2.4抽象类的几个小问题</h3><p><strong>A:</strong>抽象类不能被实例化，为什么有构造?<br>他的构造用于子类实例化使用。(<strong>Object类都有个空参构造</strong>)<br><strong>B:</strong>一个类没有抽象方法，为什么定义为抽象类?不想被实例化。<br><strong>C:</strong>abstract不能和哪些关键字共存。final:final修饰的方法不能被重写,final修饰的类不能被继承.<br>private:私有方法在子类中无法访问,无法被复写.<br>static:静态的方法在方法加载时就存在,抽象方法静态没有意义.</p>
+<h3 id="2-5案例："><a href="#2-5案例：" class="headerlink" title="2.5案例："></a>2.5案例：</h3><pre><code>  老师案例      学生案例
+</code></pre><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/*
+具体事务：基本班学员，就业班学员
+共性：姓名，年龄，学习，睡觉
+*/</span>
+
+<span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">Student</span>
+<span class="token punctuation">{</span><span class="token comment" spellcheck="true">//建立学生类,抽象类,有私有属性姓名,年龄.有抽象方法学习,有普通方法睡觉.</span>
+    <span class="token keyword">private</span> String name<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> age<span class="token punctuation">;</span>
+
+    <span class="token function">Student</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+    <span class="token function">Student</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span><span class="token keyword">int</span> age<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">=</span>name<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token operator">=</span>age<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">study</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">void</span> <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"我是传智学员,我要睡觉."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">void</span> <span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"该学生叫:"</span><span class="token operator">+</span>name<span class="token operator">+</span><span class="token string">"\t该学生年龄为:"</span><span class="token operator">+</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">BaseStudent</span> <span class="token keyword">extends</span> <span class="token class-name">Student</span>
+<span class="token punctuation">{</span>
+    <span class="token function">BaseStudent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+    <span class="token function">BaseStudent</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span><span class="token keyword">int</span> age<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">void</span> <span class="token function">study</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"基础班学员学习基础知识.JavaSE"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">AdvStudent</span> <span class="token keyword">extends</span> <span class="token class-name">Student</span>
+<span class="token punctuation">{</span>
+    <span class="token function">AdvStudent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+    <span class="token function">AdvStudent</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span><span class="token keyword">int</span> age<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">void</span> <span class="token function">study</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"就业班学员学习高级知识.JavaEE"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">StudentTest_abstract</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">/*
+        Student b=new BaseStudent("张三",18);
+        b.show();
+        b.sleep();
+        b.study();
+        System.out.println("----分--------割---------线---");
+        Student a=new AdvStudent("李四",20);
+        a.show();
+        a.sleep();
+        a.study();
+        System.out.println("----分--------割---------线---");
+        System.out.println("----分--------割---------线---");
+        */</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="3-接口-理解"><a href="#3-接口-理解" class="headerlink" title="3.接口(理解)"></a>3.接口(理解)</h2><h3 id="3-1定义"><a href="#3-1定义" class="headerlink" title="3.1定义"></a>3.1定义</h3><p>如果一个抽象类中的方法都是抽象的，这个时候，java就提供了一种更抽象的表示形式：接口。<br><strong>接口</strong>：interface<br><strong>实现</strong>：implements<strong>格式</strong>：interface 接口名{}<br>class 类名 implements 接口名 {}</p>
+<h3 id="3-2接口的特点："><a href="#3-2接口的特点：" class="headerlink" title="3.2接口的特点："></a>3.2接口的特点：</h3><p><strong>A:</strong>接口不能被实例化。<strong>B:</strong>一个类如果实现了接口：      要么是抽象类。<br>      要么实现接口中的所有方法。</p>
+<h3 id="3-3接口的成员特点："><a href="#3-3接口的成员特点：" class="headerlink" title="3.3接口的成员特点："></a>3.3接口的成员特点：</h3><p>A:<strong>成员变量</strong>  只能是常量。默认修饰符 public static final<br>B:<strong>成员方法</strong>  只能是抽象方法。默认修饰符 public abstract<br><strong>推荐</strong>：永远手动给出修饰符。</p>
+<h3 id="3-4接口的思想特点："><a href="#3-4接口的思想特点：" class="headerlink" title="3.4接口的思想特点："></a>3.4接口的思想特点：</h3><p><strong>A:</strong>对外暴露的规则老师的原话,但是我对这个思想的理解有些模糊,后来想了想,对外暴露的规则,可以这么理解,接口就是描述一项功能,或者行为,当一个类需要这个功能,就通过实现这个接口.当然,功能的实体是需要这个类重新定义的.接口就像是让你了解需要这个功能,你得遵守那些规则.接口就是这个对外暴露的让你知道的规则,他没必要具有这个功能的主体.<br><strong>B:</strong>是功能的扩展<strong>C:</strong>降低耦合度(<strong>关联度</strong>)     <strong>耦合</strong>：类与类的关系<br>     <strong>内聚</strong>：类自己完成某件事情的能力(<strong>独立度</strong>)<br>高内聚，低耦合。<br><strong>D:</strong>接口可以多实现。(想想啊,反正接口都是抽象方法,不存在类中的同名方法指向不明确的问题.)</p>
+<h3 id="3-5类，接口的关系"><a href="#3-5类，接口的关系" class="headerlink" title="3.5类，接口的关系"></a>3.5类，接口的关系</h3><p><strong>A:类与类</strong>继承关系,只能单继承，可以多层继承。<br><strong>B:类与接口</strong>实现关系，可以单实现，也可以多实现。<br>还可以在继承一个类的同时实现多个接口。<br><strong>C:接口与接口</strong>继承关系，可以单继承，也可以多继承。</p>
+<h3 id="3-6抽象类和接口的关系"><a href="#3-6抽象类和接口的关系" class="headerlink" title="3.6抽象类和接口的关系"></a>3.6抽象类和接口的关系</h3><h3 id="3-7案例：运动员和教练的案例。"><a href="#3-7案例：运动员和教练的案例。" class="headerlink" title="3.7案例：运动员和教练的案例。"></a>3.7案例：运动员和教练的案例。</h3><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/*
+乒乓球,篮球运动员,教练.
+乒乓球球员教练都需要会英语,出国交流.
+思路分析:
+1.运动员,教练都是人,都有姓名,年龄--->抽象类,人.
+2.篮球运动员,乒乓球运动员都是运动员--->父类,运动员.
+3.篮球教练,乒乓球教练都是教练--->父类,教练.
+4.出国交流会英语--->接口,会英语.
+*/</span>
+<span class="token keyword">class</span> <span class="token class-name">Person</span><span class="token comment" spellcheck="true">//运动员,教练都是人,都有姓名,年龄--->抽象类,人.</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">private</span> String name<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> age<span class="token punctuation">;</span>
+
+    <span class="token function">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+    <span class="token function">Person</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span><span class="token keyword">int</span> age<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">=</span>name<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token operator">=</span>age<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">void</span> <span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>name<span class="token operator">+</span><span class="token string">"\t"</span><span class="token operator">+</span>age<span class="token operator">+</span><span class="token string">"岁"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">interface</span> <span class="token class-name">SpeakEnglish</span><span class="token comment" spellcheck="true">//出国交流会英语--->接口,会英语.</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">speak</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">SportsMan</span> <span class="token keyword">extends</span> <span class="token class-name">Person</span><span class="token comment" spellcheck="true">//篮球运动员,乒乓球运动员都是运动员--->父类,运动员.</span>
+<span class="token punctuation">{</span>
+    <span class="token function">SportsMan</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+    <span class="token function">SportsMan</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span><span class="token keyword">int</span> age<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">doSports</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">Coach</span> <span class="token keyword">extends</span> <span class="token class-name">Person</span><span class="token comment" spellcheck="true">//篮球教练,乒乓球教练都是教练--->父类,教练.</span>
+<span class="token punctuation">{</span>
+    <span class="token function">Coach</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+    <span class="token function">Coach</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span><span class="token keyword">int</span> age<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">teach</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">BasketballSportsman</span> <span class="token keyword">extends</span> <span class="token class-name">SportsMan</span>
+<span class="token punctuation">{</span>
+    <span class="token function">BasketballSportsman</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+    <span class="token function">BasketballSportsman</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span><span class="token keyword">int</span> age<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">void</span> <span class="token function">doSports</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"篮球运动员,练习打练球."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">PingpangSportsman</span> <span class="token keyword">extends</span> <span class="token class-name">SportsMan</span> <span class="token keyword">implements</span> <span class="token class-name">SpeakEnglish</span>
+<span class="token punctuation">{</span>
+    <span class="token function">PingpangSportsman</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+    <span class="token function">PingpangSportsman</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span><span class="token keyword">int</span> age<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">void</span> <span class="token function">doSports</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"乒乓球运动员,练习打乒乓球."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">speak</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"乒乓球运动员精通英语."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">BasketballCoach</span> <span class="token keyword">extends</span> <span class="token class-name">Coach</span>
+<span class="token punctuation">{</span>
+    <span class="token function">BasketballCoach</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+    <span class="token function">BasketballCoach</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span><span class="token keyword">int</span> age<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">void</span> <span class="token function">teach</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"能够训练篮球运动员打篮球."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">PingpangCoach</span> <span class="token keyword">extends</span> <span class="token class-name">Coach</span> <span class="token keyword">implements</span> <span class="token class-name">SpeakEnglish</span>
+<span class="token punctuation">{</span>
+    <span class="token function">PingpangCoach</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+    <span class="token function">PingpangCoach</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span><span class="token keyword">int</span> age<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">void</span> <span class="token function">teach</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"能够训练乒乓球运动员打篮球."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">speak</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"乒乓球教练精通英语."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">SportsmanTest</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        BasketballSportsman a1<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">BasketballSportsman</span><span class="token punctuation">(</span><span class="token string">"姚明"</span><span class="token punctuation">,</span><span class="token number">29</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        a1<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        a1<span class="token punctuation">.</span><span class="token function">doSports</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"----------分割线-----------"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        BasketballCoach a2<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">BasketballCoach</span><span class="token punctuation">(</span><span class="token string">"姚明他老子"</span><span class="token punctuation">,</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        a2<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        a2<span class="token punctuation">.</span><span class="token function">teach</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"----------分割线-----------"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        PingpangSportsman a3<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">PingpangSportsman</span><span class="token punctuation">(</span><span class="token string">"邓亚萍"</span><span class="token punctuation">,</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        a3<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        a3<span class="token punctuation">.</span><span class="token function">doSports</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        a3<span class="token punctuation">.</span><span class="token function">speak</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"----------分割线-----------"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        PingpangCoach a4<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">PingpangCoach</span><span class="token punctuation">(</span><span class="token string">"邓亚萍他老子"</span><span class="token punctuation">,</span><span class="token number">49</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        a4<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        a4<span class="token punctuation">.</span><span class="token function">teach</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        a4<span class="token punctuation">.</span><span class="token function">speak</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/黑马程序员/" rel="tag"># 黑马程序员</a>
+          
+            <a href="/tags/知识点/" rel="tag"># 知识点</a>
+          
+            <a href="/tags/笔记/" rel="tag"># 笔记</a>
+          
+            <a href="/tags/JAVA/" rel="tag"># JAVA</a>
+          
+            <a href="/tags/思路/" rel="tag"># 思路</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/12/13/Java面向对象2/" rel="next" title="黑马程序员-Java面向对象2">
+                <i class="fa fa-chevron-left"></i> 黑马程序员-Java面向对象2
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2013/12/16/Java面向对象4/" rel="prev" title="黑马程序员-Java面向对象4">
+                黑马程序员-Java面向对象4 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="高亮亮" />
+          <p class="site-author-name" itemprop="name">高亮亮</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-多态-掌握"><span class="nav-number">1.</span> <span class="nav-text">1.多态(掌握)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1对象在不同时刻表现出来的不同状态。"><span class="nav-number">1.1.</span> <span class="nav-text">1.1对象在不同时刻表现出来的不同状态。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2多态的前提"><span class="nav-number">1.2.</span> <span class="nav-text">1.2多态的前提</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3多态中的成员特点："><span class="nav-number">1.3.</span> <span class="nav-text">1.3多态中的成员特点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4多态的弊端："><span class="nav-number">1.4.</span> <span class="nav-text">1.4多态的弊端：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5多态的好处："><span class="nav-number">1.5.</span> <span class="nav-text">1.5多态的好处：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-抽象类-理解"><span class="nav-number">2.</span> <span class="nav-text">2.抽象类(理解)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1定义"><span class="nav-number">2.1.</span> <span class="nav-text">2.1定义:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2抽象类的特点"><span class="nav-number">2.2.</span> <span class="nav-text">2.2抽象类的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3抽象类的成员特点"><span class="nav-number">2.3.</span> <span class="nav-text">2.3抽象类的成员特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4抽象类的几个小问题"><span class="nav-number">2.4.</span> <span class="nav-text">2.4抽象类的几个小问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5案例："><span class="nav-number">2.5.</span> <span class="nav-text">2.5案例：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-接口-理解"><span class="nav-number">3.</span> <span class="nav-text">3.接口(理解)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1定义"><span class="nav-number">3.1.</span> <span class="nav-text">3.1定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2接口的特点："><span class="nav-number">3.2.</span> <span class="nav-text">3.2接口的特点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3接口的成员特点："><span class="nav-number">3.3.</span> <span class="nav-text">3.3接口的成员特点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4接口的思想特点："><span class="nav-number">3.4.</span> <span class="nav-text">3.4接口的思想特点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5类，接口的关系"><span class="nav-number">3.5.</span> <span class="nav-text">3.5类，接口的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6抽象类和接口的关系"><span class="nav-number">3.6.</span> <span class="nav-text">3.6抽象类和接口的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7案例：运动员和教练的案例。"><span class="nav-number">3.7.</span> <span class="nav-text">3.7案例：运动员和教练的案例。</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2013 &mdash; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">高亮亮</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

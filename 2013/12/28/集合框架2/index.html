@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="黑马程序员,知识点,笔记,JAVA,基础," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="1.Set类1.1Set的特点：元素无序,唯一。注意：这里的顺序是指存储和取出顺序。 2.HashSet2.1.HashSet：不保证元素的迭代顺序。并且，不保证该顺序恒久不变。2.2.怎么保证元素唯一HashSet底层数据结构是哈希表。依赖两个方法：hashCode()和equals()顺序：首先，判断hashCode()值是否相同。相同：继续走equals()方法，根据其返回值：true：说明">
+<meta name="keywords" content="黑马程序员,知识点,笔记,JAVA,基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="黑马程序员-集合框架2">
+<meta property="og:url" content="http://gaoll.top/2013/12/28/集合框架2/index.html">
+<meta property="og:site_name" content="Gaoll‘s Blog">
+<meta property="og:description" content="1.Set类1.1Set的特点：元素无序,唯一。注意：这里的顺序是指存储和取出顺序。 2.HashSet2.1.HashSet：不保证元素的迭代顺序。并且，不保证该顺序恒久不变。2.2.怎么保证元素唯一HashSet底层数据结构是哈希表。依赖两个方法：hashCode()和equals()顺序：首先，判断hashCode()值是否相同。相同：继续走equals()方法，根据其返回值：true：说明">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://img.blog.csdn.net/20131228135245656?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-08-24T07:54:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="黑马程序员-集合框架2">
+<meta name="twitter:description" content="1.Set类1.1Set的特点：元素无序,唯一。注意：这里的顺序是指存储和取出顺序。 2.HashSet2.1.HashSet：不保证元素的迭代顺序。并且，不保证该顺序恒久不变。2.2.怎么保证元素唯一HashSet底层数据结构是哈希表。依赖两个方法：hashCode()和equals()顺序：首先，判断hashCode()值是否相同。相同：继续走equals()方法，根据其返回值：true：说明">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20131228135245656?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://gaoll.top/2013/12/28/集合框架2/"/>
+
+
+
+
+
+  <title>黑马程序员-集合框架2 | Gaoll‘s Blog</title>
+  
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/prism-solarizedlight.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gaoll‘s Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life Likes Ninjaku Training</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://gaoll.top/2013/12/28/集合框架2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="高亮亮">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gaoll‘s Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">黑马程序员-集合框架2</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-12-28T13:59:00+08:00">
+                2013-12-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">java笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-Set类"><a href="#1-Set类" class="headerlink" title="1.Set类"></a>1.Set类</h2><h3 id="1-1Set的特点："><a href="#1-1Set的特点：" class="headerlink" title="1.1Set的特点："></a>1.1Set的特点：</h3><p>元素无序,唯一。<br>注意：这里的顺序是指存储和取出顺序。</p>
+<h2 id="2-HashSet"><a href="#2-HashSet" class="headerlink" title="2.HashSet"></a>2.HashSet</h2><h3 id="2-1-HashSet：不保证元素的迭代顺序。并且，不保证该顺序恒久不变。"><a href="#2-1-HashSet：不保证元素的迭代顺序。并且，不保证该顺序恒久不变。" class="headerlink" title="2.1.HashSet：不保证元素的迭代顺序。并且，不保证该顺序恒久不变。"></a>2.1.HashSet：不保证元素的迭代顺序。并且，不保证该顺序恒久不变。</h3><h3 id="2-2-怎么保证元素唯一"><a href="#2-2-怎么保证元素唯一" class="headerlink" title="2.2.怎么保证元素唯一"></a>2.2.怎么保证元素唯一</h3><p><strong>HashSet底层数据结构是哈希表。</strong><br>依赖两个方法：hashCode()和equals()<br>顺序：<br><strong>首先，判断hashCode()值是否相同。</strong><br>相同：<br>继续走equals()方法，根据其返回值：<br>true：说明元素重复，不添加到集合。<br>false：说明元素不重复，添加到集合。<br>不同：直接添加到集合。</p>
+<a id="more"></a>
+<h3 id="2-3-如何重写hashCode-和equals-方法"><a href="#2-3-如何重写hashCode-和equals-方法" class="headerlink" title="2.3.如何重写hashCode()和equals()方法"></a>2.3.如何重写hashCode()和equals()方法</h3><p><strong>hashCode():</strong><br>把对象的所有成员变量值相加即可。<br>如果是基本类型，就加值。如果是引用类型，就加哈希值。<br><strong>equals():</strong><br><strong>A:</strong>this==obj<br><strong>B</strong>:!(obj instanceof Student)</p>
+<p><strong>C:</strong>所有成员变量的值比较。基本类型用==,引用类型用equals()。</p>
+<p>我的代码:</p>
+<pre><code>    public int hashCode(){
+        //根据自己的需求定义hashCode的算法.
+        return name.hashCode()+age*17;
+    }
+    public void equals&lt;Object&gt;(Object obj){
+        if(this==obj){
+            return true;
+        }else if(!(obj intstanceof Student)){
+            return false;
+        }else{
+            return (obj.getName().equals(name) &amp;&amp; obj.getAge==age)?true:false;
+</code></pre><h3 id="2-4-案例"><a href="#2-4-案例" class="headerlink" title="2.4.案例"></a>2.4.案例</h3><p>HashSet存储字符串并遍历<br>HashSet存储自定义对象并遍历<br>针对自定义对象：<br>需求：如果对象的成员都相同，就认为是同一个元素。</p>
+<h2 id="3-TreeSet"><a href="#3-TreeSet" class="headerlink" title="3.TreeSet"></a>3.TreeSet</h2><h3 id="3-1-TreeSet：根据构造方法的不用，选择使用自然排序或者比较器排序。"><a href="#3-1-TreeSet：根据构造方法的不用，选择使用自然排序或者比较器排序。" class="headerlink" title="3.1.TreeSet：根据构造方法的不用，选择使用自然排序或者比较器排序。"></a>3.1.TreeSet：根据构造方法的不用，选择使用自然排序或者比较器排序。</h3><pre><code>    按照实际的需求，可以对元素进行排序。并且保证唯一。
+</code></pre><h3 id="3-2-如何保证"><a href="#3-2-如何保证" class="headerlink" title="3.2.如何保证"></a>3.2.如何保证</h3><p><strong>排序：</strong></p>
+<p>底层结构是二叉树。按照树节点进行存储和取出。<br>两种实现：<br><strong>A:自然排序(元素具备比较性)</strong><br>TreeSet的无参构造，要求对象所属的类实现Comparable接口。<br><strong>B:比较器排序(集合具备比较性)</strong><br>TreeSet的带参构造，要求构造方法接收一个实现了Comparator接口的对象。</p>
+<p><strong>唯一</strong>：根据返回值是否为0。</p>
+<p><strong>注意：
+</strong></p>
+<p><strong>如果同时有两种方案，以比较器为主。</strong></p>
+<p><strong>我的代码:</strong></p>
+<pre><code>    //TreeSet底层是二叉树,所以是通过比较来comparaTo方法来判断元素的是否唯一.
+    //对于需要存储进集合的元素,通过其自身的comparaTo方法来跟集合中已经存在的元素进行比较运算,返回值为int型数据,为0,则不加入集合,为负数,则反向加入,为正数则正向加入.
+    //对于基本类型数据元素,因为其父类实现了Comparable接口,所以必然覆盖了comparaTo方法,可以不定义,直接调用compareTo进行比较.
+    //对于自定义类,因为类中未定义comparaTo方法或者未实现Comparable接口,则需要自己在类中来实现ComparaTo接口,重写compareTo方法.方法中具体内容根据实际要求编写.或者在建立这个TreeSet时,就根据其构造函数传入一个自己定义的比较器.
+        class Student implements Comparable{
+            public int compareTo(Student stu){
+                int num1 = this.name.length()-stu.name.length();
+                int num2 = this.name.compareTo(stu.name);
+                int num3 = this.age-stu.age;
+                return (num1==0&amp;&amp;num2==0)?num3(num1==0)?num2:num1;
+            }
+        }
+</code></pre><h3 id="3-3-案例"><a href="#3-3-案例" class="headerlink" title="3.3.案例"></a>3.3.案例</h3><p>TreeSet存储字符串并遍历<br>TreeSet存储Integer并遍历<br>TreeSet存储自定义对象并遍历</p>
+<h2 id="4-Collection体现的集合总结"><a href="#4-Collection体现的集合总结" class="headerlink" title="4.Collection体现的集合总结"></a>4.Collection体现的集合总结</h2><p>Collection<br>|–List<br>|–ArrayList<br>底层数据结构是数组，查询快，增删慢<br>线程不安全，效率高。<br>|–LinkedList<br>底层数据结构是链表，查询慢，增删快<br>线程不安全，效率高。<br>|–Vector<br>底层数据结构是数组，查询快，增删慢<br>线程安全，效率低。<br>|–Set 唯一<br>|–HashSet<br>底层数据结构是哈希表。<br>如何保证元素唯一性呢?<br>依赖两个方法。hashCode()和equals()。<br>以后都自动生成。<br>|–TreeSet</p>
+<p>底层数据结构是二叉树。</p>
+<p><strong>如何保证元素唯一性呢?如何保证元素排序呢?</strong><br>根据返回值是否是0，判断元素是否重复。<br>排序有两种方案：<br>元素具备比较性 实现Comparable接口<br>集合具备比较性 实现Comparator接口</p>
+<h2 id="5-集合中的数据结构"><a href="#5-集合中的数据结构" class="headerlink" title="5.集合中的数据结构"></a>5.集合中的数据结构</h2><p><strong>ArrayXxx:</strong>底层数据结构是数组。查询快，增删慢。<br><strong>LinkedXxx</strong>:底层数据结构是链表。查询慢，增删快。<br><strong>HashXxx:</strong>底层数据结构是哈希表。跟两个有关。hashCode()和equals()<br><strong>TreeXxx:</strong>底层数据结构是二叉树。两种排序方式。Comparable接口和Comparator接口</p>
+<h2 id="6-如何选择Collection集合"><a href="#6-如何选择Collection集合" class="headerlink" title="6.如何选择Collection集合"></a>6.如何选择Collection集合</h2><p><strong>元素是否唯一?</strong><br><strong>唯一：</strong><br>Set<br>元素是否排序?<br>需要：TreeSet<br>不需要：HashSet<br>不知道是否排序，用HashSet。<br><strong>不唯一：</strong><br>List<br>需要安全码?<br>需要：Vector<br>不需要：ArrayList和LinkedList<br>查询多：ArrayList<br>增删多；LinkedList<br>不知道，用ArrayList。</p>
+<h2 id="7-Collections"><a href="#7-Collections" class="headerlink" title="7.Collections"></a>7.Collections</h2><h3 id="7-1-Collections是针对Collection集合操作的工具类。"><a href="#7-1-Collections是针对Collection集合操作的工具类。" class="headerlink" title="7.1.Collections是针对Collection集合操作的工具类。"></a>7.1.Collections是针对Collection集合操作的工具类。</h3><h3 id="7-2-面试题"><a href="#7-2-面试题" class="headerlink" title="7.2.面试题"></a>7.2.面试题</h3><p><strong>Collection</strong>和<strong>Collections</strong>的区别:</p>
+<p>一个是Collection,集合体系不断向上抽取,最终得到的该体系的顶层类,定义了所有集合的共性内容.</p>
+<p>一个是Collections,是一个类似于Arrays的静态工厂,基本上都是静态方法,是一个工具类.对集合进行加工.</p>
+<h3 id="7-3功能"><a href="#7-3功能" class="headerlink" title="7.3功能"></a>7.3功能</h3><p><img src="http://img.blog.csdn.net/20131228135245656?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<p><strong>———–</strong><a href="">android培训</a><strong>、</strong><a href="">java培训</a><strong>、java学习型技术博客、期待与您交流！ ————</strong></p>
+<p><strong>**详情请查看：</strong><a href="">http://edu.csdn.net/</a><br>**</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/黑马程序员/" rel="tag"># 黑马程序员</a>
+          
+            <a href="/tags/知识点/" rel="tag"># 知识点</a>
+          
+            <a href="/tags/笔记/" rel="tag"># 笔记</a>
+          
+            <a href="/tags/JAVA/" rel="tag"># JAVA</a>
+          
+            <a href="/tags/基础/" rel="tag"># 基础</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/12/26/集合框架1/" rel="next" title="黑马程序员-集合框架1">
+                <i class="fa fa-chevron-left"></i> 黑马程序员-集合框架1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/01/02/集合补充(Map类)/" rel="prev" title="黑马程序员-集合补充(Map类)">
+                黑马程序员-集合补充(Map类) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="高亮亮" />
+          <p class="site-author-name" itemprop="name">高亮亮</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Set类"><span class="nav-number">1.</span> <span class="nav-text">1.Set类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1Set的特点："><span class="nav-number">1.1.</span> <span class="nav-text">1.1Set的特点：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-HashSet"><span class="nav-number">2.</span> <span class="nav-text">2.HashSet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-HashSet：不保证元素的迭代顺序。并且，不保证该顺序恒久不变。"><span class="nav-number">2.1.</span> <span class="nav-text">2.1.HashSet：不保证元素的迭代顺序。并且，不保证该顺序恒久不变。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-怎么保证元素唯一"><span class="nav-number">2.2.</span> <span class="nav-text">2.2.怎么保证元素唯一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-如何重写hashCode-和equals-方法"><span class="nav-number">2.3.</span> <span class="nav-text">2.3.如何重写hashCode()和equals()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-案例"><span class="nav-number">2.4.</span> <span class="nav-text">2.4.案例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-TreeSet"><span class="nav-number">3.</span> <span class="nav-text">3.TreeSet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-TreeSet：根据构造方法的不用，选择使用自然排序或者比较器排序。"><span class="nav-number">3.1.</span> <span class="nav-text">3.1.TreeSet：根据构造方法的不用，选择使用自然排序或者比较器排序。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-如何保证"><span class="nav-number">3.2.</span> <span class="nav-text">3.2.如何保证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-案例"><span class="nav-number">3.3.</span> <span class="nav-text">3.3.案例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Collection体现的集合总结"><span class="nav-number">4.</span> <span class="nav-text">4.Collection体现的集合总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-集合中的数据结构"><span class="nav-number">5.</span> <span class="nav-text">5.集合中的数据结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-如何选择Collection集合"><span class="nav-number">6.</span> <span class="nav-text">6.如何选择Collection集合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Collections"><span class="nav-number">7.</span> <span class="nav-text">7.Collections</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-Collections是针对Collection集合操作的工具类。"><span class="nav-number">7.1.</span> <span class="nav-text">7.1.Collections是针对Collection集合操作的工具类。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-面试题"><span class="nav-number">7.2.</span> <span class="nav-text">7.2.面试题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3功能"><span class="nav-number">7.3.</span> <span class="nav-text">7.3功能</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2013 &mdash; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">高亮亮</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

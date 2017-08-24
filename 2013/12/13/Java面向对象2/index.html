@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="黑马程序员,基础视频,知识点,笔记,JAVA," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="1.   如何使用API(掌握)A:找到文档，打开文档。 B:点击左上角的显示变成隐藏，然后点击索引 C:你应该知道你要找谁?比如要找Math类.所以，你就在那个输入框里面输入Math，然后回车，再回车。 D:看这个类的结构 java.lang 类 Math java.util 类 Scanner 如果是java.lang包下的类，是可以直接使用的。(Math) 否则，就需要导包才能使用。(Sca">
+<meta name="keywords" content="黑马程序员,基础视频,知识点,笔记,JAVA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="黑马程序员-Java面向对象2">
+<meta property="og:url" content="http://gaoll.top/2013/12/13/Java面向对象2/index.html">
+<meta property="og:site_name" content="Gaoll‘s Blog">
+<meta property="og:description" content="1.   如何使用API(掌握)A:找到文档，打开文档。 B:点击左上角的显示变成隐藏，然后点击索引 C:你应该知道你要找谁?比如要找Math类.所以，你就在那个输入框里面输入Math，然后回车，再回车。 D:看这个类的结构 java.lang 类 Math java.util 类 Scanner 如果是java.lang包下的类，是可以直接使用的。(Math) 否则，就需要导包才能使用。(Sca">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://img.blog.csdn.net/20131213014321906?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-08-24T08:26:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="黑马程序员-Java面向对象2">
+<meta name="twitter:description" content="1.   如何使用API(掌握)A:找到文档，打开文档。 B:点击左上角的显示变成隐藏，然后点击索引 C:你应该知道你要找谁?比如要找Math类.所以，你就在那个输入框里面输入Math，然后回车，再回车。 D:看这个类的结构 java.lang 类 Math java.util 类 Scanner 如果是java.lang包下的类，是可以直接使用的。(Math) 否则，就需要导包才能使用。(Sca">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20131213014321906?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://gaoll.top/2013/12/13/Java面向对象2/"/>
+
+
+
+
+
+  <title>黑马程序员-Java面向对象2 | Gaoll‘s Blog</title>
+  
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/prism-solarizedlight.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gaoll‘s Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life Likes Ninjaku Training</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://gaoll.top/2013/12/13/Java面向对象2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="高亮亮">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gaoll‘s Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">黑马程序员-Java面向对象2</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-12-13T01:46:00+08:00">
+                2013-12-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">java笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-如何使用API-掌握"><a href="#1-如何使用API-掌握" class="headerlink" title="1.   如何使用API(掌握)"></a>1.   如何使用API(掌握)</h2><p><strong>A</strong>:找到文档，打开文档。</p>
+<p><strong>B</strong>:点击左上角的显示变成隐藏，然后点击索引</p>
+<p><strong>C:</strong>你应该知道你要找谁?比如要找Math类.所以，你就在那个输入框里面输入Math，然后回车，再回车。</p>
+<p><strong>D</strong>:看这个类的结构</p>
+<p>java.lang 类 Math</p>
+<p>java.util 类 Scanner</p>
+<p>如果是java.lang包下的类，是可以直接使用的。(Math)</p>
+<p>否则，就需要导包才能使用。(Scanner)</p>
+<p><strong>E</strong>:看看对这个类的说明。</p>
+<p><strong>F</strong>:看构造方法</p>
+<p>名称：字段   –成员变量   – 属性。</p>
+<p><strong>a</strong>:有构造方法，那么，就通过构造方法创建对象使用。</p>
+<p><strong>b:</strong>没有构造方法，那么，这个类的成员一般都是静态。通过类名调用。</p>
+<p><strong>G</strong>:按照正常的操作使用方法。</p>
+<p><strong>左边：(返回值,及返回值类型,是否静态)</strong></p>
+<p><strong>是否静态</strong>：如果静态修饰，那么可以通过类名调用。否则，就必须创建对象调用。</p>
+<p><strong>是否有明确返回值</strong>：如果是void类型，就直接调用即可。否则，就可以输出或者赋值。</p>
+<p><strong>右边：(方法名,参数类表)</strong></p>
+<p><strong>看方法名</strong>：不要写错了。</p>
+<p><strong>看参数</strong>：看参数类型及个数。</p>
+<h2 id="2-继承-掌握"><a href="#2-继承-掌握" class="headerlink" title="2.   继承(掌握)"></a>2.   继承(掌握)</h2><h3 id="2-1何为继承"><a href="#2-1何为继承" class="headerlink" title="2.1何为继承"></a>2.1何为继承</h3><p>把多个类中的相同属性和行为进行抽取,封装到一个类中.然后再建立新的类时,不需要重头开始起定义,继承刚才定义的那个类即可.</p>
+<h3 id="2-2继承的优点"><a href="#2-2继承的优点" class="headerlink" title="2.2继承的优点"></a>2.2继承的优点</h3><p>提高了代码的复用性.同时,使得类与共性属性行为的偶联性降低了.</p>
+<p>让类与类之间产生一个关系,是多态的前提.</p>
+<h3 id="2-3使用继承的时间"><a href="#2-3使用继承的时间" class="headerlink" title="2.3使用继承的时间"></a>2.3使用继承的时间</h3><p><strong>A:</strong>当两个类之间存在了is a 的关系,就可以考虑使用继承.就是a类是b类的一种.</p>
+<p><strong>B.</strong>不要为了获取一个功能而去使用继承,要根据程序的自然属性等判断.</p>
+<h3 id="2-4继承的特点"><a href="#2-4继承的特点" class="headerlink" title="2.4继承的特点"></a>2.4继承的特点</h3><p>Java只支持但继承,不支持多继承.否则,当多个父类中定义了同名方法,子类调用时出现调用不明确问题.</p>
+<p>Java支持多重(多层)继承.</p>
+<h3 id="2-5关键字super和this"><a href="#2-5关键字super和this" class="headerlink" title="2.5关键字super和this"></a>2.5关键字super和this</h3><p>super是一个关键字,用来代表父亲的存储空间标识.(可以暂时理解为父类的引用.)</p>
+<p><strong>super的使用方法</strong>和this基本一致.</p>
+<p>成员变量:this.变量-本类;super.变量-父类;</p>
+<p>构造方法:this(…)本类;super(…)父类</p>
+<p>成员方法:this.方法名()本类;super(…)父类</p>
+<h3 id="2-6子父类中的成员变量的用法"><a href="#2-6子父类中的成员变量的用法" class="headerlink" title="2.6子父类中的成员变量的用法"></a>2.6子父类中的成员变量的用法</h3><p>名称不同,直接找对的调用.</p>
+<p>名称相同,子类对象在使用时:</p>
+<p>先找子类局部范围,再找子类成员范围,最后找父类成员范围.</p>
+<h3 id="2-7子父类中的成员方法使用"><a href="#2-7子父类中的成员方法使用" class="headerlink" title="2.7子父类中的成员方法使用"></a>2.7子父类中的成员方法使用</h3><p>名称不同,直接调用名称正确的.</p>
+<p>名称相同,子类对象在使用时,先找子类的方法,再找父类的方法.</p>
+<p><strong>方法重写</strong>:在子类中,如果存在和父类方法声明完全相同的方法,则是子类对父类该方法的重写.(方法声明包括:修饰符,返回值,函数名,参数列表)</p>
+<p><strong>注意事项</strong>:    父类中的私有方法,final方法不能被重写.</p>
+<pre><code>        子类方法的访问权限必须大于父类该方法的反问权限.
+
+        静态方法只能重写静态方法(基本不出现,静态在详解)
+</code></pre><p><img src="http://img.blog.csdn.net/20131213014321906?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<h3 id="2-8子父类中构造方法的使用"><a href="#2-8子父类中构造方法的使用" class="headerlink" title="2.8子父类中构造方法的使用"></a>2.8子父类中构造方法的使用</h3><p>子类的初始化过程,首先会去执行父类的初始化动作.</p>
+<p>因为,默认给子类构造方法中加入了一条super().因为,子类继承父类,子类在初始化时,相当有可能会使用到父类的成员变量,这个时候就必须先将父类进行初始化.</p>
+<p><strong>如果父类没有无参构造方法</strong>(解决方法)</p>
+<pre><code>  手动使用super调用父类存在的带参构造,来实现初始化.(推荐)
+
+  使用this调用本身的其他构造函数.    
+</code></pre><p><strong>案例代码</strong>:</p>
+<pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/*
+ 分析如下需求，写出你分析的类有哪些，以及功能。
+ 最后写一个测试类，针对每个类的功能进行测试。
+
+ 动物园里有很多种动物：
+ 比如说，狗，猫等。
+ 狗有姓名和年龄，猫也有姓名和年龄。
+ 狗有跑步的方法，猫也有跑步的方法。而且都仅仅是跑步。
+ 狗有吃饭的方法，猫也有吃饭的方法。只不过，狗吃骨头，猫吃鱼。
+ 请用所学知识，对这个问题进行解决。
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">Animal</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> String name<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> age<span class="token punctuation">;</span>
+
+    <span class="token function">Animal</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token function">Animal</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span> <span class="token keyword">int</span> age<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>name<span class="token operator">+</span><span class="token string">"^^^^^^^^^^^^^^^^"</span><span class="token operator">+</span>age<span class="token operator">+</span><span class="token string">"岁了"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"看他跑起来了~！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Cat</span> <span class="token keyword">extends</span> <span class="token class-name">Animal</span> <span class="token punctuation">{</span>
+    <span class="token function">Cat</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token function">Cat</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span> <span class="token keyword">int</span> age<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">void</span> <span class="token function">eat</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"他是猫，他在吃鱼。"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Dog</span> <span class="token keyword">extends</span> <span class="token class-name">Animal</span><span class="token punctuation">{</span>
+    <span class="token function">Dog</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+    <span class="token function">Dog</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span><span class="token keyword">int</span> age<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">void</span> <span class="token function">eat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"他是狗，他在吃骨头。"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Day08_HomeWork</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        Cat c<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Cat</span><span class="token punctuation">(</span><span class="token string">"小花"</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        c<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        c<span class="token punctuation">.</span><span class="token function">eat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Dog d<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Dog</span><span class="token punctuation">(</span><span class="token string">"小明"</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        d<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        d<span class="token punctuation">.</span><span class="token function">eat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="3-代码块"><a href="#3-代码块" class="headerlink" title="3.   代码块"></a>3.   代码块</h2><p><strong>执行顺序:</strong></p>
+<p>  静态代码块à构造代码块à构造方法</p>
+<p>(静态代码块只执行一次)</p>
+<h2 id="4-final关键字"><a href="#4-final关键字" class="headerlink" title="4.   final关键字"></a>4.   final关键字</h2><p>是一个关键字,可以用于修饰类,成员变量,成员方法.</p>
+<p><strong>特点</strong>:</p>
+<p>  它修饰的类不能被继承.</p>
+<p>  它修饰的成员变量就是一个常量.</p>
+<p>  它修饰的成员方法不能被其子类重写(覆盖).</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/黑马程序员/" rel="tag"># 黑马程序员</a>
+          
+            <a href="/tags/基础视频/" rel="tag"># 基础视频</a>
+          
+            <a href="/tags/知识点/" rel="tag"># 知识点</a>
+          
+            <a href="/tags/笔记/" rel="tag"># 笔记</a>
+          
+            <a href="/tags/JAVA/" rel="tag"># JAVA</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/12/11/Java面向对象1/" rel="next" title="黑马程序员-Java面向对象1">
+                <i class="fa fa-chevron-left"></i> 黑马程序员-Java面向对象1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2013/12/15/Java面向对象3/" rel="prev" title="黑马程序员-Java面向对象3">
+                黑马程序员-Java面向对象3 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="高亮亮" />
+          <p class="site-author-name" itemprop="name">高亮亮</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-如何使用API-掌握"><span class="nav-number">1.</span> <span class="nav-text">1.   如何使用API(掌握)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-继承-掌握"><span class="nav-number">2.</span> <span class="nav-text">2.   继承(掌握)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1何为继承"><span class="nav-number">2.1.</span> <span class="nav-text">2.1何为继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2继承的优点"><span class="nav-number">2.2.</span> <span class="nav-text">2.2继承的优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3使用继承的时间"><span class="nav-number">2.3.</span> <span class="nav-text">2.3使用继承的时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4继承的特点"><span class="nav-number">2.4.</span> <span class="nav-text">2.4继承的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5关键字super和this"><span class="nav-number">2.5.</span> <span class="nav-text">2.5关键字super和this</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6子父类中的成员变量的用法"><span class="nav-number">2.6.</span> <span class="nav-text">2.6子父类中的成员变量的用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7子父类中的成员方法使用"><span class="nav-number">2.7.</span> <span class="nav-text">2.7子父类中的成员方法使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8子父类中构造方法的使用"><span class="nav-number">2.8.</span> <span class="nav-text">2.8子父类中构造方法的使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-代码块"><span class="nav-number">3.</span> <span class="nav-text">3.   代码块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-final关键字"><span class="nav-number">4.</span> <span class="nav-text">4.   final关键字</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2013 &mdash; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">高亮亮</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

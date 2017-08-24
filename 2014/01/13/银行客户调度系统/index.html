@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="黑马程序员,基础视频,知识点,JAVA,基础," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="事物抽象化分析:项目需求: 用代码演示一个建议的银行业务调度系统,(其实就是叫号系统.)思路分析:从名词下手,分析可能需要定义的类:客户:普通客户,快速客户,VIP客户.窗口:普通窗口,快速窗口,VIP窗口.用户编号:普通编号,快速编号,VIP编号(一个编号对应一个客户)再从行为上下手,具体分析:客户和编号关联,所以用产生一个编号,对应一个客户.——&amp;gt;编号产生类.客户类型不同,所以需要上述不">
+<meta name="keywords" content="黑马程序员,基础视频,知识点,JAVA,基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="黑马程序-银行客户调度系统">
+<meta property="og:url" content="http://gaoll.top/2014/01/13/银行客户调度系统/index.html">
+<meta property="og:site_name" content="Gaoll‘s Blog">
+<meta property="og:description" content="事物抽象化分析:项目需求: 用代码演示一个建议的银行业务调度系统,(其实就是叫号系统.)思路分析:从名词下手,分析可能需要定义的类:客户:普通客户,快速客户,VIP客户.窗口:普通窗口,快速窗口,VIP窗口.用户编号:普通编号,快速编号,VIP编号(一个编号对应一个客户)再从行为上下手,具体分析:客户和编号关联,所以用产生一个编号,对应一个客户.——&amp;gt;编号产生类.客户类型不同,所以需要上述不">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-08-24T07:58:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="黑马程序-银行客户调度系统">
+<meta name="twitter:description" content="事物抽象化分析:项目需求: 用代码演示一个建议的银行业务调度系统,(其实就是叫号系统.)思路分析:从名词下手,分析可能需要定义的类:客户:普通客户,快速客户,VIP客户.窗口:普通窗口,快速窗口,VIP窗口.用户编号:普通编号,快速编号,VIP编号(一个编号对应一个客户)再从行为上下手,具体分析:客户和编号关联,所以用产生一个编号,对应一个客户.——&amp;gt;编号产生类.客户类型不同,所以需要上述不">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://gaoll.top/2014/01/13/银行客户调度系统/"/>
+
+
+
+
+
+  <title>黑马程序-银行客户调度系统 | Gaoll‘s Blog</title>
+  
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/prism-solarizedlight.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gaoll‘s Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life Likes Ninjaku Training</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://gaoll.top/2014/01/13/银行客户调度系统/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="高亮亮">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gaoll‘s Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">黑马程序-银行客户调度系统</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-01-13T02:02:00+08:00">
+                2014-01-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">java笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="事物抽象化分析"><a href="#事物抽象化分析" class="headerlink" title="事物抽象化分析:"></a><strong>事物抽象化分析:</strong></h2><p><strong>项目需求:</strong></p>
+<p>用代码演示一个建议的银行业务调度系统,(其实就是叫号系统.)<br><strong>思路分析:<br>从名词下手,分析可能需要定义的类:</strong><br>客户:普通客户,快速客户,VIP客户.<br>窗口:普通窗口,快速窗口,VIP窗口.<br>用户编号:普通编号,快速编号,VIP编号(一个编号对应一个客户)<br><strong>再从行为上下手,具体分析:</strong><br>客户和编号关联,所以用产生一个编号,对应一个客户.——&gt;编号产生类.<br>客户类型不同,所以需要上述不同的三个编号产生类.同时要对他们进行调度—–&gt;编号管理类.<br>服务窗口,对应不同的服务类型,存在三种窗口类型,但每种类型有不同.<br>所以将窗口抽取,类型定义枚举.——&gt;窗口类型枚举,窗口类.<br>下面是跟着老师的步骤一步步来的代码.状态不好,勉强跟上老师思路.还是有很多模糊的地方.想放代码.慢慢消化</p>
+<a id="more"></a>
+<h3 id="服务编号产生类"><a href="#服务编号产生类" class="headerlink" title="服务编号产生类"></a><strong>服务编号产生类</strong></h3><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">//定义某个服务编号产生类.</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Code</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//定义某服务类型下一个号.</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> nextCode <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> List <span class="token operator">&lt;</span>Integer<span class="token operator">></span> listsCode <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token operator">&lt;</span>Integer<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">//定义取号方法.返回及其中的下一个号.</span>
+    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> Integer <span class="token function">createNewCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        listCode<span class="token punctuation">.</span><span class="token function">addLast</span><span class="token punctuation">(</span><span class="token operator">++</span>nextCode<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> nextCode<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//定义分配号方法</span>
+    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> Integer <span class="token function">fetchCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>listsCode<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span><span class="token punctuation">(</span>listsCode<span class="token punctuation">.</span><span class="token function">removeFist</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="编号操作类"><a href="#编号操作类" class="headerlink" title="编号操作类"></a><strong>编号操作类</strong></h3><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">//定义编号操作机,对应不同服务类型产生同一个的操作机,否则无法同步.(操作包括取号,分配号)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CodeMachine</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//设置单例.毕竟应该只有一个</span>
+    <span class="token keyword">private</span> <span class="token function">CodeMachine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> CodeMachine single <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CodeMachine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> CodeMachine <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> single<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//定义不同服务类型编号的成员属性.代表该机器中可操作的编号类型那个.并定义获取方法.</span>
+    <span class="token keyword">private</span> Code commonCode <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Code</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> Code expressCode <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Code</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> Code vipCode <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Code</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> Code <span class="token function">getCommonCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> commonCode<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> Code <span class="token function">getExpressCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> expressCode<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> Code <span class="token function">getVipCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> vipCode<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="服务类型的枚举"><a href="#服务类型的枚举" class="headerlink" title="服务类型的枚举"></a><strong>服务类型的枚举</strong></h3><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">//定义枚举类服务类型</span>
+<span class="token keyword">public</span> <span class="token keyword">enum</span> CustomerType <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//为了让窗口类只有一个,不同窗口实例对象是通过从枚举中获得某一特定服务类型.</span>
+    COMMON<span class="token punctuation">,</span>EXPRESS<span class="token punctuation">,</span>VIP<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> String <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        String name <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//这里,switch可以用String是从JDK5以后来的新特性.正好方便编程. </span>
+        <span class="token keyword">switch</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">case</span> COMMON<span class="token operator">:</span>
+            name <span class="token operator">=</span> <span class="token string">"普通"</span><span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token keyword">case</span> EXPRESS<span class="token operator">:</span>
+            name <span class="token operator">=</span> <span class="token string">"快速"</span><span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token keyword">case</span> VIP<span class="token operator">:</span>
+            name <span class="token operator">=</span> <span class="token function">name</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> name<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="服务窗口类"><a href="#服务窗口类" class="headerlink" title="服务窗口类"></a>服务窗口类</h3><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">//定义服务窗口类</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ServiceWindow</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//从定义了的枚举类中,获取服务类型.</span>
+    <span class="token keyword">private</span> CustomerType type <span class="token operator">=</span> CustomerType<span class="token punctuation">.</span>COMMON<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">//定义窗口编号.及其设置方法</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> number <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setNumber</span><span class="token punctuation">(</span><span class="token keyword">int</span> number<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>number <span class="token operator">=</span> number<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//定义设置,获取服务类型的方法</span>
+    <span class="token keyword">public</span> CustomerType <span class="token function">getType</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> type<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setType</span><span class="token punctuation">(</span>CustomerType type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>type <span class="token operator">=</span> type<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//用单线程池来让某个服务类型的窗口,调用该类型服务的方法.</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        Executors<span class="token punctuation">.</span><span class="token function">newSingleThreadExecutor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span>
+                <span class="token keyword">new</span> <span class="token class-name">Runnable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                        <span class="token keyword">switch</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                            <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                                <span class="token comment" spellcheck="true">//调用对应类型的服务方法.</span>
+                                <span class="token keyword">case</span> COMMON<span class="token operator">:</span>
+                                    <span class="token function">commonService</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+                                <span class="token keyword">case</span> EXPRESS<span class="token operator">:</span>
+                                    <span class="token function">expressService</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+                                <span class="token keyword">case</span> VIP<span class="token operator">:</span>
+                                    <span class="token function">vipService</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+                            <span class="token punctuation">}</span>
+                        <span class="token punctuation">}</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//定义不同类型服务方法.</span>
+    <span class="token comment" spellcheck="true">//定义普通服务</span>
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">commonService</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        String windowName <span class="token operator">=</span> <span class="token string">"第"</span> <span class="token operator">+</span> number <span class="token operator">+</span> <span class="token string">"号"</span> <span class="token operator">+</span> type <span class="token operator">+</span> <span class="token string">"窗口"</span><span class="token punctuation">;</span>        
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>windowName <span class="token operator">+</span> <span class="token string">"开始等待普通服务客户"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Integer serviceNumber <span class="token operator">=</span> CodeMachine<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getCommonCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">fetchCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        
+        <span class="token keyword">if</span><span class="token punctuation">(</span>serviceNumber <span class="token operator">!=</span> null <span class="token punctuation">)</span><span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>windowName <span class="token operator">+</span> <span class="token string">"开始为"</span> <span class="token operator">+</span> serviceNumber <span class="token operator">+</span> <span class="token string">"号普通客户服务"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        
+            <span class="token keyword">int</span> maxRandom <span class="token operator">=</span> Constants<span class="token punctuation">.</span>MAX_SERVICE_TIME <span class="token operator">-</span> Constants<span class="token punctuation">.</span>MIN_SERVICE_TIME<span class="token punctuation">;</span>
+            <span class="token keyword">int</span> serviceTime <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">nextInt</span><span class="token punctuation">(</span>maxRandom<span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span> <span class="token operator">+</span> Constants<span class="token punctuation">.</span>MIN_SERVICE_TIME<span class="token punctuation">;</span>
+
+            <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span>serviceTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>    
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>windowName <span class="token operator">+</span> <span class="token string">"完成为"</span> <span class="token operator">+</span> serviceNumber <span class="token operator">+</span> <span class="token string">"号普通客户服务，耗时"</span> <span class="token operator">+</span> serviceTime<span class="token operator">/</span><span class="token number">1000</span> <span class="token operator">+</span> <span class="token string">"秒"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        
+        <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>windowName <span class="token operator">+</span> <span class="token string">"无普通服务等待客户，休整一秒"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        
+            <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>                
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//定义快速服务</span>
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">expressService</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        Integer serviceNumber <span class="token operator">=</span> CodeMachine<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getExpressCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">fetchCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        String windowName <span class="token operator">=</span> <span class="token string">"第"</span> <span class="token operator">+</span> number <span class="token operator">+</span> <span class="token string">"号"</span> <span class="token operator">+</span> type <span class="token operator">+</span> <span class="token string">"窗口"</span><span class="token punctuation">;</span>    
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>windowName <span class="token operator">+</span> <span class="token string">"开始等待快速服务客户"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        
+        <span class="token keyword">if</span><span class="token punctuation">(</span>serviceNumber <span class="token operator">!=</span>null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>windowName <span class="token operator">+</span> <span class="token string">"开始为"</span> <span class="token operator">+</span> serviceNumber <span class="token operator">+</span> <span class="token string">"号快速客户服务"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            
+            <span class="token keyword">int</span> serviceTime <span class="token operator">=</span> Constants<span class="token punctuation">.</span>MIN_SERVICE_TIME<span class="token punctuation">;</span>
+            <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span>serviceTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>        
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>windowName <span class="token operator">+</span> <span class="token string">"完成"</span> <span class="token operator">+</span> serviceNumber <span class="token operator">+</span> <span class="token string">"号快速客户服务，耗时"</span> <span class="token operator">+</span> serviceTime<span class="token operator">/</span><span class="token number">1000</span> <span class="token operator">+</span> <span class="token string">"秒"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        
+        <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>windowName <span class="token operator">+</span> <span class="token string">"无快速服务等待客户"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                
+            <span class="token function">commonService</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//定义VIP服务</span>
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">vipService</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        Integer serviceNumber <span class="token operator">=</span> CodeMachine<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getVipCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">fetchCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        String windowName <span class="token operator">=</span> <span class="token string">"第"</span> <span class="token operator">+</span> number <span class="token operator">+</span> <span class="token string">"号"</span> <span class="token operator">+</span> type <span class="token operator">+</span> <span class="token string">"窗口"</span><span class="token punctuation">;</span>    
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>windowName <span class="token operator">+</span> <span class="token string">"开始等待VIP服务客户"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            
+        <span class="token keyword">if</span><span class="token punctuation">(</span>serviceNumber <span class="token operator">!=</span>null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>windowName <span class="token operator">+</span> <span class="token string">"开始为"</span> <span class="token operator">+</span> serviceNumber <span class="token operator">+</span> <span class="token string">"号VIP客户服务"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            
+            <span class="token keyword">int</span> maxRandom <span class="token operator">=</span> Constants<span class="token punctuation">.</span>MAX_SERVICE_TIME <span class="token operator">-</span> Constants<span class="token punctuation">.</span>MIN_SERVICE_TIME<span class="token punctuation">;</span>
+            <span class="token keyword">int</span> serviceTime <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">nextInt</span><span class="token punctuation">(</span>maxRandom<span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span> <span class="token operator">+</span> Constants<span class="token punctuation">.</span>MIN_SERVICE_TIME<span class="token punctuation">;</span>
+            <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span>serviceTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>        
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>windowName <span class="token operator">+</span> <span class="token string">"完成"</span> <span class="token operator">+</span> serviceNumber <span class="token operator">+</span> <span class="token string">"号VIP客户服务，耗时"</span> <span class="token operator">+</span> serviceTime<span class="token operator">/</span><span class="token number">1000</span> <span class="token operator">+</span> <span class="token string">"秒"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        
+        <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>windowName <span class="token operator">+</span> <span class="token string">"无VIP服务等待客户"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                
+            <span class="token function">commonService</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>    
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="测试类"><a href="#测试类" class="headerlink" title="测试类"></a><strong>测试类</strong></h3><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">//定义测试类,生成一定数目窗口,一定数目顾客,执行服务.</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainClass</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//开放普通窗口并进行实例化</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span><span class="token number">5</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            ServiceWindow window <span class="token operator">=</span>  <span class="token keyword">new</span> <span class="token class-name">ServiceWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            window<span class="token punctuation">.</span><span class="token function">setNumber</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            window<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">//开放快速窗口</span>
+        <span class="token comment" spellcheck="true">//窗口实例化时,通过调用setType()方法确定了服务类型</span>
+        ServiceWindow expressWindow <span class="token operator">=</span>  <span class="token keyword">new</span> <span class="token class-name">ServiceWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        expressWindow<span class="token punctuation">.</span><span class="token function">setType</span><span class="token punctuation">(</span>CustomerType<span class="token punctuation">.</span>EXPRESS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        expressWindow<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//开放VIP窗口        </span>
+        ServiceWindow vipWindow <span class="token operator">=</span>  <span class="token keyword">new</span> <span class="token class-name">ServiceWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        vipWindow<span class="token punctuation">.</span><span class="token function">setType</span><span class="token punctuation">(</span>CustomerType<span class="token punctuation">.</span>VIP<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        vipWindow<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        
+
+        <span class="token comment" spellcheck="true">//普通客户拿号</span>
+        Executors<span class="token punctuation">.</span><span class="token function">newScheduledThreadPool</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">scheduleAtFixedRate</span><span class="token punctuation">(</span>
+                <span class="token keyword">new</span> <span class="token class-name">Runnable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                        Integer serviceNumber <span class="token operator">=</span> CodeMachine<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getCommonCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">createNewCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>serviceNumber <span class="token operator">+</span> <span class="token string">"号普通客户\t等待服务"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                        
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token number">0</span><span class="token punctuation">,</span>
+                <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">nextInt</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>
+                TimeUnit<span class="token punctuation">.</span>SECONDS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//快速客户拿号</span>
+        Executors<span class="token punctuation">.</span><span class="token function">newScheduledThreadPool</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">scheduleAtFixedRate</span><span class="token punctuation">(</span>
+                <span class="token keyword">new</span> <span class="token class-name">Runnable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                        Integer serviceNumber <span class="token operator">=</span> CodeMachine<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getExpressCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">createNewCdoe</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>serviceNumber <span class="token operator">+</span> <span class="token string">"号快速客户\t等待服务"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token number">0</span><span class="token punctuation">,</span>
+                <span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">nextInt</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">,</span> 
+                TimeUnit<span class="token punctuation">.</span>SECONDS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//VIP客户拿号</span>
+        Executors<span class="token punctuation">.</span><span class="token function">newScheduledThreadPool</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">scheduleAtFixedRate</span><span class="token punctuation">(</span>
+                <span class="token keyword">new</span> <span class="token class-name">Runnable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                        Integer serviceNumber <span class="token operator">=</span> CodeMachine<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getVipCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">createNewCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>serviceNumber <span class="token operator">+</span> <span class="token string">"号VIP客户\t等待服务"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token number">0</span><span class="token punctuation">,</span>
+                <span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">nextInt</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">6</span><span class="token punctuation">,</span> 
+                TimeUnit<span class="token punctuation">.</span>SECONDS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题:"></a><strong>问题:</strong></h2><p>其实一直有个不知道怎么实现的想法,我认为服务窗口的服务类型,是体现在客户类型上.应该是由客户的需啊服务类型,决定窗口的最终服务类型.</p>
+<p>是不是可以把窗口真实提供的服务,和通常应该提供的服务作为类型抽取出来,想父类引用指向子类对象那样,可以向下兼容的提供服务.<br>哎,算了,思维比较混了,表达的可能也是比较混乱.</p>
+<p>等捋顺了,再更新.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/黑马程序员/" rel="tag"># 黑马程序员</a>
+          
+            <a href="/tags/基础视频/" rel="tag"># 基础视频</a>
+          
+            <a href="/tags/知识点/" rel="tag"># 知识点</a>
+          
+            <a href="/tags/JAVA/" rel="tag"># JAVA</a>
+          
+            <a href="/tags/基础/" rel="tag"># 基础</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/01/12/交通灯管理系统/" rel="next" title="黑马程序员-交通灯管理系统">
+                <i class="fa fa-chevron-left"></i> 黑马程序员-交通灯管理系统
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/29/Markdown语法和写作使用说明/" rel="prev" title="Markdown 语法和 MWeb 写作使用说明">
+                Markdown 语法和 MWeb 写作使用说明 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="高亮亮" />
+          <p class="site-author-name" itemprop="name">高亮亮</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#事物抽象化分析"><span class="nav-number">1.</span> <span class="nav-text">事物抽象化分析:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#服务编号产生类"><span class="nav-number">1.1.</span> <span class="nav-text">服务编号产生类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编号操作类"><span class="nav-number">1.2.</span> <span class="nav-text">编号操作类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务类型的枚举"><span class="nav-number">1.3.</span> <span class="nav-text">服务类型的枚举</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务窗口类"><span class="nav-number">1.4.</span> <span class="nav-text">服务窗口类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试类"><span class="nav-number">1.5.</span> <span class="nav-text">测试类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">2.</span> <span class="nav-text">问题:</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2013 &mdash; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">高亮亮</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

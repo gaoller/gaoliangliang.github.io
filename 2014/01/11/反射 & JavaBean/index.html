@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="黑马程序员,基础视频,JAVA,反射,内省," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="1.Class类(字节码文件)1.1.概念理解Java类用于描述一类事物的共性，该类事物有什么属性，没有什么属性，至于这个属性的值是什么，则是由这个类的实例对象来确定的，不同的实例对象有不同的属性值。Java程序中的各个Java类，它们是否属于同一类事物，所以可以用一个类来描述这类事物,这个类的名字就是Class，要注意与小写class关键字的区别。 Class类描述了哪些方面的信息:类的名字，类">
+<meta name="keywords" content="黑马程序员,基础视频,JAVA,反射,内省">
+<meta property="og:type" content="article">
+<meta property="og:title" content="黑马程序员-反射 &amp; JavaBean">
+<meta property="og:url" content="http://gaoll.top/2014/01/11/反射 & JavaBean/index.html">
+<meta property="og:site_name" content="Gaoll‘s Blog">
+<meta property="og:description" content="1.Class类(字节码文件)1.1.概念理解Java类用于描述一类事物的共性，该类事物有什么属性，没有什么属性，至于这个属性的值是什么，则是由这个类的实例对象来确定的，不同的实例对象有不同的属性值。Java程序中的各个Java类，它们是否属于同一类事物，所以可以用一个类来描述这类事物,这个类的名字就是Class，要注意与小写class关键字的区别。 Class类描述了哪些方面的信息:类的名字，类">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://img.blog.csdn.net/20140106222755015?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20140106222814375?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20140106222829687?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-08-24T07:53:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="黑马程序员-反射 &amp; JavaBean">
+<meta name="twitter:description" content="1.Class类(字节码文件)1.1.概念理解Java类用于描述一类事物的共性，该类事物有什么属性，没有什么属性，至于这个属性的值是什么，则是由这个类的实例对象来确定的，不同的实例对象有不同的属性值。Java程序中的各个Java类，它们是否属于同一类事物，所以可以用一个类来描述这类事物,这个类的名字就是Class，要注意与小写class关键字的区别。 Class类描述了哪些方面的信息:类的名字，类">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20140106222755015?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://gaoll.top/2014/01/11/反射 & JavaBean/"/>
+
+
+
+
+
+  <title>黑马程序员-反射 & JavaBean | Gaoll‘s Blog</title>
+  
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/prism-solarizedlight.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gaoll‘s Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life Likes Ninjaku Training</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://gaoll.top/2014/01/11/反射 & JavaBean/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="高亮亮">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gaoll‘s Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">黑马程序员-反射 & JavaBean</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-01-11T15:36:00+08:00">
+                2014-01-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">java笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-Class类-字节码文件"><a href="#1-Class类-字节码文件" class="headerlink" title="1.Class类(字节码文件)"></a><strong>1.Class类(字节码文件)</strong></h2><h3 id="1-1-概念理解"><a href="#1-1-概念理解" class="headerlink" title="1.1.概念理解"></a><strong>1.1.概念理解</strong></h3><p>Java类用于描述一类事物的共性，该类事物有什么属性，没有什么属性，至于这个属性的值是什么，则是由这个类的实例对象来确定的，不同的实例对象有不同的属性值。Java程序中的各个Java类，它们是否属于同一类事物，所以可以用一个类来描述这类事物,这个类的名字就是Class，要注意与小写class关键字的区别。</p>
+<p><strong>Class类描述了哪些方面的信息:</strong><br>类的名字，类的访问属性，类所属于的包名，字段名称的列表、方法名称的列表，等等。学习反射，首先就要明白Class这个类。</p>
+<p><strong>写如下代码进行对比理解：</strong><br>每个java类都是Class的一个实例对象，它们的内容不同，但是，它们的特征相同，譬如，都有方法，有字段，有父类，有包。</p>
+<a id="more"></a>
+<h3 id="1-2-Class类获得方法"><a href="#1-2-Class类获得方法" class="headerlink" title="1.2.Class类获得方法"></a><strong>1.2.Class类获得方法</strong></h3><p><strong>类名.class</strong></p>
+<p><strong>对象名.getClass();</strong><br><strong>Class.forName(类名)</strong>;</p>
+<p>这三种方法,最常用的为第二种,第三种.第三种在后期可以通过配置文件读取,所以更为常用.第一中在反射方法的参数类型中常使用.</p>
+<h3 id="1-3-注意问题"><a href="#1-3-注意问题" class="headerlink" title="1.3.注意问题"></a><strong>1.3.注意问题</strong></h3><p>加载了字节码，并调用了其getMethods之类的方法，但是没有看到类的静态代码块被执行，只有在第一个实例对象被创建时，这个静态代码才会被执行。所以准确的说，静态代码块不是在类加载时被调用的，而是第一个实例对象时加载字节码被创建时才执行的。</p>
+<h3 id="1-4-Class类方法"><a href="#1-4-Class类方法" class="headerlink" title="1.4.Class类方法"></a><strong>1.4.Class类方法</strong></h3><h2 id="Class类"><a href="#Class类" class="headerlink" title="Class类"></a>Class类</h2><p><strong><img src="http://img.blog.csdn.net/20140106222755015?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="">
+</strong></p>
+<p><strong><img src="http://img.blog.csdn.net/20140106222814375?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="">
+</strong><br><strong><img src="http://img.blog.csdn.net/20140106222829687?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="">
+</strong></p>
+<h2 id="2-反射"><a href="#2-反射" class="headerlink" title="2.反射"></a><strong>2.反射</strong></h2><p><strong>2.1.概念理解</strong></p>
+<p>反射就是把Java类中的各种成分映射成相应的java类。例如，一个Java类中用一个Class类的对象来表示，一个类中的组成部分：成员变量，方法，构造方法，包等等信息也用一个个的Java类来表示，就像汽车是一个类，汽车中的发动机，变速箱等等也是一个个的类。表示java类的Class类显然要提供一系列的方法，来获得其中的变量，方法，构造方法，修饰符，包等信息，这些信息就是用相应类的实例对象来表示，它们是Field、Method、Contructor、Package等等。<br>一个类中的每个成员都可以用相应的反射API类的一个实例对象来表示，通过调用Class类的方法可以得到这些实例对象后可以通过将对象,参数作为该反射出来对象的参数,进行正向操作.<br><strong>2.2.构造.成员.方法的对应封装类</strong></p>
+<h3 id="Constructor类-构造"><a href="#Constructor类-构造" class="headerlink" title="Constructor类:构造"></a><strong>Constructor类:构造</strong></h3><p><strong>得到某个类所有的构造方法</strong>：<br>例子：Constructor [] constructors= Class.forName(“java.lang.String”).getConstructors();<br><strong>得到某一个构造方法</strong>：<br>例子：    Constructor constructor = Class.forName(“java.lang.String”).getConstructor(StringBuffer.class);<br>//获得方法时要用到类型<br><strong>创建实例对象</strong>：<br>通常方式：String str = new String(new StringBuffer(“abc”));<br>反射方式： String str = (String)constructor.newInstance(new StringBuffer(“abc”));<br>//调用获得的方法时要用到上面相同类型的实例对象<br><strong>Class.newInstance()方法</strong>：<br>例子：String obj = (String)Class.forName(“java.lang.String”).newInstance();<br>该方法内部先得到默认的构造方法，然后用该构造方法创建实例对象。<br>该方法内部的具体代码是怎样写的呢？用到了缓存机制来保存默认构造方法的实例对象。</p>
+<h3 id="Filed类-成员变量"><a href="#Filed类-成员变量" class="headerlink" title="Filed类:成员变量"></a>Filed类:成员变量</h3><p><strong>问题</strong>：得到的Field对象是对应到类上面的成员变量，还是对应到对象上的成员变量？类只有一个，而该类的实例对象有多个，如果是与对象关联，哪关联的是哪个对象呢？所以字段fieldX 代表的是x的定义(或者说声明)，而不是具体的x变量。所以,反射出的东西的操作,必须依托一个对象来体现.<br>示例代码：</p>
+<pre class=" language-java"><code class="language-java">    ReflectPoint point <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ReflectPoint</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Field y <span class="token operator">=</span> Class<span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token string">"cn.itcast.corejava.ReflectPoint"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getField</span><span class="token punctuation">(</span><span class="token string">"y"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>y<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>point<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//Field x = Class.forName("cn.itcast.corejava.ReflectPoint").getField("x");</span>
+Field x <span class="token operator">=</span> Class<span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token string">"cn.itcast.corejava.ReflectPoint"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getDeclaredField</span><span class="token punctuation">(</span><span class="token string">"x"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+x<span class="token punctuation">.</span><span class="token function">setAccessible</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>x<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>point<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="Method类-成员方法"><a href="#Method类-成员方法" class="headerlink" title="Method类:成员方法"></a>Method类:成员方法</h3><p><strong>得到类中的某一个方法</strong>：<br>例子：    Method charAt = Class.forName(“java.lang.String”).getMethod(“charAt”, int.class);<br><strong>调用方法：<br>通常方式</strong>：System.out.println(str.charAt(1));<br><strong>反射方式</strong>： System.out.println(charAt.invoke(str, 1));<br>如果传递给Method对象的invoke()方法的第一个参数为null，这有着什么样的意义呢？说明该Method对象对应的是一个静态方法！<br><strong>jdk1.4和jdk1.5的invoke方法的区别(可变参数)：</strong><br>Jdk1.5：public Object invoke(Object obj,Object… args)<br>Jdk1.4：public Object invoke(Object obj,Object[] args)，即按jdk1.4的语法，需要将一个数组作为参数传递给invoke方法时，数组中的每个元素分别对应被调用方法中的一个参数，所以，调用charAt方法的代码也可以用Jdk1.4改写为 charAt.invoke(“str”, new Object[]{1})形式。</p>
+<h3 id="4-数组的反射"><a href="#4-数组的反射" class="headerlink" title="4.数组的反射"></a><strong>4.数组的反射</strong></h3><h2 id="3-反射—-内省—-JavaBean"><a href="#3-反射—-内省—-JavaBean" class="headerlink" title="3.反射—-内省—-JavaBean"></a><strong>3.反射—-内省—-JavaBean</strong></h2><p><strong>3.1.概念</strong></p>
+<p>JavaBean是一种特殊的Java类，主要用于传递数据信息，这种java类中的方法主要用于访问私有的字段，且方法名符合某种命名规则。<br>如果要在两个模块之间传递多个信息，可以将这些信息封装到一个JavaBean中，这种JavaBean的实例对象通常称之为值对象（Value Object，简称VO）。这些信息在类中用私有字段来存储，如果读取或设置这些字段的值，则需要通过一些相应的方法来访问，大家觉得这些方法的名称叫什么好呢？JavaBean的属性是根据其中的setter和getter方法来确定的，而不是根据其中的成员变量。如果方法名为setId，中文意思即为设置id，至于你把它存到哪个变量上，用管吗？如果方法名为getId，中文意思即为获取id，至于你从哪个变量上取，用管吗？去掉set前缀，剩余部分就是属性名，如果剩余部分的第二个字母是小写的(就代表是定义get,set方法是将首字母大写了)，则把剩余部分的首字母改成小的。</p>
+<h3 id="3-2-涉及到的几个类和接口"><a href="#3-2-涉及到的几个类和接口" class="headerlink" title="3.2.涉及到的几个类和接口"></a>3.2.涉及到的几个类和接口</h3><p><strong>Introspector:</strong></p>
+<p>The Introspector class provides a standard way for tools to learn about the properties, events, and methods supported by a target Java Bean.<br>(我理解他就像一个静态方法库一样的概念,给想要运用内省操作的其他类或者接口等提供静态方法支持)</p>
+<p><strong>MethodDescriptor:</strong><br>A MethodDescriptor describes a particular method that a Java Bean supports for external access from other components.</p>
+<p>(我理解就是,一个该类的实例对象,就是封装某些信息,描述某些个符合JavaBean规则的类的某个成员属性的赋值获取等方法的信息)<br><strong>PropertyDescriptor:(目前不知道MethodDescriptor什么用,有空上网研究下)</strong></p>
+<p>A PropertyDescriptor describes one property that a Java Bean exports via a pair of accessor methods.<br>(我的理解就是,一个该类的实例对象,就是疯涨了描述一个符合JavaBean规则的类的某个成员属性的信息)</p>
+<p><strong>BeanInfo:</strong><br>A bean implementor who wishes to provide explicit information about their bean may provide a BeanInfo class that implements this BeanInfo interface and provides explicit information about the methods, properties, events, etc, of their bean. </p>
+<p>(这个就是每个实例就是封装了所有的跟某个成员属性相关的变量声明,方法(赋值,获取方法),等.每个BeanInfo应该对应一对存储器,一个PropertyDescriptor,一个MethodDescriptor.)<br><strong>他们之间的关系:</strong></p>
+<p>我们可以通过对一个类,调用Introspector中的静态方法,获得他类中所有的BeanInfo(返回值理所当然是个数组.).<br>在通过BeanInfo方法,可以选择性的拿到PropertyDescriptor.</p>
+<p>然后再通过PropertyDescriptor中的方法,可以执行对该属性的赋值.或者了解各种信息.<br>(下面第二个代码用的就是这写步骤)</p>
+<h3 id="3-3-代码"><a href="#3-3-代码" class="headerlink" title="3.3.代码"></a><strong>3.3.代码</strong></h3><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/*
+需求:
+学习内省,JavaBean的使用
+*/</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>reflect<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Student</span><span class="token punctuation">{</span>
+    <span class="token keyword">private</span> String name<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> age<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//    public void setName(String name){</span>
+<span class="token comment" spellcheck="true">//        this.name=name;</span>
+<span class="token comment" spellcheck="true">//    }</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setAge</span><span class="token punctuation">(</span><span class="token keyword">int</span> age<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">//    public String getName(){</span>
+<span class="token comment" spellcheck="true">//        return name;</span>
+<span class="token comment" spellcheck="true">//    }</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> age<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">JavaBeanDemo</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token keyword">throws</span> Exception<span class="token punctuation">{</span>
+        Student s1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//JavaBean的内省方式设置属性值.</span>
+<span class="token comment" spellcheck="true">//        Student s1 = new Student();</span>
+<span class="token comment" spellcheck="true">//        String propertyName = "name";</span>
+<span class="token comment" spellcheck="true">//        PropertyDescriptor pd = new PropertyDescriptor(propertyName,s1.getClass());</span>
+<span class="token comment" spellcheck="true">//        Method methodSetName = pd.getWriteMethod();</span>
+<span class="token comment" spellcheck="true">//        Method methodGetName = pd.getReadMethod();</span>
+<span class="token comment" spellcheck="true">//        methodSetName.invoke(s1,"高富帅");</span>
+<span class="token comment" spellcheck="true">//        System.out.println(methodGetName.invoke(s1)); </span>
+
+        <span class="token comment" spellcheck="true">//反射方式设置属性值.</span>
+        Class <span class="token class-name">studentClass</span> <span class="token operator">=</span> Class<span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token string">"Student"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Field name <span class="token operator">=</span> studentClass<span class="token punctuation">.</span><span class="token function">getDeclaredField</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        name<span class="token punctuation">.</span><span class="token function">setAccessible</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        name<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>s1<span class="token punctuation">,</span><span class="token string">"屌丝"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//        System.out.println(s1.getName());</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>name<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>s1<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">package</span> com<span class="token punctuation">.</span>back<span class="token punctuation">.</span>han<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>BeanInfo<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>Introspector<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>PropertyDescriptor<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>reflect<span class="token punctuation">.</span>Method<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">/**
+ * 存在一个JavaBean，它包含以下几种可能的属性： 1:boolean/Boolean 2:int/Integer 3:String
+ * 4:double/Double 属性名未知，现在要给这些属性设置默认值，以下是要求的默认值： String类型的默认值为字符串
+ * www.itheima.com int/Integer类型的默认值为100 boolean/Boolean类型的默认值为true
+ * double/Double的默认值为0.01D.
+ * 只需要设置带有getXxx/isXxx/setXxx方法的属性，非JavaBean属性不设置，请用代码实现
+ * 
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Test6</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            Bean bean <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Bean</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">init</span><span class="token punctuation">(</span>bean<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>bean<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">static</span> Bean <span class="token function">init</span><span class="token punctuation">(</span>Bean bean<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// TODO Auto-generated method stub</span>
+
+        BeanInfo bi <span class="token operator">=</span> Introspector<span class="token punctuation">.</span><span class="token function">getBeanInfo</span><span class="token punctuation">(</span>bean<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        PropertyDescriptor<span class="token punctuation">[</span><span class="token punctuation">]</span> pds <span class="token operator">=</span> bi<span class="token punctuation">.</span><span class="token function">getPropertyDescriptors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>PropertyDescriptor pd <span class="token operator">:</span> pds<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            Method rm <span class="token operator">=</span> pd<span class="token punctuation">.</span><span class="token function">getWriteMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token keyword">class</span> <span class="token operator">==</span> pd<span class="token punctuation">.</span><span class="token function">getPropertyType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                rm<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span>bean<span class="token punctuation">,</span> <span class="token string">"www.itheima.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">.</span><span class="token keyword">class</span> <span class="token operator">==</span> pd<span class="token punctuation">.</span><span class="token function">getPropertyType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                rm<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span>bean<span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">boolean</span><span class="token punctuation">.</span><span class="token keyword">class</span> <span class="token operator">==</span> pd<span class="token punctuation">.</span><span class="token function">getPropertyType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                rm<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span>bean<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">.</span><span class="token keyword">class</span> <span class="token operator">==</span> pd<span class="token punctuation">.</span><span class="token function">getPropertyType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                rm<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span>bean<span class="token punctuation">,</span> <span class="token number">0.01d</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> bean<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Bean</span> <span class="token punctuation">{</span>
+    String company<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> number<span class="token punctuation">;</span>
+    <span class="token keyword">boolean</span> good<span class="token punctuation">;</span>
+    <span class="token keyword">double</span> cash<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> String <span class="token function">getCompany</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> company<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setCompany</span><span class="token punctuation">(</span>String company<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>company <span class="token operator">=</span> company<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getNumber</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> number<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setNumber</span><span class="token punctuation">(</span><span class="token keyword">int</span> number<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>number <span class="token operator">=</span> number<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isGood</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> good<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setGood</span><span class="token punctuation">(</span><span class="token keyword">boolean</span> good<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>good <span class="token operator">=</span> good<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">double</span> <span class="token function">getCash</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> cash<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setCash</span><span class="token punctuation">(</span><span class="token keyword">double</span> cash<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>cash <span class="token operator">=</span> cash<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> String <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"Bean [company="</span> <span class="token operator">+</span> company <span class="token operator">+</span> <span class="token string">", number="</span> <span class="token operator">+</span> number <span class="token operator">+</span> <span class="token string">", good="</span>
+                <span class="token operator">+</span> good <span class="token operator">+</span> <span class="token string">", cash="</span> <span class="token operator">+</span> cash <span class="token operator">+</span> <span class="token string">"]"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/黑马程序员/" rel="tag"># 黑马程序员</a>
+          
+            <a href="/tags/基础视频/" rel="tag"># 基础视频</a>
+          
+            <a href="/tags/JAVA/" rel="tag"># JAVA</a>
+          
+            <a href="/tags/反射/" rel="tag"># 反射</a>
+          
+            <a href="/tags/内省/" rel="tag"># 内省</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/01/11/泛型(浅识)/" rel="next" title="黑马程序员-泛型(浅识)">
+                <i class="fa fa-chevron-left"></i> 黑马程序员-泛型(浅识)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/01/11/动态代理(面向切面)/" rel="prev" title="黑马程序员-动态代理(面向切面)">
+                黑马程序员-动态代理(面向切面) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="高亮亮" />
+          <p class="site-author-name" itemprop="name">高亮亮</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Class类-字节码文件"><span class="nav-number">1.</span> <span class="nav-text">1.Class类(字节码文件)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-概念理解"><span class="nav-number">1.1.</span> <span class="nav-text">1.1.概念理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Class类获得方法"><span class="nav-number">1.2.</span> <span class="nav-text">1.2.Class类获得方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-注意问题"><span class="nav-number">1.3.</span> <span class="nav-text">1.3.注意问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-Class类方法"><span class="nav-number">1.4.</span> <span class="nav-text">1.4.Class类方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Class类"><span class="nav-number">2.</span> <span class="nav-text">Class类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-反射"><span class="nav-number">3.</span> <span class="nav-text">2.反射</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Constructor类-构造"><span class="nav-number">3.1.</span> <span class="nav-text">Constructor类:构造</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Filed类-成员变量"><span class="nav-number">3.2.</span> <span class="nav-text">Filed类:成员变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Method类-成员方法"><span class="nav-number">3.3.</span> <span class="nav-text">Method类:成员方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-数组的反射"><span class="nav-number">3.4.</span> <span class="nav-text">4.数组的反射</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-反射—-内省—-JavaBean"><span class="nav-number">4.</span> <span class="nav-text">3.反射—-内省—-JavaBean</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-涉及到的几个类和接口"><span class="nav-number">4.1.</span> <span class="nav-text">3.2.涉及到的几个类和接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-代码"><span class="nav-number">4.2.</span> <span class="nav-text">3.3.代码</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2013 &mdash; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">高亮亮</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="黑马程序员,基础视频,JAVA,思路,交通," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="我的初期代码啥也不说了,线上代码.很经典的题目… 我觉得在定义Road中存储汽车的集合,应该用LinkedList,因为有addFist和removeLast方法,既符合实际情况,有相对于没有查询,只增删操作,也提高了效率.还有在定义枚举红绿灯时,也有点小想法,但是还不成熟,先按照老师的整体思路,一步步按照自己的想法做了一遍.">
+<meta name="keywords" content="黑马程序员,基础视频,JAVA,思路,交通">
+<meta property="og:type" content="article">
+<meta property="og:title" content="黑马程序员-交通灯管理系统">
+<meta property="og:url" content="http://gaoll.top/2014/01/12/交通灯管理系统/index.html">
+<meta property="og:site_name" content="Gaoll‘s Blog">
+<meta property="og:description" content="我的初期代码啥也不说了,线上代码.很经典的题目… 我觉得在定义Road中存储汽车的集合,应该用LinkedList,因为有addFist和removeLast方法,既符合实际情况,有相对于没有查询,只增删操作,也提高了效率.还有在定义枚举红绿灯时,也有点小想法,但是还不成熟,先按照老师的整体思路,一步步按照自己的想法做了一遍.">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://img.blog.csdn.net/20140112205610562?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-08-24T07:55:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="黑马程序员-交通灯管理系统">
+<meta name="twitter:description" content="我的初期代码啥也不说了,线上代码.很经典的题目… 我觉得在定义Road中存储汽车的集合,应该用LinkedList,因为有addFist和removeLast方法,既符合实际情况,有相对于没有查询,只增删操作,也提高了效率.还有在定义枚举红绿灯时,也有点小想法,但是还不成熟,先按照老师的整体思路,一步步按照自己的想法做了一遍.">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20140112205610562?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://gaoll.top/2014/01/12/交通灯管理系统/"/>
+
+
+
+
+
+  <title>黑马程序员-交通灯管理系统 | Gaoll‘s Blog</title>
+  
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/prism-solarizedlight.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gaoll‘s Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life Likes Ninjaku Training</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://gaoll.top/2014/01/12/交通灯管理系统/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="高亮亮">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gaoll‘s Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">黑马程序员-交通灯管理系统</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-01-12T04:16:00+08:00">
+                2014-01-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">java笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="我的初期代码"><a href="#我的初期代码" class="headerlink" title="我的初期代码"></a><strong>我的初期代码</strong></h2><p><strong>啥也不说了,线上代码.很经典的题目…</strong></p>
+<p><strong>我觉得在定义Road中存储汽车的集合,应该用LinkedList,因为有addFist和removeLast方法,既符合实际情况,有相对于没有查询,只增删操作,也提高了效率.</strong><br><strong>还有在定义枚举红绿灯时,也有点小想法,但是还不成熟,先按照老师的整体思路,一步步按照自己的想法做了一遍.</strong></p>
+<a id="more"></a>
+<hr>
+<pre><code>    /*
+需求:
+模拟十字路口交通灯管理系统
+分析:
+代码体现现实生活,则需要分析哪些对象,分析用什么类型数据进行代码化.
+这里这样分析:
+名词提炼:有路,有车,有灯
+再提炼动作:车来,车过红绿灯,灯变化.
+所以总结:
+用集合抽象道路,枚举抽象红绿灯,一个操作类抽象灯控制器,一个描述类抽象汽车.
+步骤:
+1.定义路类集合.用来存储要过红绿灯的汽车.&lt;四&gt;
+2.定义灯枚举类,每个实例对象存在四大方向,每个方向有左转,右转,直行3个子属性,并且关联有对应转换方法.&lt;十二&gt;
+3.定义汽车描述类,具有来需要行进方向属,性即:要左行,要右行,要中行.&lt;一&gt;
+4.定义交通灯的控制类.初始化交通灯.
+5.定义测试类.
+*/
+
+
+//定义汽车类.
+public class Car{
+    //定义行进方向数组.
+    static String[] towardsArr = {&quot;左转&quot;,&quot;直行&quot;,&quot;右转&quot;};
+    privateString towards;
+    public getTowards(){
+        return towards;
+    }
+
+    //定义无参构造,车产生则明确行进方向.
+    public Car(){
+        this.towards = towardsArr[new Random().next(3)];
+    }
+}
+
+//定义道路类.
+public class Rode{
+    private List&lt;Car&gt; cars = new LinkedList&lt;Car&gt;();
+    private String name;
+
+    public Road(String name){
+        this.name = name;
+
+        //1到5秒随机产生一辆需要过红绿灯的车.
+        ExecutorService pool = Executors.newSingleThreadExecutor();
+        pool.execute(new Runnable(){
+            public void run(){
+                while(true){
+                    try    {
+                        Thread.sleep((new Random().nextInt(10)+1)*1000);
+                    }catch (InterruptedException e)    {
+                        e.printStackTrace();
+                    }
+                    //出现一辆需要过红绿灯的车
+                    Car temp = new Car();
+                    cars.addLast(temp);
+                }
+            }
+        });
+
+        //定义一个定时器,每个1秒检查红绿灯状态,匹配该路上第一辆车行进方向为绿灯,则该车通行.
+        ScheduledExecutorService timer = Executors.newScheduledThreadPool(1);
+        timer.scheduleAtFixedRate(new Runnable(){
+            public void run(){
+                //判断该路上是否有车,没有车则无需通行.
+                if(cars.size()&gt;0){
+                    //判断该车所要去方向是否为绿灯,是则通行.
+                    boolean lighted = Lamp.valueOf(Road.this.name+temp.getTowards).isLighted();
+                    if(lighted){
+                        System.out.println(&quot;来自&quot;+Road.this.name+temp.towards+&quot;车辆行驶通过..oO&quot;);
+                    }    
+                }
+            }
+        },1,1,TimeUnit.SECONDS);
+    }
+}
+
+//定义红路灯的枚举
+public enum Lamp{
+    //四个红绿灯.分别以来自某条路和行进方向来命名.
+    东右转(null,null,true),东左转(&quot;西左转&quot;,&quot;南直行&quot;,false),东直行(&quot;西直行&quot;,&quot;东左转&quot;,false),
+西右转(null,null,true),西左转(null,null,false),西直行(null,null,false),
+南右转(null,null,true),南左转(&quot;北左转&quot;,&quot;东直行&quot;,false),南直行(&quot;北直行&quot;,&quot;南左转&quot;,false),
+北右转(null,null,true),北左转(null,null,false),北直行(null,null,false);
+
+    //成员属性:是否绿灯(默认为关闭)
+    private boolean lighted;
+    //定义获取等状态的方法方法
+    public boolean isLighted(){
+        return lighted;
+    }
+
+    //每个灯对应有相对的灯,和左转灯的指向.(这里因为是枚举,就用那个灯名的字符串代替了)
+    private String opposite;
+    private String next;
+
+    //用构造定义逆向方向看到的灯和左转方向看到的灯的关联关系.
+    //这里要明确,红绿灯方式为:直行,左转,再逆向直行,逆向左转.右转忽略.
+    private Lamp(String opposite, String next, boolean lighted){
+        this.opposite = opposite;
+        this.next = next;
+        this.lighted = lighted;
+    }
+
+    //当直行方向绿灯亮起的时候,逆向的绿灯也亮起
+    public void light(){
+        this.lighted = true;
+        //判断该灯是否为直行灯(即他有没有逆向灯.)有则同变绿.
+        if(opposite != null){
+            Lamp.valueOf(opposite).lights();
+        }
+    }
+
+    //当一个灯变红时,他对面的灯变红,同时他的
+    public Lamp turnOff(){
+        this.lighted = false;
+        if(opposite != null){
+            Lamp.valueOf(opposite).turnOff();
+        }
+        //一个方向的直行左转结束后,就要到逆向的
+        Lamp Lamp = null;
+        if (next != null) {
+            nextLamp = Lamp.valueOf(next);
+            nextLamp.light();
+        }
+        return nextLamp;
+    }
+
+}
+
+
+//定义红绿灯控制器
+public class LampCotroller {
+    //控制器的作用就是，初始化时一个灯变绿，在一段时间后，变红，调用Lamp的turnOff方法
+    private Lamp currentLamp;
+
+    public LampCotroller() {
+        currentLamp=Lamp.南直行;
+        currentLamp.light();
+        //初始化一个红路灯的开始状态.
+        ScheduledExecutorService timer=Executors.newScheduledThreadPool(1);
+        timer.scheduleAtFixedRate(new Runnable(){
+            public void run(){
+                currentLamp=currentLamp.turnOff();
+            }
+        }, 10, 10, TimeUnit.SECONDS);
+    }
+}
+
+//定义测试类
+public class Test{
+    public static void main(String[] args){
+        String[] from = {&quot;东&quot;,&quot;西&quot;,&quot;南&quot;,&quot;北&quot;};
+        for(String temp : from){
+            new Roda(temp);
+        }
+        new LampCotroller();
+    }
+}
+</code></pre><h2 id="分析总结"><a href="#分析总结" class="headerlink" title="分析总结:"></a><strong>分析总结:</strong></h2><h3 id="分析"><a href="#分析" class="headerlink" title="分析:"></a><strong>分析:</strong></h3><p>首先需求是要模拟十字路口交通灯管理系统.<br><strong>所以对对象,对象的方法等进行分析</strong>:<br>名词提炼:有路,有车,有灯<br>再提炼动作:车来,车过红绿灯,灯变化.<br><strong>所以抽象出的结论是:</strong><br>用集合抽象道路,枚举抽象红绿灯,一个操作类抽象灯控制器,一个描述类抽象汽车.<br><strong>下面是大体的实现步骤:</strong><br>1.定义路类集合.用来存储要过红绿灯的汽车.&lt;四&gt;<br>2.定义灯枚举类,每个实例对象存在四大方向,每个方向有左转,右转,直行3个子属性,并且关联有对应转换方法.&lt;十二&gt;<br>3.定义汽车描述类,具有来需要行进方向属,性即:要左行,要右行,要中行.&lt;一&gt;<br>4.定义交通灯的控制类.初始化交通灯.<br>5.定义测试类.</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结:"></a><strong>总结:</strong></h3><p>首先不得不吐槽下,百度一下,关于交通管理系统这个关键词,就没看到其他不同的代码…跟视频里张老师的代码完全一样…严重怀疑多少人真正写过这个代码.虽然说这个代码不难.不过还是有点感叹,都太懒了…</p>
+<p>然后就是我再做的过程中遇到的一些问题.<br><strong>1.定义Road时,用来存储汽车的集合我认为用LinkedList会更好.</strong></p>
+<p>因为 我觉得用LinkedList他有独特的addFist和removeLast方法,既符合实际情况,又在没有查询,只增删操作的情况下,提高了效率.<br>(LinkedList底层为链表,ArrayList底层为数组)</p>
+<p><strong>2.我觉得应该抽象出来一个汽车描述类.</strong><br>这个类一旦实例化,就应该存在一个属性,就是行进的方向.</p>
+<p>然后用出现在那条路上,拼接上车的行进方向确定所需要匹配的红绿灯.<br><strong>3.还有一个想法,暂时有些迷糊,记录下,稍后再探究.</strong></p>
+<p>就是我认为灯的枚举中,应该只有四个灯,而这四个灯中,应该分别有三个属性,就是左转,右转,直行,当然,如何体现,容我下回分解…<br><strong>Ps.</strong>今天是个特殊的日子,二十多年的辛苦打怪补兵,今天终于在老姐的助攻下,成功升级,辈分+1.以后也是有外甥的人了.</p>
+<p>当然,更让我难以释怀的是,瞬间觉得任重道远起来…孩子,你舅舅我会好好混滴…</p>
+<hr>
+<h2 id="跟新"><a href="#跟新" class="headerlink" title="跟新:"></a><strong><strong>跟新:</strong></strong></h2><p><strong><strong>关于上面第三个想法,今天自己做了下,将红绿灯数目定为4个,因为事实上每个路口一个灯,只是这个灯中有左转,右转,直行三个成员属性.</strong></strong></p>
+<p><strong><strong>还有事关于灯的控制系统,用亮红灯,亮绿灯来控制.</strong></strong><br><strong><strong>下面是新写的代码:</strong></strong></p>
+<hr>
+<hr>
+<pre><code>    //定义测试类
+public class Test{
+    public static void main(String[] args){
+        System.out.println(&quot;\t\t\t \t北\t &quot;);
+        System.out.println(&quot;\t\t\t西\t+\t东&quot;);
+        System.out.println(&quot;\t\t\t \t南\t &quot;);
+        //红绿灯开始工作
+        new LampCotroller();
+        //车辆出现
+        String[] from = {&quot;东&quot;,&quot;西&quot;,&quot;南&quot;,&quot;北&quot;};
+        for(String temp : from){
+            new Road(temp);
+        }
+    }
+}
+</code></pre><pre><code>    //定义汽车类.
+public class Car{
+    //定义行进方向数组.
+    static String[] towardsArr = {&quot;左转&quot;,&quot;直行&quot;,&quot;右转&quot;};
+    private int num;
+    public String getInfo(){
+        return towards+num;
+    }
+    private String towards;
+    public String getTowards(){
+        return towards;
+    }
+
+    //定义构造,车产生则明确行进方向.
+    public Car(int num){
+        this.num = num;
+        this.towards = towardsArr[new Random().nextInt(3)];
+    }
+}
+</code></pre><pre><code>    //定义枚举交通灯类
+public enum Lamp{
+    东(&quot;西&quot;,&quot;北&quot;,&quot;南&quot;),
+    西(&quot;东&quot;,&quot;南&quot;,&quot;北&quot;),
+    南(&quot;北&quot;,&quot;东&quot;,&quot;西&quot;),
+    北(&quot;南&quot;,&quot;西&quot;,&quot;东&quot;);
+
+    //成员属性三个方向的等(true为绿灯,false为红灯):
+    private boolean 左转 = false;
+    private boolean 右转 = false;
+    private boolean 直行 = false;
+
+    //定义判断某行进方向是否为绿灯.
+    public boolean isGreen(String towards) {
+        switch (towards) {
+        case &quot;直行&quot;:
+            return 直行;
+        case &quot;左转&quot;:
+            return 左转;
+        case &quot;右转&quot;:
+            return 右转;
+        default:
+            return false;
+        }
+    }
+
+    //对面路,交叉路灯指向.
+    private String opposite;
+    private String left;
+    private String right;
+
+    //初始化灯枚举实例.
+    private Lamp(String opposite,String left,String right){
+        this.右转 = true;
+        this.opposite = opposite;
+        this.left = left;
+        this.right = right;
+    }
+
+    //一个灯先直后左,对面路灯与之相同,垂直路灯与之相反,
+    //定义变绿方法
+    public void transformGreen(){
+        直行 = true;
+        左转 = false;
+        //同步其他灯的状态
+        synch();
+        System.out.println(&quot;--------------------------------------------&quot;);
+        System.out.println(this.name()+opposite+&quot;\t直行方向\t绿灯---左转方向\t红灯&quot;);
+        System.out.println(right+left+&quot;\t直行方向\t红灯---左转方向\t绿灯&quot;);
+        System.out.println(&quot;--------------------------------------------&quot;);
+    }
+    //定义变红方法
+    public void transformRed(){
+        直行 = false;
+        左转 = true;
+        //同步其他灯的状态.
+        synch();
+        System.out.println(&quot;--------------------------------------------&quot;);
+        System.out.println(this.name()+opposite+&quot;\t直行方向\t红灯---左转方向\t绿灯&quot;);
+        System.out.println(right+left+&quot;\t直行方向\t绿灯---左转方向\t红灯&quot;);
+        System.out.println(&quot;--------------------------------------------&quot;);
+    }
+
+    //定义私有方法,封装同步其他灯的装态
+    private void synch(){
+        Lamp.valueOf(opposite).直行 = 直行 ;
+        Lamp.valueOf(opposite).左转 = 左转 ;
+        Lamp.valueOf(left).直行 = !直行 ;
+        Lamp.valueOf(left).左转 = !左转 ;
+        Lamp.valueOf(right).直行 = !直行 ;
+        Lamp.valueOf(right).左转 = !左转 ;
+    }
+}
+</code></pre><pre><code>    //定义红绿灯控制器
+public class LampCotroller {
+
+    public LampCotroller() {
+        // 指定一个初始化用红绿灯.
+        ScheduledExecutorService timer = Executors.newScheduledThreadPool(1);
+        timer.scheduleAtFixedRate(new Runnable() {
+            @Override
+            public void run() {
+                if (Lamp.南.isGreen(&quot;直行&quot;)) {// 开启控制系统.必然有第一个灯是红或者绿的情况.
+                    Lamp.南.transformRed();
+                } else {
+                    Lamp.南.transformGreen();
+                }
+            }
+        }, 0, 10, TimeUnit.SECONDS);
+    }
+}
+</code></pre><pre><code>    //定义道路
+public class Road{
+    private LinkedList&lt;Car&gt; cars = new LinkedList&lt;Car&gt;();
+    private String name;
+
+    public Road(String name){
+        this.name = name;
+
+        //1到5秒随机产生一辆需要过红绿灯的车.
+        ExecutorService pool = Executors.newSingleThreadExecutor();
+        pool.execute(new Runnable(){
+            public void run(){
+                int count = 1;
+                while(true){
+                    try    {
+                        Thread.sleep((new Random().nextInt(10)+1)*1000);
+                    }catch (InterruptedException e)    {
+                        e.printStackTrace();
+                    }
+                    //出现一辆需要过红绿灯的车
+                    cars.addLast(new Car(count++));
+                }
+            }
+        });
+
+        //定义一个定时器,每个1秒检查红绿灯状态,匹配该路上第一辆车行进方向为绿灯,则该车通行.
+        ScheduledExecutorService timer = Executors.newScheduledThreadPool(1);
+        timer.scheduleAtFixedRate(new Runnable(){
+            public void run(){
+                //当且仅当该路上有车时判断是否过红绿灯.
+                if(cars.size()&gt;0){
+                    //判断该车要去方向是否为绿灯.是则同行.                                        
+                    if( Lamp.valueOf(Road.this.name).isGreen(cars.getFirst().getTowards())){
+                        System.out.println(&quot;来自\t&quot;+Road.this.name+&quot;边\t&quot;+cars.removeFirst().getInfo()+&quot;号车辆\t行驶通过&quot;);
+                    }
+                }
+            }
+        },
+        1,
+        1,
+        TimeUnit.SECONDS);
+    }
+}
+</code></pre><p><strong>实现效果:</strong></p>
+<p><strong><strong><img src="http://img.blog.csdn.net/20140112205610562?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></strong></strong><br><strong><strong><img src="" alt=""></strong></strong></p>
+<hr>
+<hr>
+<p><strong>———————–</strong> <a href="http://edu.csdn.net/heima/" target="_blank" rel="external">android培训</a> <strong>、</strong> <a href="http://edu.csdn.net/heima" target="_blank" rel="external">java培训</a> <strong>、java学习型技术博客、期待与您交流！———————-</strong></p>
+<hr>
+<p><strong><strong>详情请查看：<a href="http://edu.csdn.net/heima" target="_blank" rel="external">http://edu.csdn.net/</a></strong></strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/黑马程序员/" rel="tag"># 黑马程序员</a>
+          
+            <a href="/tags/基础视频/" rel="tag"># 基础视频</a>
+          
+            <a href="/tags/JAVA/" rel="tag"># JAVA</a>
+          
+            <a href="/tags/思路/" rel="tag"># 思路</a>
+          
+            <a href="/tags/交通/" rel="tag"># 交通</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/01/11/动态代理(面向切面)/" rel="next" title="黑马程序员-动态代理(面向切面)">
+                <i class="fa fa-chevron-left"></i> 黑马程序员-动态代理(面向切面)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/01/13/银行客户调度系统/" rel="prev" title="黑马程序-银行客户调度系统">
+                黑马程序-银行客户调度系统 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="高亮亮" />
+          <p class="site-author-name" itemprop="name">高亮亮</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#我的初期代码"><span class="nav-number">1.</span> <span class="nav-text">我的初期代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析总结"><span class="nav-number">2.</span> <span class="nav-text">分析总结:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.1.</span> <span class="nav-text">分析:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">2.2.</span> <span class="nav-text">总结:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跟新"><span class="nav-number">3.</span> <span class="nav-text">跟新:</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2013 &mdash; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">高亮亮</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

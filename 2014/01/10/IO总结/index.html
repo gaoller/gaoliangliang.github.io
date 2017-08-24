@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="黑马程序员,基础视频,知识点,笔记,JAVA," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="题外话:这近十天来.为了赶进度,越来越发现自己没有花多少时间去总结回顾之前的知识了.突然发现IO流已经学习完几天了.竟然一次也没复习过.甚至于提到IO某些知识都有种莫名的陌生感. 的确时间不等人,但是某些必要的时间还是得划出来.更不能因为周边某些人的急功近利,反而乱了自己的节奏.  不断的戒掉旧习,却又不断的有新的恶习. 想优秀,要努力.">
+<meta name="keywords" content="黑马程序员,基础视频,知识点,笔记,JAVA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="黑马程序员-IO总结">
+<meta property="og:url" content="http://gaoll.top/2014/01/10/IO总结/index.html">
+<meta property="og:site_name" content="Gaoll‘s Blog">
+<meta property="og:description" content="题外话:这近十天来.为了赶进度,越来越发现自己没有花多少时间去总结回顾之前的知识了.突然发现IO流已经学习完几天了.竟然一次也没复习过.甚至于提到IO某些知识都有种莫名的陌生感. 的确时间不等人,但是某些必要的时间还是得划出来.更不能因为周边某些人的急功近利,反而乱了自己的节奏.  不断的戒掉旧习,却又不断的有新的恶习. 想优秀,要努力.">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://img.blog.csdn.net/20140102225849875?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20140102225905296?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-08-24T08:22:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="黑马程序员-IO总结">
+<meta name="twitter:description" content="题外话:这近十天来.为了赶进度,越来越发现自己没有花多少时间去总结回顾之前的知识了.突然发现IO流已经学习完几天了.竟然一次也没复习过.甚至于提到IO某些知识都有种莫名的陌生感. 的确时间不等人,但是某些必要的时间还是得划出来.更不能因为周边某些人的急功近利,反而乱了自己的节奏.  不断的戒掉旧习,却又不断的有新的恶习. 想优秀,要努力.">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20140102225849875?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://gaoll.top/2014/01/10/IO总结/"/>
+
+
+
+
+
+  <title>黑马程序员-IO总结 | Gaoll‘s Blog</title>
+  
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/prism-solarizedlight.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gaoll‘s Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life Likes Ninjaku Training</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://gaoll.top/2014/01/10/IO总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="高亮亮">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gaoll‘s Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">黑马程序员-IO总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-01-10T00:02:00+08:00">
+                2014-01-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">java笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>题外话:</strong><br><strong>这近十天来.为了赶进度,越来越发现自己没有花多少时间去总结回顾之前的知识了.突然发现IO流已经学习完几天了.竟然一次也没复习过.甚至于提到IO某些知识都有种莫名的陌生感.</strong> 的确时间不等人,但是某些必要的时间还是得划出来.更不能因为周边某些人的急功近利,反而乱了自己的节奏.</p>
+<hr>
+<p><strong>不断的戒掉旧习,却又不断的有新的恶习.</strong></p>
+<p><strong>想优秀,要努力.</strong></p>
+<hr>
+<a id="more"></a>
+<h2 id="1-I-O概述"><a href="#1-I-O概述" class="headerlink" title="1.I/O概述"></a>1.I/O概述</h2><h3 id="1-1-I-O系统"><a href="#1-1-I-O系统" class="headerlink" title="1.1.I/O系统"></a>1.1.I/O系统</h3><p>顾名思义:输入/输出系统.</p>
+<p>I/O之所以公认最重要,就是因为作为输入输出,就是输入输出的源端和想要与之通信的接收端(对应Input,Output)存在各种形式.而且还需要考虑各种不同的数据类型作为源和接收端之间的数据能否互通问题.</p>
+<h2 id="2-准备工作-File类"><a href="#2-准备工作-File类" class="headerlink" title="2.准备工作-File类"></a>2.准备工作-File类</h2><h3 id="2-1-File类的概念"><a href="#2-1-File类的概念" class="headerlink" title="2.1.File类的概念"></a>2.1.File类的概念</h3><p>一个实用类库工具,用于帮助处理文件内部数据外的文件,文件夹,路径等属性.</p>
+<p>其实就是将文件系统中的文件和文件夹封装成了对象.提供了更多的属性和行为可以对这些文件和文件夹进行操作.这些是流对象办不到的,因为流只操作数据.</p>
+<h3 id="2-2-File类的常用构造和方法"><a href="#2-2-File类的常用构造和方法" class="headerlink" title="2.2.File类的常用构造和方法"></a>2.2.File类的常用构造和方法</h3><h2 id="File类"><a href="#File类" class="headerlink" title="File类"></a>File类</h2><p><strong><img src="http://img.blog.csdn.net/20140102225849875?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="">
+</strong></p>
+<p><strong><img src="http://img.blog.csdn.net/20140102225905296?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></strong></p>
+<p>(更新下,今天用到了一个相当常用,当时学习File没有写进去,罪过)<br><strong>重命名</strong></p>
+<p><strong>boolean</strong> f1.renameTo(Filedest);//可以实现移动的效果.剪切+重命名.</p>
+<p><strong>注意:</strong></p>
+<p><strong>这里的renameTo()方法,改变了需要改变的文件夹后,他的f1封装的还是以前未改的路径,就不是在指向改后的文件或文件夹了!!!</strong></p>
+<p><strong>我</strong>在这里栽了很蛋疼的跟头.谨记.!!</p>
+<h3 id="2-3-案例"><a href="#2-3-案例" class="headerlink" title="2.3.案例"></a>2.3.案例</h3><p>这里最经典就是用递归思想操作一个目标文件下,包括子文件的所有文件及文件夹.<br>我的代码:</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/*
+ * 需求:
+ * 编写程序，将指定目录下所有.java文件拷贝到另一个目的中，并将扩展名改为.txt
+ * 
+ * 思路:
+ * 封装原始与目的路径对象,利用递归的方式获取原始目录下java文件路径对象.
+ * 然后每当获取到java文件路径对象,通过IO流中的字符流在目的路径创建java文件对应txt文件进行复制.
+ * 
+ * 步骤:
+ * 1.键盘录入初始目录路径,目标目录路径,并进行封装.
+ * 2.自定义复制java文件方法,按需求,复制.java文件并改后缀名为.txt.
+ * 3.自定义遍历方法,利用递归的方式,获取初始目录下所有java文件路径对象.
+ * 4.每当获取到java文件路径对象,调用自定义复制方法,进行复制.
+ * 5.反馈操作是否成功.
+ * */</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Test9</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        Scanner in <span class="token operator">=</span>  <span class="token keyword">new</span> <span class="token class-name">Scanner</span><span class="token punctuation">(</span>System<span class="token punctuation">.</span>in<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"您将进行如下操作:\n\t将指定目录下所有.java文件拷贝到另一个目的中，并将扩展名改为.txt\n请输入初始路径:\t(例如:D:/itheima/javaCode)"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        String fromStr<span class="token operator">=</span>in<span class="token punctuation">.</span><span class="token function">nextLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"请输入目标路径:\t(例如:E:/itheima/txtCode)"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        String targetStr<span class="token operator">=</span>in<span class="token punctuation">.</span><span class="token function">nextLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//封装初始路径,目标路径.</span>
+        File from<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span>fromStr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        File target<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span>targetStr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//判断目标路径是否存在,否则创建.</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>target<span class="token punctuation">.</span><span class="token function">exists</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"目标路径不存在,自动创建."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            target<span class="token punctuation">.</span><span class="token function">mkdirs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">//调用方法,复制重命名文件.</span>
+        <span class="token function">copyAll</span><span class="token punctuation">(</span>from<span class="token punctuation">,</span> target<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"拷贝并重命名操作成功!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//定义遍历方法,用递归方式遍历目录下所有java文件,并调用自定义复制方法进行复制.</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">copyAll</span><span class="token punctuation">(</span>File from<span class="token punctuation">,</span>File target<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        File<span class="token punctuation">[</span><span class="token punctuation">]</span> fileList<span class="token operator">=</span>from<span class="token punctuation">.</span><span class="token function">listFiles</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span>File temp <span class="token operator">:</span> fileList<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>temp<span class="token punctuation">.</span><span class="token function">isDirectory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment" spellcheck="true">//如果该路径对象是文件夹,则递归.</span>
+                File targetTemp<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span>temp<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                targetTemp<span class="token punctuation">.</span><span class="token function">mkdirs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token function">copyAll</span><span class="token punctuation">(</span>temp<span class="token punctuation">,</span>targetTemp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>temp<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">endsWith</span><span class="token punctuation">(</span><span class="token string">".java"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment" spellcheck="true">//如果该路径对象是文件,判断是否为java文件,是则调用方法,自定义复制.</span>
+                    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                        <span class="token function">myCopy</span><span class="token punctuation">(</span>temp<span class="token punctuation">,</span>target<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        System<span class="token punctuation">.</span><span class="token function">exit</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//定义复制java文件方法,包括将文件后缀改为txt操作.</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">myCopy</span><span class="token punctuation">(</span>File from<span class="token punctuation">,</span>File target<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException <span class="token punctuation">{</span>
+        File targetFile<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span>from<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">".java"</span><span class="token punctuation">,</span> <span class="token string">".txt"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//修改复制后文件后缀为txt.</span>
+        BufferedReader br<span class="token operator">=</span>null<span class="token punctuation">;</span>
+        BufferedWriter bw<span class="token operator">=</span>null<span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            br<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">BufferedReader</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileReader</span><span class="token punctuation">(</span>from<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            bw<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">BufferedWriter</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileWriter</span><span class="token punctuation">(</span>targetFile<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            String temp<span class="token operator">=</span>null<span class="token punctuation">;</span>
+            <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token punctuation">(</span>temp<span class="token operator">=</span>br<span class="token punctuation">.</span><span class="token function">readLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">!=</span>null<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment" spellcheck="true">//运用字符缓冲流,复制java文件进入目标路径下同名txt文件.</span>
+                bw<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                bw<span class="token punctuation">.</span><span class="token function">newLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> e<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">finally</span><span class="token punctuation">{</span><span class="token comment" spellcheck="true">//关闭资源.</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>bw<span class="token operator">!=</span>null<span class="token punctuation">)</span>
+                <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                    bw<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">throw</span> e<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">finally</span><span class="token punctuation">{</span>
+                    <span class="token keyword">if</span><span class="token punctuation">(</span>br<span class="token operator">!=</span>null<span class="token punctuation">)</span>
+                    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                        br<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        <span class="token keyword">throw</span> e<span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<hr>
+<h2 id="3-IO流体系"><a href="#3-IO流体系" class="headerlink" title="3.IO流体系"></a><strong>3.IO流体系</strong></h2><h3 id="3-1-IO流分类"><a href="#3-1-IO流分类" class="headerlink" title="3.1.IO流分类"></a>3.1.IO流分类</h3><p><strong>流的概念</strong>:可以理解数据的流动,就是一个数据流.IO流最终要以对象来体现.对象都存在IO包中.</p>
+<p>流的分类两种依据<br><strong>处理方式不同</strong>:分为输入流(读)和输出流(写).</p>
+<p><strong>处理的数据不同</strong>:分为字节流和字符流.(下面是四大基类)<br><strong>字节流：InputStream  OutputStream</strong></p>
+<p><strong>字符流：Reader  Writer</strong></p>
+<p><strong>字节流:</strong></p>
+<p>处理字节数据的流对象。设备上的数据无论是图片或者dvd，文字，它们都以二进制存储的。二进制的最终都是以一个8位为数据单元进行体现，所以计算机中的最小数据单元就是字节。意味着，字节流可以处理设备上的所有数据，所以字节流一样可以处理字符数据。</p>
+<p><strong>字符流:</strong></p>
+<p>因为字符每个国家都不一样，所以涉及到了字符编码问题，那么GBK编码的中文用unicode编码解析是有问题的，所以需要获取中文字节数据的同时+ 指定的编码表才可以解析正确数据。为了方便于文字的解析，所以将字节流和编码表封装成对象，这个对象就是<strong>字符流</strong>。只要操作字符数据，优先考虑使用字符流体系。</p>
+<h3 id="3-2-字符流："><a href="#3-2-字符流：" class="headerlink" title="3.2.字符流："></a><strong>3.2.字符流：</strong></h3><p><strong>Reader：</strong>用于读取字符流的抽象类。子类必须实现的方法只有 read(char[], int, int) 和 close()。</p>
+<p>|—BufferedReader：从字符输入流中读取文本，缓冲各个字符，从而实现字符、数组和行的高效读取。可以指定缓冲区的大小，或者可使用默认的大小。大多数情况下，默认值就足够大了。</p>
+<p>|—InputStreamReader：是字节流通向字符流的桥梁：它使用指定的字符集读取字节并将其解码为字符。它使用的字符集可以由名称指定或显式给定，或者可以接受平台默认的字符集。</p>
+<p>|—FileReader：用来读取字符文件的便捷类。此类的构造方法假定默认字符编码和默认字节缓冲区大小都是适当的。要自己指定这些值，可以先在 FileInputStream 上构造一个 InputStreamReader。</p>
+<p><strong>Writer：</strong>写入字符流的抽象类。子类必须实现的方法仅有 write(char[], int, int)、flush() 和 close()。</p>
+<p>|—BufferedWriter：将文本写入字符输出流，缓冲各个字符，从而提供单个字符、数组和字符串的高效写入。</p>
+<p>|—OutputStreamWriter：是字符流通向字节流的桥梁：可使用指定的字符集将要写入流中的字符编码成字节。它使用的字符集可以由名称指定或显式给定，否则将接受平台默认的字符集。</p>
+<p>|—FileWriter：用来写入字符文件的便捷类。此类的构造方法假定默认字符编码和默认字节缓冲区大小都是可接受的。要自己指定这些值，可以先在 FileOutputStream 上构造一个 OutputStreamWriter。</p>
+<p>|—PrintWriter：字符打印流.</p>
+<h3 id="3-3-字节流"><a href="#3-3-字节流" class="headerlink" title="3.3.字节流"></a><strong>3.3.字节流</strong></h3><p><strong>InputStream：是表示字节输入流的所有类的超类。</strong></p>
+<p>|— FileInputStream：从文件系统中的某个文件中获得输入字节。哪些文件可用取决于主机环境。FileInputStream 用于读取诸如图像数据之类的原始字节流。要读取字符流，请考虑使用 FileReader。</p>
+<p>|— BufferedInputStream：该类实现缓冲的字节输入流。</p>
+<p>|— ObjectInputStream：用于序列化的操作流.将对象存入字节文件中进行存储或者传输.</p>
+<p>|— PipedInputStream：管道流.</p>
+<p><strong>OutputStream：此抽象类是表示输出字节流的所有类的超类。</strong></p>
+<p>|— FileOutputStream：文件输出流是用于将数据写入</p>
+<p>File<br>或</p>
+<p>FileDescriptor<br>的输出流。</p>
+<p>|— FilterOutputStream：此类是过滤输出流的所有类的超类。</p>
+<p>|— BufferedOutputStream：该类实现缓冲的输出流。</p>
+<p>|— PrintStream：字节打印流.</p>
+<p>|— ObjectOutputStream：用于反序列化的操作流.将存入文件中的对象数据读取出来获得该对象实例.</p>
+<p>|— PipedOutputStream：管道输出流.</p>
+<h3 id="3-4-流的操作规律："><a href="#3-4-流的操作规律：" class="headerlink" title="3.4.流的操作规律："></a><strong>3.4.流的操作规律：</strong></h3><p><strong>1，明确源和目的。</strong></p>
+<p>数据源：就是需要读取，可以使用两个体系：InputStream、Reader；</p>
+<p>数据汇：就是需要写入，可以使用两个体系：OutputStream、Writer；</p>
+<p><strong>2，操作的数据是否是纯文本数据？</strong></p>
+<p>如果是：数据源：Reader</p>
+<p>数据汇：Writer</p>
+<p>如果不是：数据源：InputStream</p>
+<p>数据汇：OutputStream</p>
+<p><strong>3，虽然确定了一个体系，但是该体系中有太多的对象，到底用哪个呢？</strong></p>
+<p>明确操作的数据设备。</p>
+<p>数据源对应的设备：硬盘(File)，内存(数组)，键盘(System.in)</p>
+<p>数据汇对应的设备：硬盘(File)，内存(数组)，控制台(System.out)。</p>
+<p><strong>4，需要在基本操作上附加其他功能吗？</strong>比如缓冲。</p>
+<p>如果需要就进行装饰。</p>
+<h2 id="4-缓冲区-或者叫高效流"><a href="#4-缓冲区-或者叫高效流" class="headerlink" title="4.缓冲区(或者叫高效流)"></a>4.缓冲区(或者叫高效流)</h2><h3 id="4-1-理解原理"><a href="#4-1-理解原理" class="headerlink" title="4.1.理解原理"></a>4.1.理解原理</h3><p>缓冲区其实就是底层用数组,将需要读取的数据进行缓存,当达到一定量后进行写入或者读取.</p>
+<p>说白了就是读一大片,写一大片.</p>
+<h3 id="4-2-模拟自定义BufferedReader"><a href="#4-2-模拟自定义BufferedReader" class="headerlink" title="4.2.模拟自定义BufferedReader"></a>4.2.模拟自定义BufferedReader</h3><p><strong>(BufferedInputStream等其他高效流类似)</strong></p>
+<p>我的代码:</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/*
+需求:
+利用装饰设计模式,模仿jvm底层实现BufferedReader或者BufferedWriter的方式,自定义读写缓冲区.
+思路:
+缓冲区其实就是对默认的字符输入输出流(FileReader和FileWriter)字节输入输出流进行功能修饰.
+用到了装饰设计模式.
+步骤:
+1.自定义方法,参数列表为需要的输入或者输出流.
+2.将作为参数传递的输入输出流Read或者Writer方法进行缓冲区功能性加强.
+3.封装自定义方法类.作为自定义缓冲区类.
+*/</span>
+
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">MyBufferedReader</span><span class="token punctuation">{</span>
+
+    <span class="token comment" spellcheck="true">//为了让整个类都能调用fr的方法进行装饰.</span>
+    <span class="token keyword">private</span> FileReader fr<span class="token punctuation">;</span>
+
+    <span class="token function">MyBufferedReader</span><span class="token punctuation">(</span>FileReader fr<span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment" spellcheck="true">//让该类一旦实例化,必然存在一个FileReader对象.</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>fr <span class="token operator">=</span> fr<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//定义读取一行的方法.</span>
+    <span class="token keyword">public</span> String <span class="token function">readLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token keyword">throws</span> IOException<span class="token punctuation">{</span>
+        <span class="token keyword">int</span> ch <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        StringBuilder line<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">StringBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token punctuation">(</span>ch<span class="token operator">=</span>fr<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">!=</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>ch<span class="token operator">==</span><span class="token string">'\r'</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>ch<span class="token operator">=</span>fr<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token string">'\n'</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment" spellcheck="true">//同时遇到</span>
+                    <span class="token keyword">return</span> line<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//                line.append('\r');    //如果单单遇到\r而不是\r\n,就把\r放进读取的字符串中.    </span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            line<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token punctuation">)</span>ch<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>line<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">!=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//当读到结尾,line中还存在数据的话,就返回这些数据.</span>
+            <span class="token keyword">return</span> line<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//定义关闭资源方法.</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token keyword">throws</span> IOException<span class="token punctuation">{</span>
+        fr<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">MyBufferedReaderTest</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token keyword">throws</span> IOException<span class="token punctuation">{</span>
+        MyBufferedReader mbr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MyBufferedReader</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileReader</span><span class="token punctuation">(</span><span class="token string">"abc.txt"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        String line <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token punctuation">(</span>line<span class="token operator">=</span>mbr<span class="token punctuation">.</span><span class="token function">readLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">!=</span>null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>line<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        mbr<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="4-3-注意"><a href="#4-3-注意" class="headerlink" title="4.3.注意:"></a>4.3.注意:</h3><p>字符流的缓冲流中提供了readLine()和newLine()方法.</p>
+<p>而字节流的缓冲流中没有提供.需要注意.</p>
+<h2 id="5-转换流"><a href="#5-转换流" class="headerlink" title="5.转换流"></a>5.转换流</h2><h3 id="5-1-转换流概念"><a href="#5-1-转换流概念" class="headerlink" title="5.1.转换流概念"></a>5.1.转换流概念</h3><p><strong>转换流特有功能：</strong>转换流可以将字节转成字符，原因在于，将获取到的字节通过查编码表获取到指定对应字符。</p>
+<p><strong>转换流最重要的内容就是:</strong>字节流 + 编码表 —&gt;字符流.事实上,没有转换流，就没有字符流。</p>
+<pre><code>InputStreamReader-----------&gt;底层为字节流
+
+|--FileReader-------------------&gt;我们应用为字符流
+
+OutputStreamWriter----------&gt;底层为字节流
+
+|--FileWrier---------------------&gt;我们应用为字符流
+所以, 想要操作文本文件,必须要进行编码转换,而编码转换动作转换流都完成了.所以操作文件的流对象只要继承自转换流就可以读取一个字符了.
+
+但是子类有一个局限性，就是子类中使用的编码是固定的，是本机默认的编码表，对于简体中文版的系统默认码表是GBK。
+
+**FileReaderfr = new FileReader(&quot;a.txt&quot;);    等同于    ****InputStreamReaderisr = new InputStreamReader(newFileInputStream(&quot;a.txt&quot;),&quot;gbk&quot;);**
+
+如果仅仅使用平台默认码表，就可以直接使用**:********FileReader fr = new FileReader(&quot;a.txt&quot;); **
+
+如果需要制定码表,必须用转换流.
+
+转换流 = 字节流+编码表.
+
+转换流的子类File = 字节流 + 默认编码表(GBK).
+</code></pre><h3 id="5-2-代码实例"><a href="#5-2-代码实例" class="headerlink" title="5.2.代码实例:"></a>5.2.代码实例:</h3><pre class=" language-java"><code class="language-java">    案例：
+        <span class="token comment" spellcheck="true">//键盘录入数据</span>
+        BufferedReader br <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedReader</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">InputStreamReader</span><span class="token punctuation">(</span>System<span class="token punctuation">.</span>in<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        BufferddWriter bw <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedWriter</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileWriter</span><span class="token punctuation">(</span><span class="token string">"a.txt"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        String line <span class="token operator">=</span> null
+        <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token punctuation">(</span>line<span class="token operator">=</span>br<span class="token punctuation">.</span><span class="token function">readLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">!=</span>null<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token string">"over"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>line<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            bw<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>line<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            bw<span class="token punctuation">.</span><span class="token function">newLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            bw<span class="token punctuation">.</span><span class="token function">flush</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        bw<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        br<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//把文本文件的数据通过流对象在控制台显示</span>
+        BufferedReader br <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedReader</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileReader</span><span class="token punctuation">(</span><span class="token string">"a.txt"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        BufferddWriter bw <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedWriter</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">OutputStreamWriter</span><span class="token punctuation">(</span>System<span class="token punctuation">.</span>out<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        String line <span class="token operator">=</span> null
+        <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token punctuation">(</span>line<span class="token operator">=</span>br<span class="token punctuation">.</span><span class="token function">readLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">!=</span>null<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            bw<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>line<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            bw<span class="token punctuation">.</span><span class="token function">newLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            bw<span class="token punctuation">.</span><span class="token function">flush</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        bw<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        br<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h2 id="6-打印流"><a href="#6-打印流" class="headerlink" title="6.打印流"></a>6.打印流</h2><h3 id="6-1-打印流概念-打印流是写数据的"><a href="#6-1-打印流概念-打印流是写数据的" class="headerlink" title="6.1.打印流概念:打印流是写数据的."></a>6.1.打印流概念:打印流是写数据的.</h3><h3 id="6-2-特点："><a href="#6-2-特点：" class="headerlink" title="6.2.特点："></a>6.2.特点：</h3><p>A:可以写任意数据类型的数据</p>
+<p>B:如果启动了自动刷新，能自动刷新，还会换行。println()<br>C:可以直接往文件写数据</p>
+<p><strong>注意</strong>：看构造方法，一个流对象的构造中如果同时有String和File的构造参数，那么该流对象就可以读写文件。</p>
+<h3 id="6-3-用打印流改进复制文本文件的操作-PrintStream可应用于二进制文件"><a href="#6-3-用打印流改进复制文本文件的操作-PrintStream可应用于二进制文件" class="headerlink" title="6.3.用打印流改进复制文本文件的操作(PrintStream可应用于二进制文件)"></a>6.3.用打印流改进复制文本文件的操作(PrintStream可应用于二进制文件)</h3><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">//数据源：</span>
+    <span class="token comment" spellcheck="true">//c:\\a.txt</span>
+<span class="token comment" spellcheck="true">//目的地：</span>
+    <span class="token comment" spellcheck="true">//d:\\b.txt</span>
+        BufferedReader br <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedReader</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileReader</span><span class="token punctuation">(</span><span class="token string">"c:\\a.txt"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        PrintWriter pw <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PrintWriter</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileWriter</span><span class="token punctuation">(</span><span class="token string">"d:\\b.txt"</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        String line <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token punctuation">(</span>line<span class="token operator">=</span>br<span class="token punctuation">.</span><span class="token function">readLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">!=</span>null<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            pw<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>line<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        pw<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        br<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h2 id="7-字符编码"><a href="#7-字符编码" class="headerlink" title="7.字符编码"></a>7.字符编码</h2><h3 id="7-1-编码表："><a href="#7-1-编码表：" class="headerlink" title="7.1.编码表："></a>7.1.编码表：</h3><p>就是字符和对应的数据组成的一张表。</p>
+<h3 id="7-2-常见的编码表："><a href="#7-2-常见的编码表：" class="headerlink" title="7.2.常见的编码表："></a>7.2.常见的编码表：</h3><p>ASCII<br>ISO-8859-1<br>GBK<br>GB2310<br>GB18030<br>UTF-8<br>BIG5</p>
+<h3 id="7-3-转换流中的编码问题"><a href="#7-3-转换流中的编码问题" class="headerlink" title="7.3.转换流中的编码问题"></a>7.3.转换流中的编码问题</h3><p>A:字符流 = 字节流+编码表<br>B:通过转换流写入数据，指定为UTF-8编码，并通过UTF-8编码读取。</p>
+<h2 id="8-存储程序对象信息"><a href="#8-存储程序对象信息" class="headerlink" title="8.存储程序对象信息."></a>8.存储程序对象信息.</h2><h3 id="8-1-通过Properties-序列化存储"><a href="#8-1-通过Properties-序列化存储" class="headerlink" title="8.1.通过Properties,序列化存储."></a>8.1.通过Properties,序列化存储.</h3><p><strong>Properties:</strong></p>
+<p>通过键值对的形式,将对象的属性名,属性值作为键值对映射的方式存入Map中.(Properties:为Map的实现类)</p>
+<p><strong>序列化</strong>:</p>
+<p>通过ObjectInputStream流将实现了序列化接口的类实例化对象以二进制数据的形式写入文本文件中</p>
+<pre><code>A: setProperty(String key,String value)
+B:getProperty(String key)
+
+getProperty(String key,String defaultValue)
+C:Set&lt;String&gt; stringPropertyNames()
+和IO流结合的方法：
+A:list 通过打印流把数据保存到文件中
+B:load 通过任意流把文本中的数据加载到集合中
+C:store 通过任意流把数据保存到文件中
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/黑马程序员/" rel="tag"># 黑马程序员</a>
+          
+            <a href="/tags/基础视频/" rel="tag"># 基础视频</a>
+          
+            <a href="/tags/知识点/" rel="tag"># 知识点</a>
+          
+            <a href="/tags/笔记/" rel="tag"># 笔记</a>
+          
+            <a href="/tags/JAVA/" rel="tag"># JAVA</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/01/06/重要代码记录Part1(end)/" rel="next" title="黑马程序员-重要代码记录Part1(end)">
+                <i class="fa fa-chevron-left"></i> 黑马程序员-重要代码记录Part1(end)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/01/10/重要代码记录Part2(持续跟新)/" rel="prev" title="黑马程序员-重要代码记录Part2(持续跟新)">
+                黑马程序员-重要代码记录Part2(持续跟新) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="高亮亮" />
+          <p class="site-author-name" itemprop="name">高亮亮</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-I-O概述"><span class="nav-number">1.</span> <span class="nav-text">1.I/O概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-I-O系统"><span class="nav-number">1.1.</span> <span class="nav-text">1.1.I/O系统</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-准备工作-File类"><span class="nav-number">2.</span> <span class="nav-text">2.准备工作-File类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-File类的概念"><span class="nav-number">2.1.</span> <span class="nav-text">2.1.File类的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-File类的常用构造和方法"><span class="nav-number">2.2.</span> <span class="nav-text">2.2.File类的常用构造和方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#File类"><span class="nav-number">3.</span> <span class="nav-text">File类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-案例"><span class="nav-number">3.1.</span> <span class="nav-text">2.3.案例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-IO流体系"><span class="nav-number">4.</span> <span class="nav-text">3.IO流体系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-IO流分类"><span class="nav-number">4.1.</span> <span class="nav-text">3.1.IO流分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-字符流："><span class="nav-number">4.2.</span> <span class="nav-text">3.2.字符流：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-字节流"><span class="nav-number">4.3.</span> <span class="nav-text">3.3.字节流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-流的操作规律："><span class="nav-number">4.4.</span> <span class="nav-text">3.4.流的操作规律：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-缓冲区-或者叫高效流"><span class="nav-number">5.</span> <span class="nav-text">4.缓冲区(或者叫高效流)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-理解原理"><span class="nav-number">5.1.</span> <span class="nav-text">4.1.理解原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-模拟自定义BufferedReader"><span class="nav-number">5.2.</span> <span class="nav-text">4.2.模拟自定义BufferedReader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-注意"><span class="nav-number">5.3.</span> <span class="nav-text">4.3.注意:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-转换流"><span class="nav-number">6.</span> <span class="nav-text">5.转换流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-转换流概念"><span class="nav-number">6.1.</span> <span class="nav-text">5.1.转换流概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-代码实例"><span class="nav-number">6.2.</span> <span class="nav-text">5.2.代码实例:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-打印流"><span class="nav-number">7.</span> <span class="nav-text">6.打印流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-打印流概念-打印流是写数据的"><span class="nav-number">7.1.</span> <span class="nav-text">6.1.打印流概念:打印流是写数据的.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-特点："><span class="nav-number">7.2.</span> <span class="nav-text">6.2.特点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-用打印流改进复制文本文件的操作-PrintStream可应用于二进制文件"><span class="nav-number">7.3.</span> <span class="nav-text">6.3.用打印流改进复制文本文件的操作(PrintStream可应用于二进制文件)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-字符编码"><span class="nav-number">8.</span> <span class="nav-text">7.字符编码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-编码表："><span class="nav-number">8.1.</span> <span class="nav-text">7.1.编码表：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-常见的编码表："><span class="nav-number">8.2.</span> <span class="nav-text">7.2.常见的编码表：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3-转换流中的编码问题"><span class="nav-number">8.3.</span> <span class="nav-text">7.3.转换流中的编码问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-存储程序对象信息"><span class="nav-number">9.</span> <span class="nav-text">8.存储程序对象信息.</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1-通过Properties-序列化存储"><span class="nav-number">9.1.</span> <span class="nav-text">8.1.通过Properties,序列化存储.</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2013 &mdash; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">高亮亮</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

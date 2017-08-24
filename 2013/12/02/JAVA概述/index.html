@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="黑马程序员,笔记,JAVA,基础,教程," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="1.计算机基础知识1.1.计算机,硬件,软件计算机(Computer):电子计算机,电脑.计算机现已经应用渗透到社会各个领域.推动人们工作,生活,学习各种发展. 计算机硬件:(Computer Hardware）是指计算机系统中由电子,机械和光电元件等组成的各种物理装置的总称.这些物理装置按系统结构的要求构成一个有机整体为计算机软件运行提供物质基础.计算机通常由CPU、主板、内存、电源、主机箱、硬">
+<meta name="keywords" content="黑马程序员,笔记,JAVA,基础,教程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="黑马程序员-JAVA概述">
+<meta property="og:url" content="http://gaoll.top/2013/12/02/JAVA概述/index.html">
+<meta property="og:site_name" content="Gaoll‘s Blog">
+<meta property="og:description" content="1.计算机基础知识1.1.计算机,硬件,软件计算机(Computer):电子计算机,电脑.计算机现已经应用渗透到社会各个领域.推动人们工作,生活,学习各种发展. 计算机硬件:(Computer Hardware）是指计算机系统中由电子,机械和光电元件等组成的各种物理装置的总称.这些物理装置按系统结构的要求构成一个有机整体为计算机软件运行提供物质基础.计算机通常由CPU、主板、内存、电源、主机箱、硬">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://img.blog.csdn.net/20131201234948234?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-08-24T08:23:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="黑马程序员-JAVA概述">
+<meta name="twitter:description" content="1.计算机基础知识1.1.计算机,硬件,软件计算机(Computer):电子计算机,电脑.计算机现已经应用渗透到社会各个领域.推动人们工作,生活,学习各种发展. 计算机硬件:(Computer Hardware）是指计算机系统中由电子,机械和光电元件等组成的各种物理装置的总称.这些物理装置按系统结构的要求构成一个有机整体为计算机软件运行提供物质基础.计算机通常由CPU、主板、内存、电源、主机箱、硬">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20131201234948234?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://gaoll.top/2013/12/02/JAVA概述/"/>
+
+
+
+
+
+  <title>黑马程序员-JAVA概述 | Gaoll‘s Blog</title>
+  
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/prism-solarizedlight.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gaoll‘s Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life Likes Ninjaku Training</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://gaoll.top/2013/12/02/JAVA概述/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="高亮亮">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gaoll‘s Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">黑马程序员-JAVA概述</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-12-02T00:17:00+08:00">
+                2013-12-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">java笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-计算机基础知识"><a href="#1-计算机基础知识" class="headerlink" title="1.计算机基础知识"></a>1.计算机基础知识</h2><h3 id="1-1-计算机-硬件-软件"><a href="#1-1-计算机-硬件-软件" class="headerlink" title="1.1.计算机,硬件,软件"></a>1.1.计算机,硬件,软件</h3><p>计算机(Computer):电子计算机,电脑.计算机现已经应用渗透到社会各个领域.推动人们工作,生活,学习各种发展.</p>
+<p>计算机硬件:(Computer Hardware）是指计算机系统中由电子,机械和光电元件等组成的各种物理装置的总称.这些物理装置按系统结构的要求构成一个有机整体为计算机软件运行提供物质基础.计算机通常由CPU、主板、内存、电源、主机箱、硬盘、显卡、键盘、鼠标,显示器等多个部件组成.</p>
+<p>计算机软件:计算机软件是使用计算机过程中必不可少的东西，计算机软件可以使计算机按照事先预定好的顺序完成特定的功能，计算机软件按照其功能划分为系统软件与应用软件.</p>
+<p>系统软件:DOS(Disk Operating System), Windows, Linux, Unix, Mac, Android, iOS</p>
+<p>应用软件:office QQ聊天 YY语言 扫雷</p>
+<a id="more"></a>
+<h3 id="1-2-计算机软件开发"><a href="#1-2-计算机软件开发" class="headerlink" title="1.2.计算机软件开发"></a>1.2.计算机软件开发</h3><p>软件:按照特定顺序组织的计算机数据和指令的集合.</p>
+<p>开发:软件的制作过程.</p>
+<p>软件开发:借助开发工具,计算机语言制作程序,软件. </p>
+<h3 id="1-3-计算机语言"><a href="#1-3-计算机语言" class="headerlink" title="1.3.计算机语言"></a>1.3.计算机语言</h3><p>语言:人类进行沟通交流的各种表达符号,方便人与人之间进行沟通与信息交换.</p>
+<p>计算机语言:人与计算机之间进行的信息交流沟通的一种特殊语言.计算机语言,也有字符,符号等等.常见计算机语言:C,C++,JAVA </p>
+<h3 id="1-4-人机交互方式"><a href="#1-4-人机交互方式" class="headerlink" title="1.4.人机交互方式"></a>1.4.人机交互方式</h3><p>软件的出现实现了人与计算机之间的更好的交流互动.</p>
+<p>交互方式:–图形化界面:此方式简单直观,易于使用者接受,容易上手操作.</p>
+<pre><code>             --命令行方式:需要一个特定的控制台,输入特定的指令,让季孙吉完成一些操作.较为麻烦,需要记录那些命令. 
+</code></pre><h3 id="1-5-键盘功能键-快捷键介绍"><a href="#1-5-键盘功能键-快捷键介绍" class="headerlink" title="1.5.键盘功能键,快捷键介绍"></a>1.5.键盘功能键,快捷键介绍</h3><p>键盘功能键:</p>
+<p>Tab</p>
+<p>Shift        Ctrl        Alt</p>
+<p>空格        Enter</p>
+<p>Window</p>
+<p>上下左右……</p>
+<p>PrtScr(PrintScreen)截屏</p>
+<p>快捷键(组合):</p>
+<p>Ctrl+A    全选</p>
+<p>Ctrl+C    复制</p>
+<p>Ctrl+Z    撤销</p>
+<p>Ctrl+V    粘贴</p>
+<p>Ctrl+X    剪切</p>
+<p>Ctrl+S    保存 </p>
+<h3 id="1-6-常用的dos命令"><a href="#1-6-常用的dos命令" class="headerlink" title="1.6.常用的dos命令"></a>1.6.常用的dos命令</h3><p><strong>打开DOS控制台方式</strong>:开始菜单;运行,cmd;Win+R,cmd;</p>
+<p><strong>常用DOS命令</strong>:</p>
+<p>d:回车    盘符切换</p>
+<p>dir(directory)    列出当前目录下文件以及文件夹</p>
+<p>md(make directory)    创建目录</p>
+<p>rd(remove directory)    删除目录</p>
+<p>cd(change directory)    改变指定目录(进入指定目录)</p>
+<p>cd..    退回到上一级目录</p>
+<p>cd\     退回到根目录</p>
+<p>del(delete)    删除文件,删除删除一堆文件名后缀名一样的文件用/*.txt</p>
+<p>exit    退出DOS命令行</p>
+<p>cls(clear screen)    清屏 </p>
+<h2 id="2-JAVA语言概述"><a href="#2-JAVA语言概述" class="headerlink" title="2.JAVA语言概述"></a>2.JAVA语言概述</h2><p><strong>JAVA语言发展史</strong>:詹姆斯.高斯林(JamesGosling)</p>
+<p><strong>JAVA语言平台版本</strong>(JAVASE,JAVAME,JAVAEE)</p>
+<p><strong>JAVA语言特点</strong>: 简单性,解释性,面对对象,高性能,分布式处理,多线程,健壮性,动态,结构中立,安全性,开源,跨平台.</p>
+<p>跨平台性:通过JAVA语言编写的应用程序在不同系统平台上都可以运行.</p>
+<p>原理:只需要在运行JAVA应用程序的操作系统上,先安装一个JAVA虚拟机(JVM).由JVM来负责JAVA程序在该系统中的运行.</p>
+<p><img src="http://img.blog.csdn.net/20131201234948234?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p><strong>JRE,JDK,JVM</strong></p>
+<p>JRE:Java runtime environment</p>
+<p>JDK:Java development kit</p>
+<p>JVM:Java virtue machine </p>
+<h2 id="3-JDK的下载-安装"><a href="#3-JDK的下载-安装" class="headerlink" title="3.JDK的下载,安装"></a>3.JDK的下载,安装</h2><p>通过官网<a href="http://www.oracle.com" target="_blank" rel="external">http://www.oracle.com</a>选择对应版本,下载安装 </p>
+<h2 id="4-HellowWorld案例"><a href="#4-HellowWorld案例" class="headerlink" title="4.HellowWorld案例"></a>4.HellowWorld案例</h2><h3 id="4-1-开发工具介绍"><a href="#4-1-开发工具介绍" class="headerlink" title="4.1.开发工具介绍"></a>4.1.开发工具介绍</h3><p>编写java程序可以使用很多工具</p>
+<p>notepad(微软自带);Editplus;Eclipse;MyEclipse </p>
+<h3 id="4-2-HelloWorld"><a href="#4-2-HelloWorld" class="headerlink" title="4.2.HelloWorld"></a>4.2.HelloWorld</h3><p>首先定义一个类:</p>
+<p>class 类名</p>
+<p>在类定以后加上一对大括号</p>
+<p>{}</p>
+<p>在大括号中间加上一个主(main)方法/函数</p>
+<p>public static void main(String[] args){}</p>
+<p>在主函数方法的大括号中添加一句输出语句</p>
+<p>System.out.println(“hello world”);</p>
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">class</span> <span class="token class-name">Demo</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Hello World"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="4-3-程序解析"><a href="#4-3-程序解析" class="headerlink" title="4.3.程序解析"></a>4.3.程序解析</h3><p>首先编写JAVA源代码程序,扩展名.java</p>
+<p>在命令行模式中,输入javac命令对源代码文件进行编译,生成对应的字码节文件</p>
+<pre><code>              javac 源文件名.java
+</code></pre><p>便宜完成后,如果美欧报错信息,输入java命令,对classpath字码节文件进行解释运行,执行时,不加后缀名.class</p>
+<pre><code>              java Demo 
+</code></pre><h3 id="4-4-运行与工作原理"><a href="#4-4-运行与工作原理" class="headerlink" title="4.4.运行与工作原理"></a>4.4.运行与工作原理</h3><pre><code>                         ![](http://img.blog.csdn.net/20131202000410875?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+</code></pre><h2 id="5-环境变量的配置"><a href="#5-环境变量的配置" class="headerlink" title="5.环境变量的配置"></a>5.环境变量的配置</h2><h3 id="5-1-path环境变量配置的作用"><a href="#5-1-path环境变量配置的作用" class="headerlink" title="5.1.path环境变量配置的作用"></a>5.1.path环境变量配置的作用</h3><p>程序的执行需要使用外部指令javac，但是javac指令仅仅能在JDK安装目录下的bin目录下时候，因此程序只能写入bin目录</p>
+<p>程序开发过程中，不能将源代码写入JDK的安装目录，因此需要将源程序保存到任意位置的指定目录(英文目录)，所以需要使javac指令在任意目录下可以运行. </p>
+<h3 id="5-2-path环境变量配置方法"><a href="#5-2-path环境变量配置方法" class="headerlink" title="5.2.path环境变量配置方法:"></a>5.2.path环境变量配置方法:</h3><p>通过配置path环境变量，将javac指令所在目录也就是JDK安装目录下的bin目录配置到path变量下，即可使javac指令在任意目录下运行</p>
+<p><strong>win7,win8**</strong>系统**：右键点击桌面计算机→选择属性→选择高级系统设置→选择高级选项卡→点击环境变量→下方系统变量中查找path→双击path</p>
+<p><strong>XP**</strong>系统**：右键点击桌面计算机→选择属性→选择高级选项卡→点击环境变量→下方系统变量中查找path→双击path</p>
+<p>将jdk安装目录下的bin目录添加到最左边并添加分号.</p>
+<p><strong>path环境变量的参照配置方式</strong></p>
+<p>新建一个变量,变量名为JAVA_HOME.</p>
+<p>为JAVA_HOME添加变量值：JDK安装目录</p>
+<p>将path环境变量中JDK目录修改</p>
+<p>%JAVA_HOME%\bin;</p>
+<p>注意:path环境变量具有先后顺序 </p>
+<h3 id="5-3-classpath环境变量配置"><a href="#5-3-classpath环境变量配置" class="headerlink" title="5.3.classpath环境变量配置"></a>5.3.classpath环境变量配置</h3><p>classpath环境变量配置方式:类似于path设置,可以理解为一个面对exe格式程序,;另一个面对class格式程序. </p>
+<h3 id="5-4-path和classpath的区别"><a href="#5-4-path和classpath的区别" class="headerlink" title="5.4.path和classpath的区别"></a>5.4.path和classpath的区别</h3><p><strong>path环境变量</strong>里面记录的是可执行文件(exe),对可执行文件在当前路径去找,如果没有,则去path环境变量中配置的路径 去找</p>
+<p><strong>classpath环境变量</strong>里面记录的是java类的运行文件(class)所在的目录</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/黑马程序员/" rel="tag"># 黑马程序员</a>
+          
+            <a href="/tags/笔记/" rel="tag"># 笔记</a>
+          
+            <a href="/tags/JAVA/" rel="tag"># JAVA</a>
+          
+            <a href="/tags/基础/" rel="tag"># 基础</a>
+          
+            <a href="/tags/教程/" rel="tag"># 教程</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/10/29/论坛里看到的一篇文章，觉得很有用/" rel="next" title="论坛里看到的一篇文章，觉得很有用。">
+                <i class="fa fa-chevron-left"></i> 论坛里看到的一篇文章，觉得很有用。
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2013/12/04/JAVA基础语法1/" rel="prev" title="黑马程序员-JAVA基础语法1">
+                黑马程序员-JAVA基础语法1 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="高亮亮" />
+          <p class="site-author-name" itemprop="name">高亮亮</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-计算机基础知识"><span class="nav-number">1.</span> <span class="nav-text">1.计算机基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-计算机-硬件-软件"><span class="nav-number">1.1.</span> <span class="nav-text">1.1.计算机,硬件,软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-计算机软件开发"><span class="nav-number">1.2.</span> <span class="nav-text">1.2.计算机软件开发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-计算机语言"><span class="nav-number">1.3.</span> <span class="nav-text">1.3.计算机语言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-人机交互方式"><span class="nav-number">1.4.</span> <span class="nav-text">1.4.人机交互方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-键盘功能键-快捷键介绍"><span class="nav-number">1.5.</span> <span class="nav-text">1.5.键盘功能键,快捷键介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-常用的dos命令"><span class="nav-number">1.6.</span> <span class="nav-text">1.6.常用的dos命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-JAVA语言概述"><span class="nav-number">2.</span> <span class="nav-text">2.JAVA语言概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-JDK的下载-安装"><span class="nav-number">3.</span> <span class="nav-text">3.JDK的下载,安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-HellowWorld案例"><span class="nav-number">4.</span> <span class="nav-text">4.HellowWorld案例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-开发工具介绍"><span class="nav-number">4.1.</span> <span class="nav-text">4.1.开发工具介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-HelloWorld"><span class="nav-number">4.2.</span> <span class="nav-text">4.2.HelloWorld</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-程序解析"><span class="nav-number">4.3.</span> <span class="nav-text">4.3.程序解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-运行与工作原理"><span class="nav-number">4.4.</span> <span class="nav-text">4.4.运行与工作原理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-环境变量的配置"><span class="nav-number">5.</span> <span class="nav-text">5.环境变量的配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-path环境变量配置的作用"><span class="nav-number">5.1.</span> <span class="nav-text">5.1.path环境变量配置的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-path环境变量配置方法"><span class="nav-number">5.2.</span> <span class="nav-text">5.2.path环境变量配置方法:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-classpath环境变量配置"><span class="nav-number">5.3.</span> <span class="nav-text">5.3.classpath环境变量配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-path和classpath的区别"><span class="nav-number">5.4.</span> <span class="nav-text">5.4.path和classpath的区别</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2013 &mdash; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">高亮亮</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

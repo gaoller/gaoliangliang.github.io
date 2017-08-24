@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="黑马程序员,笔记,JAVA,基础,教程," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="1.关键字1.1.定义：被JAVA语言赋予了特殊意义的单词。1.2.特点：JAVA语言中的所有关键字都是小写。1.3.注意事项：goto和const作为保留字存在。（在JDK中的新版本可能会被提升为关键字）但没有被使用。">
+<meta name="keywords" content="黑马程序员,笔记,JAVA,基础,教程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="黑马程序员-JAVA基础语法1">
+<meta property="og:url" content="http://gaoll.top/2013/12/04/JAVA基础语法1/index.html">
+<meta property="og:site_name" content="Gaoll‘s Blog">
+<meta property="og:description" content="1.关键字1.1.定义：被JAVA语言赋予了特殊意义的单词。1.2.特点：JAVA语言中的所有关键字都是小写。1.3.注意事项：goto和const作为保留字存在。（在JDK中的新版本可能会被提升为关键字）但没有被使用。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://img.blog.csdn.net/20131204003202250?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20131204003418421?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-08-24T08:24:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="黑马程序员-JAVA基础语法1">
+<meta name="twitter:description" content="1.关键字1.1.定义：被JAVA语言赋予了特殊意义的单词。1.2.特点：JAVA语言中的所有关键字都是小写。1.3.注意事项：goto和const作为保留字存在。（在JDK中的新版本可能会被提升为关键字）但没有被使用。">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20131204003202250?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://gaoll.top/2013/12/04/JAVA基础语法1/"/>
+
+
+
+
+
+  <title>黑马程序员-JAVA基础语法1 | Gaoll‘s Blog</title>
+  
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/prism-solarizedlight.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gaoll‘s Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life Likes Ninjaku Training</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://gaoll.top/2013/12/04/JAVA基础语法1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="高亮亮">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gaoll‘s Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">黑马程序员-JAVA基础语法1</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-12-04T01:49:00+08:00">
+                2013-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">java笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-关键字"><a href="#1-关键字" class="headerlink" title="1.关键字"></a>1.关键字</h2><h3 id="1-1-定义：被JAVA语言赋予了特殊意义的单词。"><a href="#1-1-定义：被JAVA语言赋予了特殊意义的单词。" class="headerlink" title="1.1.定义：被JAVA语言赋予了特殊意义的单词。"></a>1.1.定义：被JAVA语言赋予了特殊意义的单词。</h3><h3 id="1-2-特点：JAVA语言中的所有关键字都是小写。"><a href="#1-2-特点：JAVA语言中的所有关键字都是小写。" class="headerlink" title="1.2.特点：JAVA语言中的所有关键字都是小写。"></a>1.2.特点：JAVA语言中的所有关键字都是小写。</h3><h3 id="1-3-注意事项：goto和const作为保留字存在。"><a href="#1-3-注意事项：goto和const作为保留字存在。" class="headerlink" title="1.3.注意事项：goto和const作为保留字存在。"></a>1.3.注意事项：goto和const作为保留字存在。</h3><p>（在JDK中的新版本可能会被提升为关键字）但没有被使用。</p>
+<p><img src="http://img.blog.csdn.net/20131204003202250?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<a id="more"></a>
+<p><img src="http://img.blog.csdn.net/20131204003418421?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<h2 id="2-标识符"><a href="#2-标识符" class="headerlink" title="2.标识符"></a>2.标识符</h2><h3 id="2-1-定义：就是给类，变量，接口，方法起名。"><a href="#2-1-定义：就是给类，变量，接口，方法起名。" class="headerlink" title="2.1.定义：就是给类，变量，接口，方法起名。"></a>2.1.定义：就是给类，变量，接口，方法起名。</h3><h3 id="2-2-组成规则："><a href="#2-2-组成规则：" class="headerlink" title="2.2.组成规则："></a>2.2.组成规则：</h3><p>由且仅由数字（0-9），英文字母大小写，$，_，组成。</p>
+<h3 id="2-3-注意事项："><a href="#2-3-注意事项：" class="headerlink" title="2.3.注意事项："></a>2.3.注意事项：</h3><p>2.3.1.只能由组成规则规定的内容组成。</p>
+<p>2.3.2.首字母不可以为数字。</p>
+<p>2.3.3.严重区分大小写。</p>
+<p>2.3.4.不可以为JAVA关键字。（包括预留关键字）</p>
+<h3 id="2-4-常用的命名规则：见名知意，驼峰命名。"><a href="#2-4-常用的命名规则：见名知意，驼峰命名。" class="headerlink" title="2.4.常用的命名规则：见名知意，驼峰命名。"></a>2.4.常用的命名规则：见名知意，驼峰命名。</h3><p>2.4.1.包（文件夹，用于区分同名类）：</p>
+<p>全部小写。如果是多级包，则单词间用.分开。</p>
+<p>例：</p>
+<p>com    一级包</p>
+<p>cn.itcast    二级包</p>
+<p>注意：<a href="http://www.itcast.cn" target="_blank" rel="external">www.itcast.cn</a>(一般我们是保存为域名的反写)</p>
+<p>2.4.2.类和接口：</p>
+<p>如果是一个单词，首字母大写：Aaa</p>
+<p>如果是多个单词，每个单词首字母大写：AaaBbbCcc</p>
+<p>2.4.3.变量和方法：</p>
+<p>如果是一个单词，首字母小写：aaa</p>
+<p>如果是多个单词，除第一个单词外，每个单词首字母大写：aaaBbbCcc</p>
+<p>2.4.4.常量：</p>
+<p>全部大写，如果为多个单词，在单词间加_：AAA_BBB_CCC</p>
+<h2 id="3-注释"><a href="#3-注释" class="headerlink" title="3.注释"></a>3.注释</h2><h3 id="3-1-定义：就是对程序的解释性文字，不被JAVA识别运行。"><a href="#3-1-定义：就是对程序的解释性文字，不被JAVA识别运行。" class="headerlink" title="3.1.定义：就是对程序的解释性文字，不被JAVA识别运行。"></a>3.1.定义：就是对程序的解释性文字，不被JAVA识别运行。</h3><h3 id="3-2-注释的分类："><a href="#3-2-注释的分类：" class="headerlink" title="3.2.注释的分类："></a>3.2.注释的分类：</h3><p>1.单行注释：//开头，回车结束。可嵌套。</p>
+<p>2.多行注释：//<em>开头，/</em>/结束。不可嵌套。</p>
+<p>3.文档注释：//<em>开头，/</em>/*/结束。可以被Javadoc工具解析，生成一个说明书。</p>
+<h3 id="3-3-注释的作用："><a href="#3-3-注释的作用：" class="headerlink" title="3.3.注释的作用："></a>3.3.注释的作用：</h3><p>1.解释程序的运行，提高程序代码的可阅读性。</p>
+<p>2.可以帮助调试错误。</p>
+<h3 id="3-4-把HelloWorld案例用注释改版。"><a href="#3-4-把HelloWorld案例用注释改版。" class="headerlink" title="3.4.把HelloWorld案例用注释改版。"></a>3.4.把HelloWorld案例用注释改版。</h3><h2 id="4-常量"><a href="#4-常量" class="headerlink" title="4.常量"></a>4.常量</h2><h3 id="4-1-定义：在程序的运行过程红，其值是不发生改变的量。"><a href="#4-1-定义：在程序的运行过程红，其值是不发生改变的量。" class="headerlink" title="4.1.定义：在程序的运行过程红，其值是不发生改变的量。"></a>4.1.定义：在程序的运行过程红，其值是不发生改变的量。</h3><h3 id="4-2-常量的分类："><a href="#4-2-常量的分类：" class="headerlink" title="4.2.常量的分类："></a>4.2.常量的分类：</h3><p>1.字面值常量：</p>
+<p>1.整数常量：12，-23</p>
+<p>2.实数常量：12.5，-32.34</p>
+<p>3.字符常量：’a’，’a’，’0’</p>
+<p>4.布尔常量：true，false</p>
+<p>5.空常量：null</p>
+<p>2.自定义常量</p>
+<h2 id="5-进制"><a href="#5-进制" class="headerlink" title="5.进制"></a>5.进制</h2><h3 id="5-1-定义：是一种进位的方式。X进制，表示逢X进1。"><a href="#5-1-定义：是一种进位的方式。X进制，表示逢X进1。" class="headerlink" title="5.1.定义：是一种进位的方式。X进制，表示逢X进1。"></a>5.1.定义：是一种进位的方式。X进制，表示逢X进1。</h3><h3 id="5-2-JAVA中整书常量的表示。"><a href="#5-2-JAVA中整书常量的表示。" class="headerlink" title="5.2.JAVA中整书常量的表示。"></a>5.2.JAVA中整书常量的表示。</h3><p>1.二进制 由0,1组成。以0b开头。JDK7以后的新特性。</p>
+<p>2.八进制 由0-7组成。以0开头。</p>
+<p>3.十进制 由0-9组成。默认就是十进制。</p>
+<p>4.十六进制 由0-9，A-F(不区分大小写)组成，以0x开头。</p>
+<h3 id="5-3-进制的转换："><a href="#5-3-进制的转换：" class="headerlink" title="5.3.进制的转换："></a>5.3.进制的转换：</h3><p>1.其他进制到十进制：</p>
+<p>系数：就是每一位上的数据。 基数：X进制，基数就是X。 权：在右边，从0开始编号，对应位上的编号即为该位的权。</p>
+<p>结果：把系数/*基数的权次幂相加即可。</p>
+<p>2.十进制到其他进制：除基取余，直到商为0，余数反转。</p>
+<p>3.快速转换：</p>
+<p>1.8421码。</p>
+<p>2.二进制–八进制(3位组合)</p>
+<p>3.二进制–十六进制(4位组合)</p>
+<h2 id="6-变量"><a href="#6-变量" class="headerlink" title="6.变量"></a>6.变量</h2><h3 id="6-1-定义：程序运行过程中，在指定范围发生改变的量。"><a href="#6-1-定义：程序运行过程中，在指定范围发生改变的量。" class="headerlink" title="6.1.定义：程序运行过程中，在指定范围发生改变的量。"></a>6.1.定义：程序运行过程中，在指定范围发生改变的量。</h3><h3 id="6-2-格式："><a href="#6-2-格式：" class="headerlink" title="6.2.格式："></a>6.2.格式：</h3><p>数据类型：</p>
+<p>变量名=初始化值；</p>
+<p>变形格式：</p>
+<p>数据类型 变量名；</p>
+<p>变量名=初始化值；      </p>
+<h2 id="7-数据类型"><a href="#7-数据类型" class="headerlink" title="7.数据类型"></a>7.数据类型</h2><h3 id="7-1-分类："><a href="#7-1-分类：" class="headerlink" title="7.1.分类："></a>7.1.分类：</h3><p>基本类型：4类8种</p>
+<p>引用类型：类，接口，数组。</p>
+<h3 id="7-2-基本类型："><a href="#7-2-基本类型：" class="headerlink" title="7.2.基本类型："></a>7.2.基本类型：</h3><p>整型：byte(1) short(2) int(4) long(8)</p>
+<p>浮点型：float(4) double(8)</p>
+<p>字符型：char(2)</p>
+<p>布尔型：boolean(1)（至今无明确定义是多少位：认为是1个字节）</p>
+<p>注意事项：</p>
+<p>整数默认是int类型。long类型需要加L（l）后缀。</p>
+<p>浮点型数默认是double类型。float类型需要加F（f）后缀。</p>
+<h3 id="7-3-类型转换："><a href="#7-3-类型转换：" class="headerlink" title="7.3.类型转换："></a>7.3.类型转换：</h3><p>隐式转换：（从低精度到高精度）</p>
+<p>byte,short,char –int–long–float–double</p>
+<p>强制转换：（可以从高精度到低精度）</p>
+<p>格式：（数据类型）数据；</p>
+<h3 id="7-4-面试题"><a href="#7-4-面试题" class="headerlink" title="7.4.面试题"></a>7.4.面试题</h3><p>byte b1 = 3;</p>
+<p>byte b2 = 4;</p>
+<p>byte b3 = b1 + b2;</p>
+<p>byte b4 = 3 + 4;</p>
+<h2 id="8-运算符（部分）"><a href="#8-运算符（部分）" class="headerlink" title="8.运算符（部分）"></a>8.运算符（部分）</h2><h3 id="8-1-定义：就是把常量和变量连接起来的符号，一般参与到运算中使用。"><a href="#8-1-定义：就是把常量和变量连接起来的符号，一般参与到运算中使用。" class="headerlink" title="8.1.定义：就是把常量和变量连接起来的符号，一般参与到运算中使用。"></a>8.1.定义：就是把常量和变量连接起来的符号，一般参与到运算中使用。</h3><h3 id="8-2-分类："><a href="#8-2-分类：" class="headerlink" title="8.2.分类："></a>8.2.分类：</h3><p>算术运算符；负值运算符；关系运算符；逻辑运算符；位运算符；三元运算符；</p>
+<h3 id="8-3-算术运算符：-–"><a href="#8-3-算术运算符：-–" class="headerlink" title="8.3.算术运算符：+,-,/*,/,%,++,–"></a>8.3.算术运算符：+,-,/*,/,%,++,–</h3><p>+：正号，加法，字符串连接符。</p>
+<p>System.out.println(“5+5=”+5+5);//5+5=55</p>
+<p>System.out.println(5+5+”=5+5”);//10=5+5</p>
+<p>%：取得余数：</p>
+<p>左边如果大于右边，结果是余数。左边如果小于右边，结果是左边。左边如果等于右边，结果是0。正负号跟左边一致。</p>
+<p>++/–：++ 其实相当于把数据+1</p>
+<p>单独使用：在数据的前后，结果一致。</p>
+<p>参与操作使用：如果在数据的后边，数据先操作，在++/–；如果在数据的前边，数据先++/–，在操作。</p>
+<h3 id="8-4-赋值运算符："><a href="#8-4-赋值运算符：" class="headerlink" title="8.4.赋值运算符：=,+=,-=,/*=,/=,%="></a>8.4.赋值运算符：=,+=,-=,/*=,/=,%=</h3><p>int a = 10;：把10赋值给int类型的变量a。</p>
+<p>a += 20;：把左边和右边的和赋值给左边。</p>
+<p>注意事项：</p>
+<p>a = a + 20;</p>
+<p>a += 20;</p>
+<p>结果是等价的，理解不是等价的。因为+=这种运算符，内含了强制类型转换功能。比如：</p>
+<p>short s = 2;</p>
+<p>s+=3;</p>
+<p>等价于s = (short)(s+3);</p>
+<p>———————–<a href="http://edu.csdn.net/heima/" target="_blank" rel="external">android培训</a>、<a href="http://edu.csdn.net/heima" target="_blank" rel="external">java培训</a>、java学习型技术博客、期待与您交流！ ———————-</p>
+<p>详情请查看：<a href="http://edu.csdn.net/heima" target="_blank" rel="external">http://edu.csdn.net/</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/黑马程序员/" rel="tag"># 黑马程序员</a>
+          
+            <a href="/tags/笔记/" rel="tag"># 笔记</a>
+          
+            <a href="/tags/JAVA/" rel="tag"># JAVA</a>
+          
+            <a href="/tags/基础/" rel="tag"># 基础</a>
+          
+            <a href="/tags/教程/" rel="tag"># 教程</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/12/02/JAVA概述/" rel="next" title="黑马程序员-JAVA概述">
+                <i class="fa fa-chevron-left"></i> 黑马程序员-JAVA概述
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2013/12/05/Java语言基础2/" rel="prev" title="黑马程序员-Java语言基础2">
+                黑马程序员-Java语言基础2 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="高亮亮" />
+          <p class="site-author-name" itemprop="name">高亮亮</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-关键字"><span class="nav-number">1.</span> <span class="nav-text">1.关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-定义：被JAVA语言赋予了特殊意义的单词。"><span class="nav-number">1.1.</span> <span class="nav-text">1.1.定义：被JAVA语言赋予了特殊意义的单词。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-特点：JAVA语言中的所有关键字都是小写。"><span class="nav-number">1.2.</span> <span class="nav-text">1.2.特点：JAVA语言中的所有关键字都是小写。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-注意事项：goto和const作为保留字存在。"><span class="nav-number">1.3.</span> <span class="nav-text">1.3.注意事项：goto和const作为保留字存在。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-标识符"><span class="nav-number">2.</span> <span class="nav-text">2.标识符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-定义：就是给类，变量，接口，方法起名。"><span class="nav-number">2.1.</span> <span class="nav-text">2.1.定义：就是给类，变量，接口，方法起名。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-组成规则："><span class="nav-number">2.2.</span> <span class="nav-text">2.2.组成规则：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-注意事项："><span class="nav-number">2.3.</span> <span class="nav-text">2.3.注意事项：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-常用的命名规则：见名知意，驼峰命名。"><span class="nav-number">2.4.</span> <span class="nav-text">2.4.常用的命名规则：见名知意，驼峰命名。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-注释"><span class="nav-number">3.</span> <span class="nav-text">3.注释</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-定义：就是对程序的解释性文字，不被JAVA识别运行。"><span class="nav-number">3.1.</span> <span class="nav-text">3.1.定义：就是对程序的解释性文字，不被JAVA识别运行。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-注释的分类："><span class="nav-number">3.2.</span> <span class="nav-text">3.2.注释的分类：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-注释的作用："><span class="nav-number">3.3.</span> <span class="nav-text">3.3.注释的作用：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-把HelloWorld案例用注释改版。"><span class="nav-number">3.4.</span> <span class="nav-text">3.4.把HelloWorld案例用注释改版。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-常量"><span class="nav-number">4.</span> <span class="nav-text">4.常量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-定义：在程序的运行过程红，其值是不发生改变的量。"><span class="nav-number">4.1.</span> <span class="nav-text">4.1.定义：在程序的运行过程红，其值是不发生改变的量。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-常量的分类："><span class="nav-number">4.2.</span> <span class="nav-text">4.2.常量的分类：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-进制"><span class="nav-number">5.</span> <span class="nav-text">5.进制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-定义：是一种进位的方式。X进制，表示逢X进1。"><span class="nav-number">5.1.</span> <span class="nav-text">5.1.定义：是一种进位的方式。X进制，表示逢X进1。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-JAVA中整书常量的表示。"><span class="nav-number">5.2.</span> <span class="nav-text">5.2.JAVA中整书常量的表示。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-进制的转换："><span class="nav-number">5.3.</span> <span class="nav-text">5.3.进制的转换：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-变量"><span class="nav-number">6.</span> <span class="nav-text">6.变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-定义：程序运行过程中，在指定范围发生改变的量。"><span class="nav-number">6.1.</span> <span class="nav-text">6.1.定义：程序运行过程中，在指定范围发生改变的量。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-格式："><span class="nav-number">6.2.</span> <span class="nav-text">6.2.格式：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-数据类型"><span class="nav-number">7.</span> <span class="nav-text">7.数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-分类："><span class="nav-number">7.1.</span> <span class="nav-text">7.1.分类：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-基本类型："><span class="nav-number">7.2.</span> <span class="nav-text">7.2.基本类型：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3-类型转换："><span class="nav-number">7.3.</span> <span class="nav-text">7.3.类型转换：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-4-面试题"><span class="nav-number">7.4.</span> <span class="nav-text">7.4.面试题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-运算符（部分）"><span class="nav-number">8.</span> <span class="nav-text">8.运算符（部分）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1-定义：就是把常量和变量连接起来的符号，一般参与到运算中使用。"><span class="nav-number">8.1.</span> <span class="nav-text">8.1.定义：就是把常量和变量连接起来的符号，一般参与到运算中使用。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-2-分类："><span class="nav-number">8.2.</span> <span class="nav-text">8.2.分类：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-3-算术运算符：-–"><span class="nav-number">8.3.</span> <span class="nav-text">8.3.算术运算符：+,-,/*,/,%,++,–</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-4-赋值运算符："><span class="nav-number">8.4.</span> <span class="nav-text">8.4.赋值运算符：=,+=,-=,/*=,/=,%=</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2013 &mdash; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">高亮亮</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

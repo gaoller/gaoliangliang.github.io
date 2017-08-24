@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="黑马程序员,知识点,笔记,JAVA,基础," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="(感觉自己最近为了赶进度,很久没有总结回顾以前的知识,今天开始要深刻反思)  异常 1.1.异常概念：就是程序出现的不正常情况。1.2.异常体系:Throwable类 |–Error类 严重的问题，是处理不了的。要改正代码的。|–Exception类 非RuntimeException的，是需要处理的。编译期异常。 |–RuntimeException类 不需要处理的，是需要改代码的。运行期异常。">
+<meta name="keywords" content="黑马程序员,知识点,笔记,JAVA,基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="黑马程序员-异常">
+<meta property="og:url" content="http://gaoll.top/2014/01/03/异常/index.html">
+<meta property="og:site_name" content="Gaoll‘s Blog">
+<meta property="og:description" content="(感觉自己最近为了赶进度,很久没有总结回顾以前的知识,今天开始要深刻反思)  异常 1.1.异常概念：就是程序出现的不正常情况。1.2.异常体系:Throwable类 |–Error类 严重的问题，是处理不了的。要改正代码的。|–Exception类 非RuntimeException的，是需要处理的。编译期异常。 |–RuntimeException类 不需要处理的，是需要改代码的。运行期异常。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-08-24T07:57:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="黑马程序员-异常">
+<meta name="twitter:description" content="(感觉自己最近为了赶进度,很久没有总结回顾以前的知识,今天开始要深刻反思)  异常 1.1.异常概念：就是程序出现的不正常情况。1.2.异常体系:Throwable类 |–Error类 严重的问题，是处理不了的。要改正代码的。|–Exception类 非RuntimeException的，是需要处理的。编译期异常。 |–RuntimeException类 不需要处理的，是需要改代码的。运行期异常。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://gaoll.top/2014/01/03/异常/"/>
+
+
+
+
+
+  <title>黑马程序员-异常 | Gaoll‘s Blog</title>
+  
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/prism-solarizedlight.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gaoll‘s Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life Likes Ninjaku Training</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://gaoll.top/2014/01/03/异常/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="高亮亮">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gaoll‘s Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">黑马程序员-异常</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-01-03T00:15:00+08:00">
+                2014-01-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">java笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>(感觉自己最近为了赶进度,很久没有总结回顾以前的知识,今天开始要深刻反思)</p>
+<hr>
+<p><strong>异常</strong></p>
+<h2 id="1-1-异常概念：就是程序出现的不正常情况。"><a href="#1-1-异常概念：就是程序出现的不正常情况。" class="headerlink" title="1.1.异常概念：就是程序出现的不正常情况。"></a><strong>1.1.异常概念：</strong>就是程序出现的不正常情况。</h2><h2 id="1-2-异常体系"><a href="#1-2-异常体系" class="headerlink" title="1.2.异常体系:"></a><strong>1.2.异常体系:</strong></h2><p>Throwable类</p>
+<p>|–Error类 严重的问题，是处理不了的。要改正代码的。<br>|–Exception类 非RuntimeException的，是需要处理的。编译期异常。</p>
+<p>|–RuntimeException类 不需要处理的，是需要改代码的。运行期异常。</p>
+<a id="more"></a>
+<p><strong>例如:</strong><br>Error:地震，海啸。<br>Exception:感冒了，头疼。</p>
+<h2 id="1-3-java虚拟机的默认处理方法"><a href="#1-3-java虚拟机的默认处理方法" class="headerlink" title="1.3.java虚拟机的默认处理方法."></a><strong>1.3.java虚拟机的默认处理方法.</strong></h2><p>把异常的类名，原因，位置等信息显示在控制台。<br>一旦有异常发生，其后的代码不能继续执行<strong>。</strong></p>
+<hr>
+<h2 id="1-4-异常的解决方案"><a href="#1-4-异常的解决方案" class="headerlink" title="1..4.异常的解决方案."></a><strong>1..4.异常的解决方案.</strong></h2><p><strong>A:try方式</strong></p>
+<p>基本格式<strong>：</strong></p>
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">try</span><span class="token punctuation">{</span>
+        可能发生异常的代码<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token keyword">catch</span><span class="token punctuation">(</span>异常类名 变量名<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        异常的处理代码<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token keyword">finally</span><span class="token punctuation">{</span>
+        释放资源的代码<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>注意：一旦有一次发生，就会立马执行catch里面的代码 <strong>。<br>变形格式：</strong></p>
+<pre class=" language-java"><code class="language-java"> <span class="token keyword">try</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token keyword">catch</span>
+<span class="token keyword">try</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token keyword">catch</span>
+<span class="token keyword">try</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token keyword">finally</span>
+<span class="token keyword">try</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token keyword">finally</span>
+</code></pre>
+<p><strong>注意: JDK7针对多个catch进行了优化：</strong> catch(异常1 | 异常2 | 异常3 … 变量){}<br>这些异常必须是平级关系。<br>和try…catch…catch的不同点是:</p>
+<p>JDK7的这种方案是必须平级关系，不能有子父关系。<br>而try…catch…catch父亲放最后是可以的。<strong>B:抛出处理</strong><br>用throws关键字在方法上声明(抛出)。(这种方法比较消极,不推荐使用)</p>
+<h2 id="1-5-Exception和RuntimeException的区别"><a href="#1-5-Exception和RuntimeException的区别" class="headerlink" title="1.5.Exception和RuntimeException的区别."></a><strong>1.5.Exception和RuntimeException的区别.</strong></h2><p><strong>A:</strong></p>
+<p><strong>Exception 编译时期异常，必须处理的。</strong><br>如果在方法上，throws了该类型的异常，将来调用者必须处理。<br>如果在方法内部，throw了该类型的异常，必须在方法上throws该异常。<br><strong>B:</strong><br><strong>RuntimeException 运行时期异常，是不需要处理的。要改代码的。</strong><br>如果在方法上，throws了该类型的异常，不需要处理。<br>如果在方法内部，throw了该类型的异常，方法上可以throws该异常，也可以不throws该异常。</p>
+<hr>
+<h2 id="1-6-关于异常我的总结"><a href="#1-6-关于异常我的总结" class="headerlink" title="1.6.关于异常我的总结"></a><strong>1.6.关于异常我的总结</strong></h2><p><strong>throw:<br>1.</strong>使用在方法内部,格式为:throw &lt;异常对象&gt;.(只能是单个对象)<br><strong>2.</strong>throw不可以单独使用,要么搭配throws,将异常抛出给调用方法者;要么搭配try-catch-finally处理掉该异常.<br><strong>throws:<br>1.</strong>使用在方法声明上,在参数列表后与方法体前,格式为:throw &lt;异常类&gt;.(可以单个或者多个类,逗号分割)<br><strong>2.</strong>throws可以单独使用,将可能抛出的异常抛出给调用方法者处理.(如果是主方法上使用,即由jvm异常处理机制处理). </p>
+<p><strong>try{}:</strong><br>try{}的大括号中,放入的为执行中可能会出现异常的代码.如果当中的代码在执行时出现异常,就会通过或人工定义(使用throw)或系统自动生成并抛出异常对象.<br><strong>注意:</strong>当try{}代码块中执行时出现异常,抛出异常对象,下面的代码就不会执行了.<br><strong>catch(){}:</strong><br>catch(){}的小括号中为参数,参数应为对应try{}抛出异常对象的异常类或其父类.其大括号中为针对此异常的处理代码.当try{}抛出异常,由catch(){}捕获并处理.<br>这里因为对应的try{}可能抛出多种异常,可以一个try{}对应多个catch(){}.当然,()中对应的应为对应的每种异常类,而且遵从子类异常优先,父类异常殿后的顺序.<br><strong>注意:</strong>JDK7的新特性,可以在catch(){}的参数中同时对应多个异常类,用|分割.</p>
+<p><strong>finally{}:</strong><br>finally{}的大括号中放入的代码,无论try{}是否抛出异常catch(){}是否执行,它都会执行.一般用于关闭资源操作.<br><strong>注意:</strong>有几个特殊情况<br><strong>1.</strong>如果在try{}和catch(){}中出现了System.exit(0)语句,那就没办法,不执行了.<br><strong>2.</strong>如果try{},catch(){}中出现了return语句,则finally{}中代码和return代码同时执行.<br><strong>3.</strong>如果2中finally{}中也出现了return语句,那么先前的return语句会被finally{}中的return语句覆盖执行.</p>
+<p><strong>我的测试代码</strong>:</p>
+<pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">//代码体现</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception<span class="token punctuation">{</span>
+        <span class="token keyword">new</span> <span class="token class-name">Test8</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">demoMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//调用方法中声明了异常,这里必须处理或者上抛.(这里我上抛,没处理)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//方法中的异常处理方式.</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">demoMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception<span class="token punctuation">{</span><span class="token comment" spellcheck="true">//如果方法中可能抛出异常,而没有对应的try-catch处理,那么就可以用throws向调用者声明,方法中会出现异常,由调用者处理.</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">/*
+             * 运行可能会出现异常的代码.
+             */</span>        
+            <span class="token comment" spellcheck="true">//if()的括号中为认为定义应该抛出某个异常的条件</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Exception</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//抛出某一异常对象.</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">/*
+             *  对应捕获到的异常进行的处理.
+             */</span>
+        <span class="token punctuation">}</span><span class="token keyword">finally</span><span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">/*
+             * 必然会执行的代码.例如:关闭资源.删除临时文件.
+             */</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+</code></pre>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/黑马程序员/" rel="tag"># 黑马程序员</a>
+          
+            <a href="/tags/知识点/" rel="tag"># 知识点</a>
+          
+            <a href="/tags/笔记/" rel="tag"># 笔记</a>
+          
+            <a href="/tags/JAVA/" rel="tag"># JAVA</a>
+          
+            <a href="/tags/基础/" rel="tag"># 基础</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/01/02/集合补充(Map类)/" rel="next" title="黑马程序员-集合补充(Map类)">
+                <i class="fa fa-chevron-left"></i> 黑马程序员-集合补充(Map类)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/01/06/重要代码记录Part1(end)/" rel="prev" title="黑马程序员-重要代码记录Part1(end)">
+                黑马程序员-重要代码记录Part1(end) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="高亮亮" />
+          <p class="site-author-name" itemprop="name">高亮亮</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-异常概念：就是程序出现的不正常情况。"><span class="nav-number">1.</span> <span class="nav-text">1.1.异常概念：就是程序出现的不正常情况。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-异常体系"><span class="nav-number">2.</span> <span class="nav-text">1.2.异常体系:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-java虚拟机的默认处理方法"><span class="nav-number">3.</span> <span class="nav-text">1.3.java虚拟机的默认处理方法.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-异常的解决方案"><span class="nav-number">4.</span> <span class="nav-text">1..4.异常的解决方案.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-Exception和RuntimeException的区别"><span class="nav-number">5.</span> <span class="nav-text">1.5.Exception和RuntimeException的区别.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-6-关于异常我的总结"><span class="nav-number">6.</span> <span class="nav-text">1.6.关于异常我的总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2013 &mdash; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">高亮亮</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
