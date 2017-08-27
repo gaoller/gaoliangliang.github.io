@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-CN">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -88,7 +88,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
 
 
 
@@ -100,9 +100,9 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Markdown 语法和 MWeb 写作使用说明">
 <meta property="og:url" content="http://gaoll.top/2017/06/29/Markdown语法和写作使用说明/index.html">
-<meta property="og:site_name" content="Gaoll‘s Blog">
+<meta property="og:site_name" content="NoodlePapa">
 <meta property="og:description" content="Markdown 语法和 MWeb 写作使用说明Markdown 的设计哲学 Markdown 的目標是實現「易讀易寫」。不過最需要強調的便是它的可讀性。一份使用 Markdown 格式撰寫的文件應該可以直接以純文字發佈，並且看起來不會像是由許多標籤或是格式指令所構成。Markdown 的語法有個主要的目的：用來作為一種網路內容的寫作用語言。">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://zh.mweb.im/asset/img/set-up-git.gif">
 <meta property="og:image" content="http://zh.mweb.im/asset/img/set-up-git.gif">
 <meta property="og:image" content="http://zh.mweb.im/asset/img/set-up-git.gif">
@@ -118,7 +118,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '5.1.2',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -126,7 +126,7 @@
     motion: true,
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -146,19 +146,29 @@
 
 
 
-  <title>Markdown 语法和 MWeb 写作使用说明 | Gaoll‘s Blog</title>
+  <title>Markdown 语法和 MWeb 写作使用说明 | NoodlePapa</title>
   
 
 
 
 
 
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?7abbafe4a7e7ee03a04c7e8a2a24e353";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
 
 
 
 <link rel="stylesheet" href="/css/prism-solarizedlight.css" type="text/css"></head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -176,12 +186,12 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Gaoll‘s Blog</span>
+        <span class="site-title">NoodlePapa</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle">Life Likes Ninjaku Training</p>
+        <p class="site-subtitle">life likes lighting night</p>
       
   </div>
 
@@ -206,7 +216,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            首页
           </a>
         </li>
       
@@ -216,7 +226,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            归档
           </a>
         </li>
       
@@ -256,13 +266,13 @@
     <link itemprop="mainEntityOfPage" href="http://gaoll.top/2017/06/29/Markdown语法和写作使用说明/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="高亮亮">
+      <meta itemprop="name" content="NoodlePapa">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Gaoll‘s Blog">
+      <meta itemprop="name" content="NoodlePapa">
     </span>
 
     
@@ -280,9 +290,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-29T21:23:00+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-29T21:23:00+08:00">
                 2017-06-29
               </time>
             
@@ -301,7 +311,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -414,7 +424,7 @@ __这些文字会生成`&lt;strong&gt;`__
 [GitHub](http://github.com)
 自动生成连接  <http://www.github.com/>
 </code></pre><p><code>Control + Shift + L</code> 可插入Markdown语法。<br>如果是 MWeb 的文档库中的文档，拖放或<code>CMD + Option + I</code> 导入非图片时，会生成连接。<br>效果如下：</p>
-<p>Email 连接： <a href="&#109;&#x61;&#105;&#x6c;&#116;&#x6f;&#58;&#x65;&#120;&#x61;&#109;&#x70;&#x6c;&#101;&#64;&#x65;&#120;&#x61;&#109;&#112;&#108;&#101;&#46;&#99;&#111;&#109;">&#x65;&#120;&#x61;&#109;&#x70;&#x6c;&#101;&#64;&#x65;&#120;&#x61;&#109;&#112;&#108;&#101;&#46;&#99;&#111;&#109;</a><br><a href="http://github.com" target="_blank" rel="external">连接标题Github网站</a><br>自动生成连接像： <a href="http://www.github.com/" target="_blank" rel="external">http://www.github.com/</a> 这样</p>
+<p>Email 连接： <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#x65;&#x78;&#x61;&#109;&#x70;&#x6c;&#101;&#64;&#101;&#x78;&#97;&#109;&#112;&#108;&#101;&#46;&#99;&#111;&#x6d;">&#x65;&#x78;&#x61;&#109;&#x70;&#x6c;&#101;&#64;&#101;&#x78;&#97;&#109;&#112;&#108;&#101;&#46;&#99;&#111;&#x6d;</a><br><a href="http://github.com" target="_blank" rel="external">连接标题Github网站</a><br>自动生成连接像： <a href="http://www.github.com/" target="_blank" rel="external">http://www.github.com/</a> 这样</p>
 <h2 id="区块引用"><a href="#区块引用" class="headerlink" title="区块引用"></a>区块引用</h2><p>Markdown 语法：</p>
 <pre><code>某某说:
 &gt; 第一行引用
@@ -656,10 +666,10 @@ $$    x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            站点概览
           </li>
         </ul>
       
@@ -667,11 +677,11 @@ $$    x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
-               alt="高亮亮" />
-          <p class="site-author-name" itemprop="name">高亮亮</p>
+               src="/images/avatar.png"
+               alt="NoodlePapa" />
+          <p class="site-author-name" itemprop="name">NoodlePapa</p>
            
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">NoodlePapa</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -682,7 +692,7 @@ $$    x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$
               <a href="/archives/">
             
                 <span class="site-state-item-count">28</span>
-                <span class="site-state-item-name">posts</span>
+                <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
@@ -693,7 +703,7 @@ $$    x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">categories</span>
+                <span class="site-state-item-name">分类</span>
               
             </div>
           
@@ -704,7 +714,7 @@ $$    x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">19</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">标签</span>
               
             </div>
           
@@ -715,12 +725,39 @@ $$    x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$
 
         <div class="links-of-author motion-element">
           
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/gaoller" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      Github
+                    
+                </a>
+              </span>
+            
+          
         </div>
 
         
         
 
         
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Friends Link
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://github.com/gaoller" title="OSC" target="_blank">OSC</a>
+                </li>
+              
+            </ul>
+          </div>
         
 
         
@@ -765,17 +802,17 @@ $$    x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">高亮亮</span>
+  <span class="author" itemprop="copyrightHolder">NoodlePapa</span>
 
   
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
   <span class="post-meta-divider">|</span>
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.2</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.2</div>
 
 
         
