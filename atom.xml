@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gaoll.top/"/>
-  <updated>2017-08-27T14:13:56.000Z</updated>
+  <updated>2018-03-09T03:25:25.432Z</updated>
   <id>http://gaoll.top/</id>
   
   <author>
@@ -14,6 +14,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于医院</title>
+    <link href="http://gaoll.top/2017/09/04/%E5%85%B3%E4%BA%8E%E5%8C%BB%E9%99%A2/"/>
+    <id>http://gaoll.top/2017/09/04/关于医院/</id>
+    <published>2017-09-04T05:58:00.000Z</published>
+    <updated>2018-03-09T03:25:25.432Z</updated>
+    
+    <content type="html"><![CDATA[<p>网上看到的段子，看完后觉得有共鸣</p>
+<p>医院院长电动车坏了，拿到一个大修理店去修。<br>修理店接待人员: “OK，开机费50元”<br>医院院长: “为什么还没修理就要先交费”？<br>修理店接待人员: “我们修理店的制度就是这样，你们医院的挂号费，不是没看病之前就要交吗”？<br>医院院长无话可说，只好交了50元。<br>修理店接待人员问：“你好，请问你的电动车出了什么问题？”<br>医院院长:“就是没有反应了，工程师先开了三个付费单请医院院长交费：<br>一、万用表测量费20元；<br>二、控制器检测费50元；<br>三、电机检测费80元。<br>医院院长惊问：“为什么要顾客出这个测试费，这不是方便你们修理工程师的吗？”<br>工程师：“没错，我们的工程师以前也是靠“望、闻、问、切、听”，凭经验修理，可是现在科学发达了什么仪器都有了，修理时做了测试会比较准确，也可能修不好你的电动车，最后耽误你的时间。”<br>医院院长只好先交了150元测试费。工程师经过半个小时测试，用打印机打出一张线路图，发现是一个保险丝烧了，他花几分钟，换了个二元钱的保险丝就修好了电动车。<br>工程师把打印好的线路图塞到院长手中后开了一张缴费单，叫医院院长去交8元打印费。院长不解的问：“打印费也要我出啊？”“是的，这是店里的规定，打印费由顾客出，那张图不是给你了吗？”“可我看不懂啊，要这张图干啥？”“你们医院给病人做B超，打印的绘图病人也看不懂啊，不照样是病人出钱吗”？<br>最后，工程师对院长说，我们店实行电脑管理，请你去提货柜台提货。<br>提货柜台打了一个修理清单给医院院长交费，缴费单上写着：“据物价局规定，我店实行分项收费，做到使顾客明明白白消费，你本次修理收费如下：<br>35W白光牌烙铁使用费（拆焊各1次）：20元；<br>一次性烙铁头清洁棉：1 2元；<br>吸枪使用费1次：15元；<br>φ0.8环保锡线10g :15元；<br>2N1234保险管1个：12元；<br>剪保险丝管脚斜口钳使用费：15元；<br>焊接后清洗焊盘洗板水费：15元；<br>拆焊保险管、清洗焊盘等人工费： 30元；<br>其它……920元<br>合计：1054元”。<br>医院院长看了差点晕倒，医院院长修电动车共花了1282元钱，只换了一个价值二元的配件。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;网上看到的段子，看完后觉得有共鸣&lt;/p&gt;
+&lt;p&gt;医院院长电动车坏了，拿到一个大修理店去修。&lt;br&gt;修理店接待人员: “OK，开机费50元”&lt;br&gt;医院院长: “为什么还没修理就要先交费”？&lt;br&gt;修理店接待人员: “我们修理店的制度就是这样，你们医院的挂号费，不是没看病之前
+    
+    </summary>
+    
+      <category term="日记" scheme="http://gaoll.top/categories/%E6%97%A5%E8%AE%B0/"/>
+    
+    
+      <category term="日志" scheme="http://gaoll.top/tags/%E6%97%A5%E5%BF%97/"/>
+    
+  </entry>
   
   <entry>
     <title>写在七夕前夕</title>
@@ -4122,171 +4147,6 @@ public class Student {
       <category term="笔记" scheme="http://gaoll.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
       <category term="JAVA" scheme="http://gaoll.top/tags/JAVA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>黑马程序员-Java面向对象1</title>
-    <link href="http://gaoll.top/2013/12/11/Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A11/"/>
-    <id>http://gaoll.top/2013/12/11/Java面向对象1/</id>
-    <published>2013-12-10T17:12:00.000Z</published>
-    <updated>2017-08-24T08:25:43.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="1-Java中的参数传递问题。-理解内存图"><a href="#1-Java中的参数传递问题。-理解内存图" class="headerlink" title="1.    Java中的参数传递问题。(理解内存图)"></a>1.    Java中的参数传递问题。(理解内存图)</h2><p><strong>基本类型</strong>：形式参数的改变对实际参数没有影响。</p>
-<p><strong>引用类型</strong>：形式参数的改变直接影响实际参数。</p>
-<p><img src="http://img.blog.csdn.net/20131211011653703?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
-<a id="more"></a>
-<h2 id="2-面向对象-理解"><a href="#2-面向对象-理解" class="headerlink" title="2.    面向对象(理解)"></a>2.    面向对象(理解)</h2><h3 id="2-1面向对象："><a href="#2-1面向对象：" class="headerlink" title="2.1面向对象："></a>2.1面向对象：</h3><p>是基于面向过程的一种思想。</p>
-<p><strong>面向过程</strong>：以函数为基础，关注实现过程。</p>
-<p><strong>面向对象</strong>：以对象为基础，关注实现结果。</p>
-<h3 id="2-2面向对象的思想特点："><a href="#2-2面向对象的思想特点：" class="headerlink" title="2.2面向对象的思想特点："></a>2.2面向对象的思想特点：</h3><p><strong>A:</strong>是一种更符合人们思考习惯的思想。</p>
-<p><strong>B:</strong>把复杂的事情简单化了。</p>
-<p><strong>C:</strong>把我们从执行者变成了指挥者。</p>
-<p><strong>举例：</strong>买电脑。洗衣，做饭。旅游。把大象装进冰箱。(代码体现了，去看看)</p>
-<h3 id="2-3事物是如何体现的"><a href="#2-3事物是如何体现的" class="headerlink" title="2.3事物是如何体现的?"></a>2.3事物是如何体现的?</h3><p><strong>A:属性 </strong> 有哪些特征</p>
-<p><strong>B:行为 </strong> 有哪些功能</p>
-<h3 id="2-4类与对象的关系：-掌握"><a href="#2-4类与对象的关系：-掌握" class="headerlink" title="2.4类与对象的关系：(掌握)"></a>2.4类与对象的关系：(掌握)</h3><p>把事物转换成类：</p>
-<p><strong>A</strong>:成员变量:定义在类中，方法外。</p>
-<p><strong>B</strong>:成员方法:和以前的区别是去掉static。</p>
-<p><strong>类</strong>：是相关的属性和行为的集合。是一个抽象的概念。</p>
-<p><strong>对象</strong>：是某种事物的具体存在，具体的表现形式。</p>
-<p><strong>举例</strong>：  类：学生     对象：张三</p>
-<h3 id="2-5案例："><a href="#2-5案例：" class="headerlink" title="2.5案例："></a>2.5案例：</h3><p> A:学生类     B:手机类     C:汽车类(内存图)</p>
-<h3 id="2-5如何使用呢"><a href="#2-5如何使用呢" class="headerlink" title="2.5如何使用呢?"></a>2.5如何使用呢?</h3><p><strong>A</strong>:创建对象  格式：</p>
-<p>类名 对象名 = new 类名();</p>
-<p><strong>B:</strong>使用成员变量和成员方法</p>
-<p>对象名.成员变量</p>
-<p>对象名.成员方法</p>
-<h2 id="3-成员变量和局部变量的区别（理解）"><a href="#3-成员变量和局部变量的区别（理解）" class="headerlink" title="3.   成员变量和局部变量的区别（理解）"></a>3.   成员变量和局部变量的区别（理解）</h2><h3 id="3-1定义位置的区别"><a href="#3-1定义位置的区别" class="headerlink" title="3.1定义位置的区别"></a>3.1定义位置的区别</h3><p><strong>成员变量</strong>：类中，方法外</p>
-<p><strong>局部变量</strong>：方法中，方法声明中</p>
-<h3 id="3-2初始化值的区别"><a href="#3-2初始化值的区别" class="headerlink" title="3.2初始化值的区别"></a>3.2初始化值的区别</h3><p><strong>成员变量</strong>：都有默认值</p>
-<p><strong>局部变量</strong>：没有初始化值，必须先赋值才能使用。</p>
-<h3 id="3-3存储位置的区别"><a href="#3-3存储位置的区别" class="headerlink" title="3.3存储位置的区别"></a>3.3存储位置的区别</h3><p><strong>成员变量</strong>：堆内存中</p>
-<p><strong>局部变量</strong>：栈内存中</p>
-<h3 id="3-4生命周期的区别"><a href="#3-4生命周期的区别" class="headerlink" title="3.4生命周期的区别"></a>3.4生命周期的区别</h3><p><strong>成员变量</strong>：随着对象的存在消失</p>
-<p><strong>局部变量</strong>：随着函数方法调用的开始与结束</p>
-<h2 id="4-封装（理解）"><a href="#4-封装（理解）" class="headerlink" title="4.   封装（理解）"></a>4.   封装（理解）</h2><h3 id="4-1隐藏实现细节，提供公共的访问方式。"><a href="#4-1隐藏实现细节，提供公共的访问方式。" class="headerlink" title="4.1隐藏实现细节，提供公共的访问方式。"></a>4.1隐藏实现细节，提供公共的访问方式。</h3><p>类，方法等其实都是封装的具体体现。</p>
-<h3 id="4-2private关键字"><a href="#4-2private关键字" class="headerlink" title="4.2private关键字"></a>4.2private关键字</h3><p><strong>4.2.1</strong>用于修饰成员变量，成员方法。</p>
-<p><strong>4.2.2</strong>被修饰的内容在其他类中无法访问的。</p>
-<h3 id="4-3常见应用"><a href="#4-3常见应用" class="headerlink" title="4.3常见应用"></a>4.3常见应用</h3><p>类中所有的成员变量私有，只给出对应的set，get方法。</p>
-<p><strong>代码体现</strong>：</p>
-<pre class=" language-java"><code class="language-java">    <span class="token keyword">class</span> <span class="token class-name">Day07_Student</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">private</span> <span class="token keyword">int</span> age<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token keyword">char</span> sex<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> String name<span class="token punctuation">;</span>
-
-    <span class="token function">Day07_Student</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span><span class="token punctuation">}</span>
-
-    <span class="token function">Day07_Student</span><span class="token punctuation">(</span><span class="token keyword">int</span> age<span class="token punctuation">,</span><span class="token keyword">char</span> sex<span class="token punctuation">,</span>String name<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token operator">=</span>age<span class="token punctuation">;</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>sex<span class="token operator">=</span>sex<span class="token punctuation">;</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">=</span>name<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">void</span> <span class="token function">setAge</span><span class="token punctuation">(</span><span class="token keyword">int</span> age<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token operator">=</span>age<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">int</span> <span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> age<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">void</span> <span class="token function">setSex</span><span class="token punctuation">(</span><span class="token keyword">char</span> sex<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>sex<span class="token operator">=</span>sex<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">char</span> <span class="token function">getSex</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> sex<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">void</span> <span class="token function">setName</span><span class="token punctuation">(</span>String name<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">=</span>name<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    String <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> name<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">void</span> <span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"姓名为："</span><span class="token operator">+</span>name<span class="token operator">+</span><span class="token string">"\t年龄为："</span><span class="token operator">+</span>age<span class="token operator">+</span><span class="token string">"\t性别为："</span><span class="token operator">+</span>sex<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">class</span> <span class="token class-name">Day07_StudentTest</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        Day07_Student s1<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Day07_Student</span><span class="token punctuation">(</span><span class="token number">25</span><span class="token punctuation">,</span><span class="token string">'男'</span><span class="token punctuation">,</span>"高富帅\"<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        s1<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"\n=========啦啦啦啦我是可爱的分隔符=====================\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        Day07_Student s2<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Day07_Student</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        s2<span class="token punctuation">.</span><span class="token function">setAge</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        s2<span class="token punctuation">.</span><span class="token function">setSex</span><span class="token punctuation">(</span><span class="token string">'女'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        s2<span class="token punctuation">.</span><span class="token function">setName</span><span class="token punctuation">(</span><span class="token string">"白富美"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"姓名为："</span><span class="token operator">+</span>s2<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">"年龄为："</span><span class="token operator">+</span>s2<span class="token punctuation">.</span><span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">"性别为："</span><span class="token operator">+</span>s2<span class="token punctuation">.</span><span class="token function">getSex</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"\n=========啦啦啦啦我是可爱的分隔符=====================\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        s2<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<h2 id="5-构造方法（掌握）"><a href="#5-构造方法（掌握）" class="headerlink" title="5.   构造方法（掌握）"></a>5.   构造方法（掌握）</h2><h3 id="5-1格式及特点"><a href="#5-1格式及特点" class="headerlink" title="5.1格式及特点"></a>5.1格式及特点</h3><p><strong>格式：</strong></p>
-<p>访问权限修饰符 类名（参数）{}</p>
-<p>反问权限修饰符：public ，private</p>
-<p><strong>特点：</strong></p>
-<p>方法名类名相同</p>
-<p>没有返回值类型</p>
-<p>没有具体的返回值</p>
-<h3 id="5-2注意事项"><a href="#5-2注意事项" class="headerlink" title="5.2注意事项"></a>5.2注意事项</h3><p><strong>5.2.1</strong>如果不给构造方法，jvm默认给一个无参构造方法。</p>
-<p><strong>5.2.2</strong>如果给出构造方法，那么jvm将不再提供无参构造方法。</p>
-<p>这个时候，如果要使用无参构造方法，必须自己提供。（推荐永远手动给出无参构造方法）</p>
-<h2 id="6-this关键字（掌握）"><a href="#6-this关键字（掌握）" class="headerlink" title="6.   this关键字（掌握）"></a>6.   this关键字（掌握）</h2><h3 id="6-1是一个关键字，代表当前类的引用。"><a href="#6-1是一个关键字，代表当前类的引用。" class="headerlink" title="6.1是一个关键字，代表当前类的引用。"></a>6.1是一个关键字，代表当前类的引用。</h3><p><strong>简单</strong>：在方法中，那个对象调用方法，this就代表谁。</p>
-<h3 id="6-2应用场景"><a href="#6-2应用场景" class="headerlink" title="6.2应用场景"></a>6.2应用场景</h3><p>解决局部变量隐藏成员变量</p>
-<h2 id="7-static关键字（理解）"><a href="#7-static关键字（理解）" class="headerlink" title="7.   static关键字（理解）"></a>7.   static关键字（理解）</h2><h3 id="7-1是一个关键字。"><a href="#7-1是一个关键字。" class="headerlink" title="7.1是一个关键字。"></a>7.1是一个关键字。</h3><p>可以修饰成员变量的成员方法。</p>
-<h3 id="7-2静态的特点："><a href="#7-2静态的特点：" class="headerlink" title="7.2静态的特点："></a>7.2静态的特点：</h3><p>随着类的加载而加载</p>
-<p>优先于对象存在</p>
-<p>被类的所有对象所共享</p>
-<p>可以通过类名直接调用</p>
-<h3 id="7-3静态的注意事项"><a href="#7-3静态的注意事项" class="headerlink" title="7.3静态的注意事项"></a>7.3静态的注意事项</h3><p>在静态方法中是没有this关键字的</p>
-<p>静态方法只能访问静态的成员变量和静态的成员方法</p>
-<h3 id="7-4静态的调用方法"><a href="#7-4静态的调用方法" class="headerlink" title="7.4静态的调用方法"></a>7.4静态的调用方法</h3><p>被对象调用       被类名直接调用</p>
-<h2 id="8-Math类的随机数（理解）"><a href="#8-Math类的随机数（理解）" class="headerlink" title="8.   Math类的随机数（理解）"></a>8.   Math类的随机数（理解）</h2><p>类名调用静态方法。</p>
-<p><strong>包</strong>：java.lang</p>
-<p><strong>类</strong>：Math</p>
-<p><strong>方法</strong>：public static double random()</p>
-<p>取1-100之间的一个随机整数</p>
-<p>int x=Math.random()/*100+1;</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;1-Java中的参数传递问题。-理解内存图&quot;&gt;&lt;a href=&quot;#1-Java中的参数传递问题。-理解内存图&quot; class=&quot;headerlink&quot; title=&quot;1.    Java中的参数传递问题。(理解内存图)&quot;&gt;&lt;/a&gt;1.    Java中的参数传递问题。(理解内存图)&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;基本类型&lt;/strong&gt;：形式参数的改变对实际参数没有影响。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;引用类型&lt;/strong&gt;：形式参数的改变直接影响实际参数。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://img.blog.csdn.net/20131211011653703?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="java笔记" scheme="http://gaoll.top/categories/java%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="黑马程序员" scheme="http://gaoll.top/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
-    
-      <category term="笔记" scheme="http://gaoll.top/tags/%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="基础" scheme="http://gaoll.top/tags/%E5%9F%BA%E7%A1%80/"/>
-    
-      <category term="教程" scheme="http://gaoll.top/tags/%E6%95%99%E7%A8%8B/"/>
-    
-      <category term="java" scheme="http://gaoll.top/tags/java/"/>
     
   </entry>
   
