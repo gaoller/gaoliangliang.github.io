@@ -79,13 +79,13 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="黑马程序员,基础视频,知识点,笔记,教程," />
+  <meta name="keywords" content="教程,笔记,黑马程序员,基础视频,知识点," />
 
 
 
 
 
-  <link rel="alternate" href="/atom.xml" title="NoodlePapa" type="application/atom+xml" />
+  <link rel="alternate" href="/atom.xml" title="Gaoll" type="application/atom+xml" />
 
 
 
@@ -98,11 +98,11 @@
 
 
 <meta name="description" content="(部分内容,知其然,不知其所以然,先记下,慢慢品)  题外话: 开始学习张孝祥老师的基础加强视频,发现,自以为学的不错,其实就像只是用300cc的瓶子去接了250cc的水.倘若倒入1000cc的瓶子中,一下就觉得空荡荡了.学习过程是给300cc瓶子灌水的过程.灌水的过程固然重要,适当的升级瓶子更是必不可少.感谢张孝祥老师. 再次缅怀已逝的张孝祥老师.">
-<meta name="keywords" content="黑马程序员,基础视频,知识点,笔记,教程">
+<meta name="keywords" content="教程,笔记,黑马程序员,基础视频,知识点">
 <meta property="og:type" content="article">
 <meta property="og:title" content="黑马程序员-泛型(浅识)">
 <meta property="og:url" content="http://gaoll.top/2014/01/11/泛型(浅识)/index.html">
-<meta property="og:site_name" content="NoodlePapa">
+<meta property="og:site_name" content="Gaoll">
 <meta property="og:description" content="(部分内容,知其然,不知其所以然,先记下,慢慢品)  题外话: 开始学习张孝祥老师的基础加强视频,发现,自以为学的不错,其实就像只是用300cc的瓶子去接了250cc的水.倘若倒入1000cc的瓶子中,一下就觉得空荡荡了.学习过程是给300cc瓶子灌水的过程.灌水的过程固然重要,适当的升级瓶子更是必不可少.感谢张孝祥老师. 再次缅怀已逝的张孝祥老师.">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-08-24T07:51:35.000Z">
@@ -118,7 +118,7 @@
     root: '/',
     scheme: 'Mist',
     version: '5.1.2',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":12,"b2t":true,"scrollpercent":true,"onmobile":true},
     fancybox: true,
     tabs: true,
     motion: true,
@@ -144,7 +144,7 @@
 
 
 
-  <title>黑马程序员-泛型(浅识) | NoodlePapa</title>
+  <title>黑马程序员-泛型(浅识) | Gaoll</title>
   
 
 
@@ -184,12 +184,12 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">NoodlePapa</span>
+        <span class="site-title">Gaoll</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <h1 class="site-subtitle" itemprop="description">life likes lighting night</h1>
+        <h1 class="site-subtitle" itemprop="description">love the world</h1>
       
   </div>
 
@@ -328,13 +328,13 @@
     <link itemprop="mainEntityOfPage" href="http://gaoll.top/2014/01/11/泛型(浅识)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="NoodlePapa">
+      <meta itemprop="name" content="Gaoll">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NoodlePapa">
+      <meta itemprop="name" content="Gaoll">
     </span>
 
     
@@ -596,15 +596,15 @@
       
         <div class="post-tags">
           
+            <a href="/tags/教程/" rel="tag"># 教程</a>
+          
+            <a href="/tags/笔记/" rel="tag"># 笔记</a>
+          
             <a href="/tags/黑马程序员/" rel="tag"># 黑马程序员</a>
           
             <a href="/tags/基础视频/" rel="tag"># 基础视频</a>
           
             <a href="/tags/知识点/" rel="tag"># 知识点</a>
-          
-            <a href="/tags/笔记/" rel="tag"># 笔记</a>
-          
-            <a href="/tags/教程/" rel="tag"># 教程</a>
           
         </div>
       
@@ -678,6 +678,8 @@
 
   <aside id="sidebar" class="sidebar">
     
+      <div id="sidebar-dimmer"></div>
+    
     <div class="sidebar-inner">
 
       
@@ -697,8 +699,8 @@
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
-               alt="NoodlePapa" />
-          <p class="site-author-name" itemprop="name">NoodlePapa</p>
+               alt="Gaoll" />
+          <p class="site-author-name" itemprop="name">Gaoll</p>
            
               <p class="site-description motion-element" itemprop="description"></p>
            
@@ -860,6 +862,13 @@
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -878,7 +887,7 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">NoodlePapa</span>
+  <span class="author" itemprop="copyrightHolder">Gaoll</span>
 
   
     <span class="post-meta-divider">|</span>
@@ -943,13 +952,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-          <span id="scrollpercent"><span>0</span>%</span>
-        
-      </div>
     
 
   </div>
@@ -1445,6 +1447,9 @@
 
 
   
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.2"></script>
+
 
   
 

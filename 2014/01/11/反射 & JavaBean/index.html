@@ -79,13 +79,13 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="黑马程序员,基础视频,JAVA,反射,内省," />
+  <meta name="keywords" content="JAVA,黑马程序员,基础视频,反射,内省," />
 
 
 
 
 
-  <link rel="alternate" href="/atom.xml" title="NoodlePapa" type="application/atom+xml" />
+  <link rel="alternate" href="/atom.xml" title="Gaoll" type="application/atom+xml" />
 
 
 
@@ -98,11 +98,11 @@
 
 
 <meta name="description" content="1.Class类(字节码文件)1.1.概念理解Java类用于描述一类事物的共性，该类事物有什么属性，没有什么属性，至于这个属性的值是什么，则是由这个类的实例对象来确定的，不同的实例对象有不同的属性值。Java程序中的各个Java类，它们是否属于同一类事物，所以可以用一个类来描述这类事物,这个类的名字就是Class，要注意与小写class关键字的区别。 Class类描述了哪些方面的信息:类的名字，类">
-<meta name="keywords" content="黑马程序员,基础视频,JAVA,反射,内省">
+<meta name="keywords" content="JAVA,黑马程序员,基础视频,反射,内省">
 <meta property="og:type" content="article">
 <meta property="og:title" content="黑马程序员-反射 &amp; JavaBean">
 <meta property="og:url" content="http://gaoll.top/2014/01/11/反射 & JavaBean/index.html">
-<meta property="og:site_name" content="NoodlePapa">
+<meta property="og:site_name" content="Gaoll">
 <meta property="og:description" content="1.Class类(字节码文件)1.1.概念理解Java类用于描述一类事物的共性，该类事物有什么属性，没有什么属性，至于这个属性的值是什么，则是由这个类的实例对象来确定的，不同的实例对象有不同的属性值。Java程序中的各个Java类，它们是否属于同一类事物，所以可以用一个类来描述这类事物,这个类的名字就是Class，要注意与小写class关键字的区别。 Class类描述了哪些方面的信息:类的名字，类">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://img.blog.csdn.net/20140106222755015?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
@@ -122,7 +122,7 @@
     root: '/',
     scheme: 'Mist',
     version: '5.1.2',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":12,"b2t":true,"scrollpercent":true,"onmobile":true},
     fancybox: true,
     tabs: true,
     motion: true,
@@ -148,7 +148,7 @@
 
 
 
-  <title>黑马程序员-反射 & JavaBean | NoodlePapa</title>
+  <title>黑马程序员-反射 & JavaBean | Gaoll</title>
   
 
 
@@ -188,12 +188,12 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">NoodlePapa</span>
+        <span class="site-title">Gaoll</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <h1 class="site-subtitle" itemprop="description">life likes lighting night</h1>
+        <h1 class="site-subtitle" itemprop="description">love the world</h1>
       
   </div>
 
@@ -332,13 +332,13 @@
     <link itemprop="mainEntityOfPage" href="http://gaoll.top/2014/01/11/反射 & JavaBean/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="NoodlePapa">
+      <meta itemprop="name" content="Gaoll">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NoodlePapa">
+      <meta itemprop="name" content="Gaoll">
     </span>
 
     
@@ -663,11 +663,11 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
       
         <div class="post-tags">
           
+            <a href="/tags/JAVA/" rel="tag"># JAVA</a>
+          
             <a href="/tags/黑马程序员/" rel="tag"># 黑马程序员</a>
           
             <a href="/tags/基础视频/" rel="tag"># 基础视频</a>
-          
-            <a href="/tags/JAVA/" rel="tag"># JAVA</a>
           
             <a href="/tags/反射/" rel="tag"># 反射</a>
           
@@ -745,6 +745,8 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
 
   <aside id="sidebar" class="sidebar">
     
+      <div id="sidebar-dimmer"></div>
+    
     <div class="sidebar-inner">
 
       
@@ -764,8 +766,8 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
-               alt="NoodlePapa" />
-          <p class="site-author-name" itemprop="name">NoodlePapa</p>
+               alt="Gaoll" />
+          <p class="site-author-name" itemprop="name">Gaoll</p>
            
               <p class="site-description motion-element" itemprop="description"></p>
            
@@ -927,6 +929,13 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -945,7 +954,7 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">NoodlePapa</span>
+  <span class="author" itemprop="copyrightHolder">Gaoll</span>
 
   
     <span class="post-meta-divider">|</span>
@@ -1010,13 +1019,6 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-          <span id="scrollpercent"><span>0</span>%</span>
-        
-      </div>
     
 
   </div>
@@ -1512,6 +1514,9 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
 
 
   
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.2"></script>
+
 
   
 

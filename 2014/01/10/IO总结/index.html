@@ -79,13 +79,13 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="黑马程序员,基础视频,知识点,笔记,JAVA," />
+  <meta name="keywords" content="JAVA,笔记,黑马程序员,基础视频,知识点," />
 
 
 
 
 
-  <link rel="alternate" href="/atom.xml" title="NoodlePapa" type="application/atom+xml" />
+  <link rel="alternate" href="/atom.xml" title="Gaoll" type="application/atom+xml" />
 
 
 
@@ -98,11 +98,11 @@
 
 
 <meta name="description" content="题外话:这近十天来.为了赶进度,越来越发现自己没有花多少时间去总结回顾之前的知识了.突然发现IO流已经学习完几天了.竟然一次也没复习过.甚至于提到IO某些知识都有种莫名的陌生感. 的确时间不等人,但是某些必要的时间还是得划出来.更不能因为周边某些人的急功近利,反而乱了自己的节奏.  不断的戒掉旧习,却又不断的有新的恶习. 想优秀,要努力.">
-<meta name="keywords" content="黑马程序员,基础视频,知识点,笔记,JAVA">
+<meta name="keywords" content="JAVA,笔记,黑马程序员,基础视频,知识点">
 <meta property="og:type" content="article">
 <meta property="og:title" content="黑马程序员-IO总结">
 <meta property="og:url" content="http://gaoll.top/2014/01/10/IO总结/index.html">
-<meta property="og:site_name" content="NoodlePapa">
+<meta property="og:site_name" content="Gaoll">
 <meta property="og:description" content="题外话:这近十天来.为了赶进度,越来越发现自己没有花多少时间去总结回顾之前的知识了.突然发现IO流已经学习完几天了.竟然一次也没复习过.甚至于提到IO某些知识都有种莫名的陌生感. 的确时间不等人,但是某些必要的时间还是得划出来.更不能因为周边某些人的急功近利,反而乱了自己的节奏.  不断的戒掉旧习,却又不断的有新的恶习. 想优秀,要努力.">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://img.blog.csdn.net/20140102225849875?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
@@ -121,7 +121,7 @@
     root: '/',
     scheme: 'Mist',
     version: '5.1.2',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":12,"b2t":true,"scrollpercent":true,"onmobile":true},
     fancybox: true,
     tabs: true,
     motion: true,
@@ -147,7 +147,7 @@
 
 
 
-  <title>黑马程序员-IO总结 | NoodlePapa</title>
+  <title>黑马程序员-IO总结 | Gaoll</title>
   
 
 
@@ -187,12 +187,12 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">NoodlePapa</span>
+        <span class="site-title">Gaoll</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <h1 class="site-subtitle" itemprop="description">life likes lighting night</h1>
+        <h1 class="site-subtitle" itemprop="description">love the world</h1>
       
   </div>
 
@@ -331,13 +331,13 @@
     <link itemprop="mainEntityOfPage" href="http://gaoll.top/2014/01/10/IO总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="NoodlePapa">
+      <meta itemprop="name" content="Gaoll">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NoodlePapa">
+      <meta itemprop="name" content="Gaoll">
     </span>
 
     
@@ -798,15 +798,15 @@ C:store 通过任意流把数据保存到文件中
       
         <div class="post-tags">
           
+            <a href="/tags/JAVA/" rel="tag"># JAVA</a>
+          
+            <a href="/tags/笔记/" rel="tag"># 笔记</a>
+          
             <a href="/tags/黑马程序员/" rel="tag"># 黑马程序员</a>
           
             <a href="/tags/基础视频/" rel="tag"># 基础视频</a>
           
             <a href="/tags/知识点/" rel="tag"># 知识点</a>
-          
-            <a href="/tags/笔记/" rel="tag"># 笔记</a>
-          
-            <a href="/tags/JAVA/" rel="tag"># JAVA</a>
           
         </div>
       
@@ -880,6 +880,8 @@ C:store 通过任意流把数据保存到文件中
 
   <aside id="sidebar" class="sidebar">
     
+      <div id="sidebar-dimmer"></div>
+    
     <div class="sidebar-inner">
 
       
@@ -899,8 +901,8 @@ C:store 通过任意流把数据保存到文件中
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
-               alt="NoodlePapa" />
-          <p class="site-author-name" itemprop="name">NoodlePapa</p>
+               alt="Gaoll" />
+          <p class="site-author-name" itemprop="name">Gaoll</p>
            
               <p class="site-description motion-element" itemprop="description"></p>
            
@@ -1062,6 +1064,13 @@ C:store 通过任意流把数据保存到文件中
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -1080,7 +1089,7 @@ C:store 通过任意流把数据保存到文件中
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">NoodlePapa</span>
+  <span class="author" itemprop="copyrightHolder">Gaoll</span>
 
   
     <span class="post-meta-divider">|</span>
@@ -1145,13 +1154,6 @@ C:store 通过任意流把数据保存到文件中
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-          <span id="scrollpercent"><span>0</span>%</span>
-        
-      </div>
     
 
   </div>
@@ -1647,6 +1649,9 @@ C:store 通过任意流把数据保存到文件中
 
 
   
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.2"></script>
+
 
   
 

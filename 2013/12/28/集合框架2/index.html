@@ -79,13 +79,13 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="黑马程序员,知识点,笔记,JAVA,基础," />
+  <meta name="keywords" content="JAVA,基础,笔记,黑马程序员,知识点," />
 
 
 
 
 
-  <link rel="alternate" href="/atom.xml" title="NoodlePapa" type="application/atom+xml" />
+  <link rel="alternate" href="/atom.xml" title="Gaoll" type="application/atom+xml" />
 
 
 
@@ -98,11 +98,11 @@
 
 
 <meta name="description" content="1.Set类1.1Set的特点：元素无序,唯一。注意：这里的顺序是指存储和取出顺序。 2.HashSet2.1.HashSet：不保证元素的迭代顺序。并且，不保证该顺序恒久不变。2.2.怎么保证元素唯一HashSet底层数据结构是哈希表。依赖两个方法：hashCode()和equals()顺序：首先，判断hashCode()值是否相同。相同：继续走equals()方法，根据其返回值：true：说明">
-<meta name="keywords" content="黑马程序员,知识点,笔记,JAVA,基础">
+<meta name="keywords" content="JAVA,基础,笔记,黑马程序员,知识点">
 <meta property="og:type" content="article">
 <meta property="og:title" content="黑马程序员-集合框架2">
 <meta property="og:url" content="http://gaoll.top/2013/12/28/集合框架2/index.html">
-<meta property="og:site_name" content="NoodlePapa">
+<meta property="og:site_name" content="Gaoll">
 <meta property="og:description" content="1.Set类1.1Set的特点：元素无序,唯一。注意：这里的顺序是指存储和取出顺序。 2.HashSet2.1.HashSet：不保证元素的迭代顺序。并且，不保证该顺序恒久不变。2.2.怎么保证元素唯一HashSet底层数据结构是哈希表。依赖两个方法：hashCode()和equals()顺序：首先，判断hashCode()值是否相同。相同：继续走equals()方法，根据其返回值：true：说明">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://img.blog.csdn.net/20131228135245656?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbm90dG9ubXlzZWxm/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
@@ -120,7 +120,7 @@
     root: '/',
     scheme: 'Mist',
     version: '5.1.2',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":12,"b2t":true,"scrollpercent":true,"onmobile":true},
     fancybox: true,
     tabs: true,
     motion: true,
@@ -146,7 +146,7 @@
 
 
 
-  <title>黑马程序员-集合框架2 | NoodlePapa</title>
+  <title>黑马程序员-集合框架2 | Gaoll</title>
   
 
 
@@ -186,12 +186,12 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">NoodlePapa</span>
+        <span class="site-title">Gaoll</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <h1 class="site-subtitle" itemprop="description">life likes lighting night</h1>
+        <h1 class="site-subtitle" itemprop="description">love the world</h1>
       
   </div>
 
@@ -330,13 +330,13 @@
     <link itemprop="mainEntityOfPage" href="http://gaoll.top/2013/12/28/集合框架2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="NoodlePapa">
+      <meta itemprop="name" content="Gaoll">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NoodlePapa">
+      <meta itemprop="name" content="Gaoll">
     </span>
 
     
@@ -542,15 +542,15 @@
       
         <div class="post-tags">
           
-            <a href="/tags/黑马程序员/" rel="tag"># 黑马程序员</a>
-          
-            <a href="/tags/知识点/" rel="tag"># 知识点</a>
-          
-            <a href="/tags/笔记/" rel="tag"># 笔记</a>
-          
             <a href="/tags/JAVA/" rel="tag"># JAVA</a>
           
             <a href="/tags/基础/" rel="tag"># 基础</a>
+          
+            <a href="/tags/笔记/" rel="tag"># 笔记</a>
+          
+            <a href="/tags/黑马程序员/" rel="tag"># 黑马程序员</a>
+          
+            <a href="/tags/知识点/" rel="tag"># 知识点</a>
           
         </div>
       
@@ -624,6 +624,8 @@
 
   <aside id="sidebar" class="sidebar">
     
+      <div id="sidebar-dimmer"></div>
+    
     <div class="sidebar-inner">
 
       
@@ -643,8 +645,8 @@
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
-               alt="NoodlePapa" />
-          <p class="site-author-name" itemprop="name">NoodlePapa</p>
+               alt="Gaoll" />
+          <p class="site-author-name" itemprop="name">Gaoll</p>
            
               <p class="site-description motion-element" itemprop="description"></p>
            
@@ -806,6 +808,13 @@
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -824,7 +833,7 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">NoodlePapa</span>
+  <span class="author" itemprop="copyrightHolder">Gaoll</span>
 
   
     <span class="post-meta-divider">|</span>
@@ -889,13 +898,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-          <span id="scrollpercent"><span>0</span>%</span>
-        
-      </div>
     
 
   </div>
@@ -1391,6 +1393,9 @@
 
 
   
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.2"></script>
+
 
   
 

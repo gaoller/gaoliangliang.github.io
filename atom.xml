@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>NoodlePapa</title>
-  <subtitle>life likes lighting night</subtitle>
+  <title>Gaoll</title>
+  <subtitle>love the world</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://gaoll.top/"/>
@@ -9,7 +9,7 @@
   <id>http://gaoll.top/</id>
   
   <author>
-    <name>NoodlePapa</name>
+    <name>Gaoll</name>
     
   </author>
   
@@ -45,7 +45,7 @@
     <link href="http://gaoll.top/2017/08/27/%E5%86%99%E5%9C%A8%E4%B8%83%E5%A4%95%E5%89%8D%E5%A4%95/"/>
     <id>http://gaoll.top/2017/08/27/写在七夕前夕/</id>
     <published>2017-08-27T13:04:00.000Z</published>
-    <updated>2017-08-27T14:13:56.000Z</updated>
+    <updated>2018-03-10T05:39:20.935Z</updated>
     
     <content type="html"><![CDATA[<p>2017，超速的一年，虽然仅仅过去了一半有余</p>
 <p>千头万绪，不知从何说起，就像一直以来的处境，茫目焦虑。流水账的给自己梳理记录下。</p>
@@ -61,7 +61,7 @@
 <h1 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h1><p>这半年来，工作上的负面影响，也带入到了平时的学习充电中。这块没有任何借口，计划好的书本，啃了多少。想学的知识，实际开始学习了的又有多少。</p>
 <p>同时，工作领域的危机感，也越来越强。鑫哥已经用他的实际行动告诉我们，必须保持高速学习、必须明确区分主次。</p>
 <p>学习、提升，没有捷径。如果有，那唯一的方法就是迎风向前</p>
-<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>主题七夕，结束了二十多年的单身狗的生活。第一个七夕情人节。希望能给我爱的人，一个难忘的记忆。</p>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>主题七夕，结束了二十多年的单身狗的生活。第一个七夕情人节。努力能给我爱的人，幸福的一生。</p>
 <hr>
 <h1 id="PS"><a href="#PS" class="headerlink" title="PS."></a>PS.</h1><p>最近发现，书必须得读。不能再拖延了<br>发现个很好的个人博客：<a href="http://wdxtub.com/" target="_blank" rel="external">小土刀</a>，羡慕博主的各种方法论、世界观。希望能借鉴并提升自己。</p>
 ]]></content>
@@ -344,15 +344,15 @@
       <category term="java笔记" scheme="http://gaoll.top/categories/java%E7%AC%94%E8%AE%B0/"/>
     
     
+      <category term="JAVA" scheme="http://gaoll.top/tags/JAVA/"/>
+    
+      <category term="基础" scheme="http://gaoll.top/tags/%E5%9F%BA%E7%A1%80/"/>
+    
       <category term="黑马程序员" scheme="http://gaoll.top/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
     
       <category term="基础视频" scheme="http://gaoll.top/tags/%E5%9F%BA%E7%A1%80%E8%A7%86%E9%A2%91/"/>
     
       <category term="知识点" scheme="http://gaoll.top/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
-    
-      <category term="JAVA" scheme="http://gaoll.top/tags/JAVA/"/>
-    
-      <category term="基础" scheme="http://gaoll.top/tags/%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
@@ -725,11 +725,11 @@ public class Road{
       <category term="java笔记" scheme="http://gaoll.top/categories/java%E7%AC%94%E8%AE%B0/"/>
     
     
+      <category term="JAVA" scheme="http://gaoll.top/tags/JAVA/"/>
+    
       <category term="黑马程序员" scheme="http://gaoll.top/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
     
       <category term="基础视频" scheme="http://gaoll.top/tags/%E5%9F%BA%E7%A1%80%E8%A7%86%E9%A2%91/"/>
-    
-      <category term="JAVA" scheme="http://gaoll.top/tags/JAVA/"/>
     
       <category term="思路" scheme="http://gaoll.top/tags/%E6%80%9D%E8%B7%AF/"/>
     
@@ -890,15 +890,15 @@ public class Road{
       <category term="java笔记" scheme="http://gaoll.top/categories/java%E7%AC%94%E8%AE%B0/"/>
     
     
+      <category term="JAVA" scheme="http://gaoll.top/tags/JAVA/"/>
+    
+      <category term="教程" scheme="http://gaoll.top/tags/%E6%95%99%E7%A8%8B/"/>
+    
       <category term="黑马程序员" scheme="http://gaoll.top/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
     
       <category term="基础视频" scheme="http://gaoll.top/tags/%E5%9F%BA%E7%A1%80%E8%A7%86%E9%A2%91/"/>
     
       <category term="知识点" scheme="http://gaoll.top/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
-    
-      <category term="JAVA" scheme="http://gaoll.top/tags/JAVA/"/>
-    
-      <category term="教程" scheme="http://gaoll.top/tags/%E6%95%99%E7%A8%8B/"/>
     
   </entry>
   
@@ -1102,11 +1102,11 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
       <category term="java笔记" scheme="http://gaoll.top/categories/java%E7%AC%94%E8%AE%B0/"/>
     
     
+      <category term="JAVA" scheme="http://gaoll.top/tags/JAVA/"/>
+    
       <category term="黑马程序员" scheme="http://gaoll.top/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
     
       <category term="基础视频" scheme="http://gaoll.top/tags/%E5%9F%BA%E7%A1%80%E8%A7%86%E9%A2%91/"/>
-    
-      <category term="JAVA" scheme="http://gaoll.top/tags/JAVA/"/>
     
       <category term="反射" scheme="http://gaoll.top/tags/%E5%8F%8D%E5%B0%84/"/>
     
@@ -1253,15 +1253,15 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
       <category term="java笔记" scheme="http://gaoll.top/categories/java%E7%AC%94%E8%AE%B0/"/>
     
     
+      <category term="教程" scheme="http://gaoll.top/tags/%E6%95%99%E7%A8%8B/"/>
+    
+      <category term="笔记" scheme="http://gaoll.top/tags/%E7%AC%94%E8%AE%B0/"/>
+    
       <category term="黑马程序员" scheme="http://gaoll.top/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
     
       <category term="基础视频" scheme="http://gaoll.top/tags/%E5%9F%BA%E7%A1%80%E8%A7%86%E9%A2%91/"/>
     
       <category term="知识点" scheme="http://gaoll.top/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
-    
-      <category term="笔记" scheme="http://gaoll.top/tags/%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="教程" scheme="http://gaoll.top/tags/%E6%95%99%E7%A8%8B/"/>
     
   </entry>
   
@@ -1484,13 +1484,13 @@ TCP客户端步骤:
       <category term="java笔记" scheme="http://gaoll.top/categories/java%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="黑马程序员" scheme="http://gaoll.top/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
-    
-      <category term="知识点" scheme="http://gaoll.top/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+      <category term="JAVA" scheme="http://gaoll.top/tags/JAVA/"/>
     
       <category term="笔记" scheme="http://gaoll.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="JAVA" scheme="http://gaoll.top/tags/JAVA/"/>
+      <category term="黑马程序员" scheme="http://gaoll.top/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+    
+      <category term="知识点" scheme="http://gaoll.top/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     
       <category term="思路" scheme="http://gaoll.top/tags/%E6%80%9D%E8%B7%AF/"/>
     
@@ -1825,11 +1825,11 @@ TCP客户端步骤:
       <category term="java笔记" scheme="http://gaoll.top/categories/java%E7%AC%94%E8%AE%B0/"/>
     
     
+      <category term="JAVA" scheme="http://gaoll.top/tags/JAVA/"/>
+    
       <category term="黑马程序员" scheme="http://gaoll.top/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
     
       <category term="知识点" scheme="http://gaoll.top/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
-    
-      <category term="JAVA" scheme="http://gaoll.top/tags/JAVA/"/>
     
       <category term="思路" scheme="http://gaoll.top/tags/%E6%80%9D%E8%B7%AF/"/>
     
@@ -2175,15 +2175,15 @@ C:store 通过任意流把数据保存到文件中
       <category term="java笔记" scheme="http://gaoll.top/categories/java%E7%AC%94%E8%AE%B0/"/>
     
     
+      <category term="JAVA" scheme="http://gaoll.top/tags/JAVA/"/>
+    
+      <category term="笔记" scheme="http://gaoll.top/tags/%E7%AC%94%E8%AE%B0/"/>
+    
       <category term="黑马程序员" scheme="http://gaoll.top/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
     
       <category term="基础视频" scheme="http://gaoll.top/tags/%E5%9F%BA%E7%A1%80%E8%A7%86%E9%A2%91/"/>
     
       <category term="知识点" scheme="http://gaoll.top/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
-    
-      <category term="笔记" scheme="http://gaoll.top/tags/%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="JAVA" scheme="http://gaoll.top/tags/JAVA/"/>
     
   </entry>
   
@@ -3140,15 +3140,15 @@ C:store 通过任意流把数据保存到文件中
       <category term="java笔记" scheme="http://gaoll.top/categories/java%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="黑马程序员" scheme="http://gaoll.top/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
-    
-      <category term="知识点" scheme="http://gaoll.top/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
-    
-      <category term="笔记" scheme="http://gaoll.top/tags/%E7%AC%94%E8%AE%B0/"/>
-    
       <category term="JAVA" scheme="http://gaoll.top/tags/JAVA/"/>
     
       <category term="基础" scheme="http://gaoll.top/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="笔记" scheme="http://gaoll.top/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="黑马程序员" scheme="http://gaoll.top/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+    
+      <category term="知识点" scheme="http://gaoll.top/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     
   </entry>
   
@@ -3252,15 +3252,15 @@ class ApearNum
       <category term="java笔记" scheme="http://gaoll.top/categories/java%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="黑马程序员" scheme="http://gaoll.top/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
-    
-      <category term="知识点" scheme="http://gaoll.top/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
-    
-      <category term="笔记" scheme="http://gaoll.top/tags/%E7%AC%94%E8%AE%B0/"/>
-    
       <category term="基础" scheme="http://gaoll.top/tags/%E5%9F%BA%E7%A1%80/"/>
     
       <category term="教程" scheme="http://gaoll.top/tags/%E6%95%99%E7%A8%8B/"/>
+    
+      <category term="笔记" scheme="http://gaoll.top/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="黑马程序员" scheme="http://gaoll.top/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+    
+      <category term="知识点" scheme="http://gaoll.top/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     
   </entry>
   
@@ -3344,15 +3344,15 @@ class ApearNum
       <category term="java笔记" scheme="http://gaoll.top/categories/java%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="黑马程序员" scheme="http://gaoll.top/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
-    
-      <category term="知识点" scheme="http://gaoll.top/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
-    
-      <category term="笔记" scheme="http://gaoll.top/tags/%E7%AC%94%E8%AE%B0/"/>
-    
       <category term="JAVA" scheme="http://gaoll.top/tags/JAVA/"/>
     
       <category term="基础" scheme="http://gaoll.top/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="笔记" scheme="http://gaoll.top/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="黑马程序员" scheme="http://gaoll.top/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+    
+      <category term="知识点" scheme="http://gaoll.top/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     
   </entry>
   
@@ -3394,15 +3394,15 @@ class ApearNum
       <category term="java笔记" scheme="http://gaoll.top/categories/java%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="黑马程序员" scheme="http://gaoll.top/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
-    
-      <category term="知识点" scheme="http://gaoll.top/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
-    
-      <category term="笔记" scheme="http://gaoll.top/tags/%E7%AC%94%E8%AE%B0/"/>
-    
       <category term="JAVA" scheme="http://gaoll.top/tags/JAVA/"/>
     
       <category term="基础" scheme="http://gaoll.top/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="笔记" scheme="http://gaoll.top/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="黑马程序员" scheme="http://gaoll.top/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+    
+      <category term="知识点" scheme="http://gaoll.top/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     
   </entry>
   
@@ -3483,13 +3483,13 @@ class ApearNum
       <category term="java笔记" scheme="http://gaoll.top/categories/java%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="黑马程序员" scheme="http://gaoll.top/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
-    
-      <category term="知识点" scheme="http://gaoll.top/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+      <category term="基础" scheme="http://gaoll.top/tags/%E5%9F%BA%E7%A1%80/"/>
     
       <category term="笔记" scheme="http://gaoll.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="基础" scheme="http://gaoll.top/tags/%E5%9F%BA%E7%A1%80/"/>
+      <category term="黑马程序员" scheme="http://gaoll.top/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+    
+      <category term="知识点" scheme="http://gaoll.top/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     
       <category term="api" scheme="http://gaoll.top/tags/api/"/>
     
@@ -3647,15 +3647,15 @@ public class Student {
       <category term="java笔记" scheme="http://gaoll.top/categories/java%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="黑马程序员" scheme="http://gaoll.top/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
-    
-      <category term="知识点" scheme="http://gaoll.top/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
-    
-      <category term="笔记" scheme="http://gaoll.top/tags/%E7%AC%94%E8%AE%B0/"/>
-    
       <category term="基础" scheme="http://gaoll.top/tags/%E5%9F%BA%E7%A1%80/"/>
     
       <category term="教程" scheme="http://gaoll.top/tags/%E6%95%99%E7%A8%8B/"/>
+    
+      <category term="笔记" scheme="http://gaoll.top/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="黑马程序员" scheme="http://gaoll.top/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+    
+      <category term="知识点" scheme="http://gaoll.top/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     
   </entry>
   
@@ -3700,13 +3700,13 @@ public class Student {
       <category term="java笔记" scheme="http://gaoll.top/categories/java%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="黑马程序员" scheme="http://gaoll.top/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
-    
-      <category term="知识点" scheme="http://gaoll.top/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+      <category term="JAVA" scheme="http://gaoll.top/tags/JAVA/"/>
     
       <category term="笔记" scheme="http://gaoll.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="JAVA" scheme="http://gaoll.top/tags/JAVA/"/>
+      <category term="黑马程序员" scheme="http://gaoll.top/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+    
+      <category term="知识点" scheme="http://gaoll.top/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     
       <category term="面向对象" scheme="http://gaoll.top/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
     
@@ -3985,13 +3985,13 @@ public class Student {
       <category term="java笔记" scheme="http://gaoll.top/categories/java%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="黑马程序员" scheme="http://gaoll.top/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
-    
-      <category term="知识点" scheme="http://gaoll.top/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+      <category term="JAVA" scheme="http://gaoll.top/tags/JAVA/"/>
     
       <category term="笔记" scheme="http://gaoll.top/tags/%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="JAVA" scheme="http://gaoll.top/tags/JAVA/"/>
+      <category term="黑马程序员" scheme="http://gaoll.top/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+    
+      <category term="知识点" scheme="http://gaoll.top/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     
       <category term="思路" scheme="http://gaoll.top/tags/%E6%80%9D%E8%B7%AF/"/>
     
@@ -4138,15 +4138,15 @@ public class Student {
       <category term="java笔记" scheme="http://gaoll.top/categories/java%E7%AC%94%E8%AE%B0/"/>
     
     
+      <category term="JAVA" scheme="http://gaoll.top/tags/JAVA/"/>
+    
+      <category term="笔记" scheme="http://gaoll.top/tags/%E7%AC%94%E8%AE%B0/"/>
+    
       <category term="黑马程序员" scheme="http://gaoll.top/tags/%E9%BB%91%E9%A9%AC%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
     
       <category term="基础视频" scheme="http://gaoll.top/tags/%E5%9F%BA%E7%A1%80%E8%A7%86%E9%A2%91/"/>
     
       <category term="知识点" scheme="http://gaoll.top/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
-    
-      <category term="笔记" scheme="http://gaoll.top/tags/%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="JAVA" scheme="http://gaoll.top/tags/JAVA/"/>
     
   </entry>
   
